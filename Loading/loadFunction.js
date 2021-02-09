@@ -11,6 +11,19 @@ module.exports = (client, auth, moment) => {
           }
      };
   
+    client.kayıtfunc = async (msg, args, member, author, guild, rolID, rol2ID, auth) => {
+    if (member.roles.cache.some(r => config.register.unregister.includes(r.id))) {
+      await uye.roles.remove(config.register.unregister).catch();
+      await uye.roles.add(rolID).catch();
+      await client.message(client.embed(`${uye} kullanıcısı başarıyla <@&${rolID[0]}> alarak kaydedildi! İyi Eğlenceler`, msg), msg.channel.id, 3500).catch();
+      if (guild.channels.cache.get(config.gchat)) client.message(client.embed(`Aramıza yeni biri katıldı! ${uye} Hadi ona hoşgeldin diyelim.`), config.gchat, 5500);
+    } else {
+      await uye.roles.remove(rol2ID).catch();
+      await uye.roles.add(rolID).catch();
+      client.message(client.embed(`${uye} **adlı üyeye <@&${rolID[0]}> rolü verildi.**`, msg), msg.channel.id, 3000);
+    };
+  };
+  
     client.embed = (message, msj) => {
         return {
           embed: {
