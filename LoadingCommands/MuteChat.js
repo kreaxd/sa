@@ -26,15 +26,8 @@ await client.NumberAdd({Database: Schema, Message: msg, Type: "MuteAdd"});
 client.message(`${client.react("duztik")} ${member} ${client.format(ms(Time)).replace(", 0 saniye", "").trimEnd()} boyunca metin kanalları üzerinden geçici olarak susturuldu.\`(Ceza ID: ${VeriNumber})\``, msg.channel.id, 7500);
 client.message({embed: { 
   author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
-  description: ``, 
-  color: client.renk[Math.floor(Math.random() * client.renk.length)] }})
-    Hook.send({
-  embeds: [{
-    author: {  },
-    description: ``,
-    color: 
-  }]
-}).catch(() => { });
+  description: `${member} (\`${member.user.tag} - ${member.id}\`) üyesi ${client.format(ms(Time)).replace(", 0 saniye", "").trimEnd()} süreliğine metin kanalları üzerinden susturuldu.\`(Ceza ID: ${VeriNumber})\`\n\n• Chat Mute Atılma: ${client.toDate(new Date(Date.now()))}\n• Chat Mute Bitiş: ${client.toDate(new Date(Date.now() + ms(Time)))}\n• Chat Mute Sebebi: ${reason}`, 
+  color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.MuteLog)
 });
 };
   
