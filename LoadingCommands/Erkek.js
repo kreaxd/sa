@@ -21,6 +21,8 @@ module.exports.operate = async ({client, msg, args, auth, author, member}, Schem
       Veri.History.push({ Name: `${tag} ${isim} | ${yas}`, Roles: auth.Perms.Erkek[0], Author: author.id});
       Veri.save();
     };
+  } else if ((yas) && (!isim)) {
+    .e @ibidi 18
   };
   client.Kayıt(msg, args, member, author, auth.Perms.Erkek, auth.Perms.Kız, auth);
   Schema.findOne({SunucuID: msg.guild.id, userID: author.id}, async (err,res) => {
