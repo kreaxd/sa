@@ -1,4 +1,4 @@
-module.exports.operate = ({client, msg, args, member, author}) => {
+module.exports.operate = async ({client, msg, args, member, author}) => {
     if (!author.permissions.has("ADMINISTRATOR")) return;
     if (!member) return client.message(client.noMember(msg), msg.channel.id, 5000);
     if (!member.voice.channel) {
