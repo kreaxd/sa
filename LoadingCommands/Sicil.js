@@ -10,8 +10,13 @@ let member = (msg.mentions.users.first()) || await (await fetch(`https://discord
     const pages = History.chunk(pageLimit);
     if (msg.content.includes("auto")) {
       let Sure = ms((msg.content.slice(msg.content.indexOf("auto") + 5)));
-      if (!Sure || !ms(Sure)) return client.message(client.embed(`**Geçerli bir zaman dilimi girmelisin.**`, msg), msg.channel.id, 5000);
-      msg.channel.send({embed:{title: `**Sayfa: ${currentPage}/${pages.length}**`,description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}}).then(xd => {
+      if (!Sure || !ms(Sure)) return client.message(client.embed(`Geçerli bir zaman dilimi girmelisin.`, msg), msg.channel.id, 5000);
+      msg.channel.send({embed:{ 
+      footer: { text: `${currentPage}/${pages.length}`},
+      description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,
+      thumbnail: { url: msg.guild.iconURL({dynamic:true})}, 
+        author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, 
+        color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}}).then(xd => {
         setInterval(() => {
           if (currentPage >= pages.length) return clearInterval(this);
           currentPage = currentPage + 1;
