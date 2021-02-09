@@ -16,7 +16,7 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
    client.message({embed: { 
       author: {  name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) },
       description: `${member2 ?  `${member2} (\`${member.id}\`) üyesinin cezası ${author} tarafından kaldırıldı ve <@&${auth.CezaRoles.JailRoles}> rolü alındı. Sebep: ${reason}` : `${member.username}#${member.discriminator} üyesi sunucuda olmamasına rağmen ${author} tarafından cezası kaldırıldı. Sebep: ${reason}`}`,
-      color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.BanLog); 
+      color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.JailLog); 
   };
     
   module.exports.help = {

@@ -27,7 +27,7 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
    client.message({embed: { 
       author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
       description: `<@${member.id}> (\`${member.id}\`) üyesine <@&${auth.CezaRoles.JailRoles}> rolü ${author} tarafından verildi. Sebep: ${reason} (\`#${VeriNumber}\`)`,
-      color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.BanLog); 
+      color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.JailLog); 
     });
   };
     
