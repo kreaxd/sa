@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const Ceza = mongoose.Schema({
   CezaID: String,
-  SunucuID: String,
   userID: String,
   Type: String,
   Author: String,
