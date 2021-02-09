@@ -11,20 +11,20 @@ module.exports.operate = async ({client, msg, args, auth, author, member}, Schem
   if ((!isim) && (yas)) return client.message(client.embed(`Kullanıcının herhangi bir ismi olmadan yaşını belirleyemezsin`,msg), msg.channel.id, 6500);
   if ((isim) && (!yas)) {
     member.setNickname(`${tag} ${isim}`).catch(() => { });
-      if (!Veri) { new Schema({SunucuID: msg.guild.id, userID: member.id, History: [{ Name: `${tag} ${isim}`, Roles: auth.Perms.Erkek[0], Author: author.id }]}).save();
+      if (!Veri) { new Schema({SunucuID: msg.guild.id, userID: member.id, History: [{ Name: `${tag} ${isim}`, Roles: auth.Perms.Kız[0], Author: author.id }]}).save();
     } else {
-      Veri.History.push({ Name: `${tag} ${isim}`, Roles: auth.Perms.Erkek[0], Author: author.id});
+      Veri.History.push({ Name: `${tag} ${isim}`, Roles: auth.Perms.Kız[0], Author: author.id});
       Veri.save();
     };
    } else if ((isim) || (yas)) {
     member.setNickname(`${tag} ${isim} | ${yas}`).catch(() => { });
-    if (!Veri) { new Schema({SunucuID: msg.guild.id, userID: member.id, History: [{ Name: `${tag} ${isim} | ${yas}`, Roles: auth.Perms.Erkek[0], Author: author.id }]}).save();
+    if (!Veri) { new Schema({SunucuID: msg.guild.id, userID: member.id, History: [{ Name: `${tag} ${isim} | ${yas}`, Roles: auth.Perms.Kız[0], Author: author.id }]}).save();
     } else {
-      Veri.History.push({ Name: `${tag} ${isim} | ${yas}`, Roles: auth.Perms.Erkek[0], Author: author.id});
+      Veri.History.push({ Name: `${tag} ${isim} | ${yas}`, Roles: auth.Perms.Kız[0], Author: author.id});
       Veri.save();
     };
   };
-  client.Kayıt(msg, args, member, author, auth.Perms.Erkek, auth.Perms.Kız, auth);
+  client.Kayıt(msg, args, member, author, auth.Perms.Kız, auth.Perms.Erkek, auth);
   Schema.findOne({SunucuID: msg.guild.id, userID: author.id}, async (err,res) => {
     if (!res) { new Schema({SunucuID: msg.guild.id, userID: author.id, Authorized: { Man: 1, Members: [member.id]}}).save()
   } else {
@@ -36,7 +36,7 @@ module.exports.operate = async ({client, msg, args, auth, author, member}, Schem
 };
     
   module.exports.help = {
-    name: "e",
-    alias: ["erkek", "erk", "erkk", "adam"]
+    name: "k",
+    alias: ["kız", "karı", "kadın"]
   };
  
