@@ -15,16 +15,26 @@ let member = (msg.mentions.users.first()) || await (await fetch(`https://discord
       footer: { text: `${currentPage}/${pages.length}`},
       description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,
       thumbnail: { url: msg.guild.iconURL({dynamic:true})}, 
-        author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, 
-        color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}}).then(xd => {
+      author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true})}, 
+      color: client.renk[Math.floor(Math.random()*client.renk.length)]}}).then(xd => {
         setInterval(() => {
           if (currentPage >= pages.length) return clearInterval(this);
           currentPage = currentPage + 1;
-          xd.edit({embed:{title: `**Sayfa: ${currentPage}/${pages.length}**`,description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}});
+          xd.edit({embed:{
+            footer: { text: `${currentPage}/${pages.length}`},
+            description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,
+            thumbnail: { url: msg.guild.iconURL({dynamic:true})}, 
+            author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true})}, 
+            color:client.renk[Math.floor(Math.random()*client.renk.length)]}});
         }, Sure);
       });
     } else {
-      msg.channel.send({embed:{title: `**Sayfa: ${currentPage}/${pages.length}**`,description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}}).then(async xd => {
+      msg.channel.send({embed:{
+        footer: { text: `${currentPage}/${pages.length}`},
+        description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,
+        thumbnail: {url: msg.author.avatarURL({dynamic:true})}, 
+        author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, 
+        color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}}).then(async xd => {
         if (listed.length > pageLimit) {
           await xd.react("◀");
           await xd.react("❌");
