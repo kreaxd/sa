@@ -17,7 +17,7 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
         await client.NumberAdd({Database: Schema, Message: msg, Type: "BanAdd"});
         msg.channel.send(client.embed(`<@${member.id}> - (\`${member.id}\`) kullanıcısı **${reason}** sebebiyle sunucudan yasaklandı. ${!member instanceof GuildMember ? "" : `(**Kullanıcı sunucuda olmadığı için ceza veremedim fakat girdiği gibi yasaklanacak.**)`}`, msg));
     client.message({embed: { 
-      author: { name: msg.guild.member(msg.author).displayName, icon_url: msg.author.avatarURL({dynamic: true}) },
+      author: {  name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) },
       description: `<@${member.id}> (\`${member.username}#${member.discriminator} - ${member.id}\`) kullanıcısı ${author} tarafından **${reason}** sebebiyle sunucudan uzaklaştırıldı. (\`CezaID: #${VeriNumber}\` )`,
       color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.BanLog); 
     });

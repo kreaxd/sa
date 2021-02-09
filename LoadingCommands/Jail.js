@@ -24,14 +24,11 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
   new Database({CezaID: VeriNumber, Type: "JAIL", userID: member.id, Author: author.id, Reason: reason, DateNow: Date.now(), Activity: true}).save()
   await client.NumberAdd({Database: Schema, Message: msg, Type: "JailAdd"});
   msg.channel.send(client.embed(`${member2 ?  `${member2} üyesine <@&${auth.CezaRoles.JailRoles}> rolü verildi. (\`#${VeriNumber}\`)` : `${member.username}#${member.discriminator} üyesi sunucuda olmamasına rağmen cezalıya atıldı. (\`#${VeriNumber}\`)`}`, msg))
-  Hook.send({
-    embeds: [{
-      author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) },
+   client.message({embed: { 
+      author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
       description: `<@${member.id}> (\`${member.id}\`) üyesine <@&${auth.CezaRoles.JailRoles}> rolü ${author} tarafından verildi. Sebep: ${reason} (\`#${VeriNumber}\`)`,
-      color: client.renk[Math.floor(Math.random() * client.renk.length)]
-    }]
-  }).catch(() => { });
-  });
+      color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.BanLog); 
+    });
   };
     
   module.exports.help = {
