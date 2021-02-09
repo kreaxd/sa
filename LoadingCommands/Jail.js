@@ -1,4 +1,4 @@
-module.exports.operate = async ({client, msg, args,auth, author}, fetch = require('node-fetch'), { WebhookClient } = require("discord.js"), Database = require("../Models/Restriction.js"), Schema = require("../Models/Member.js")) => {
+module.exports.operate = async ({client, msg, args,auth, author}, fetch = require('node-fetch'), Database = require("../Models/Restriction.js"), Schema = require("../Models/Member.js")) => {
     if ((!author.roles.cache.some(r => auth.Perms.JailAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
     let member = (msg.mentions.users.first()) || await (await fetch(`https://discord.com/api/users/${args[0]}`, {method:'GET', headers: {'Authorization': 'Bot ' + client.token}})).json();
     if ((!member) || (Object.keys(member).length == 1)) return client.message(client.noMember(msg), msg.channel.id, 6500);
