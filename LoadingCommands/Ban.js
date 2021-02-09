@@ -9,13 +9,13 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
     let member2 = msg.guild.members.cache.get(member.id);
     if ((member2) && (author.roles.highest.position <= member2.roles.highest.position)) return client.message(client.embed("Bu kişi senden yüksek veya aynı yetkiye sahip olduğu için sunucudan yasaklayamazsın.", msg), msg.channel.id, 5000);
     let reason = args.slice(1).join(" ") || "Sebep belirtilmedi.";
-    if (member) member.ban({reason: `${msg.member.user.tag} tarafından ${reason} sebebiyle yasaklandı`}).catch(() => { });
+    if (member2) member2.ban({reason: `${msg.member.user.tag} tarafından ${reason} sebebiyle yasaklandı`}).catch(() => { });
     Database.countDocuments().then(async x => {
         let VeriNumber = 0;
         VeriNumber = ( x + 1);
         new Database({CezaID: VeriNumber, Type: "BAN", userID: member.id, Author: author.id, Reason: reason, DateNow: Date.now(), Activity: true}).save()
         await client.NumberAdd({Database: Schema, Message: msg, Type: "BanAdd"});
-        msg.channel.send(client.embed(`<@${member.id}> - (\`${member.id}\`) kullanıcısı **${reason}** sebebiyle sunucudan yasaklandı. ${!member instanceof GuildMember ? "" : `(**Kullanıcı sunucuda olmadığı için ceza veremedim fakat girdiği gibi yasaklanacak.**)`}`, msg));
+        msg.channel.send(client.embed(`<@${member.id}> - (\`${member.id}\`) kullanıcısı **${reason}** sebebiyle sunucudan yasaklandı. ${member instanceof GuildMember ? "" : `(**Kullanıcı sunucuda olmadığı için ceza veremedim fakat girdiği gibi yasaklanacak.**)`}`, msg));
     client.message({embed: { 
       author: {  name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) },
       description: `<@${member.id}> (\`${member.username}#${member.discriminator} - ${member.id}\`) kullanıcısı ${author} tarafından **${reason}** sebebiyle sunucudan uzaklaştırıldı. (\`CezaID: #${VeriNumber}\` )`,
