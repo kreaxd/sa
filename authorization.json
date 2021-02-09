@@ -1,3 +1,41 @@
-{
-  
+{ 
+    "Token": "ODAyMTQ4Mjc2NDIxMDAxMjQ2.YArAzA.ReslmBy6DAwv62rBvwLwoYmow8U",
+    "MongooseURL": "mongodb+srv://mazee1:maze12345@cluster0.w6u4p.mongodb.net/xddd?retryWrites=true&w=majority",
+    "GuildData": {
+        "GuildID": "801137625729335316",
+        "Prefixes": ["!", "."],
+        "BotOwners": ["644092051838861322"],
+        "Chats": {
+            "GenelChat": ""
+        }
+    },
+    "Reacts": {
+       "onay": "",
+       "duztik": "802276704202653717",
+       "iptal": "802216000522551356",
+       "mute": ""
+    },
+    "Perms": {
+        "MuteAuth": [],
+        "JailAuth": [],
+        "RegisterAuth": [],
+        "YTRoles": [],
+        "BanAuth": [],
+        "Unregister": [],
+        "Erkek": [],
+        "Kız": []
+    },
+    "Booster": "801165178468433942",
+    "Tags": {
+        "RealTag": "",
+        "FakeTag": ""
+    },
+    "CezaRoles": {
+        "MuteRoles": "",
+        "JailRoles": "801165178468433942"
+    },
+   "Logs": {
+      "CezaPuanLog": ""
+   }
+
 }

@@ -1,0 +1,1 @@
+module.exports = (client, auth) => client.login(auth.Token).catch(err => console.log(err.message));
