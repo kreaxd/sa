@@ -23,14 +23,14 @@ module.exports.operate = async ({client, msg, args, member, author, auth}, Schem
     client.message(client.embed(`${member} - (\`${member.id}\`) adlı üye ${author} tarafından **${reason}** sebebi ile uyarıldı ve uyarı sayısı 3'ten fazla olduğu için otomatik olarak cezalıya yollandı.`, msg), msg.channel.id, 5000);
     client.message({embed: { 
     author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
-    description: `${member} (\`${member.user.tag} - ${member.id}\`) üyesi ${author} tarafından ${UyarıSayısı}. uyarısını aldı ve otomatik olarak cezalıya atıldı. Sebep: ${reason}`, 
+    description: `${member} (\`${member.id}\`) üyesi ${author} tarafından ${UyarıSayısı}. uyarısını aldı ve otomatik olarak cezalıya atıldı. Sebep: ${reason}`, 
     color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.WarningLog)
         }); 
      } else {
     client.message(client.embed(`${member} - (\`${member.id}\`) adlı üye ${author} tarafından **${reason}** sebebi ile uyarıldı.(\`Uyarı Sayısı: ${UyarıSayısı}\`)`, msg), msg.channel.id, 7500);
     client.message({embed: { 
     author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
-    description: `${member} (\`${member.user.tag} - ${member.id}\`) üyesi ${author} tarafından ${UyarıSayısı}. uyarısını aldı. Sebep: ${reason}`, 
+    description: `${member} (\`${member.id}\`) üyesi ${author} tarafından ${UyarıSayısı}. uyarısını aldı. Sebep: ${reason}`, 
     color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.WarningLog)
      }
     });
