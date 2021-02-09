@@ -11,16 +11,16 @@ module.exports = (client, auth, moment) => {
           }
      };
   
-    client.kayıtfunc = async (msg, args, member, author, guild, rolID, rol2ID, auth) => {
-    if (member.roles.cache.some(r => config.register.unregister.includes(r.id))) {
-      await uye.roles.remove(config.register.unregister).catch();
-      await uye.roles.add(rolID).catch();
-      await client.message(client.embed(`${uye} kullanıcısı başarıyla <@&${rolID[0]}> alarak kaydedildi! İyi Eğlenceler`, msg), msg.channel.id, 3500).catch();
-      if (guild.channels.cache.get(config.gchat)) client.message(client.embed(`Aramıza yeni biri katıldı! ${uye} Hadi ona hoşgeldin diyelim.`), config.gchat, 5500);
+    client.Kayıt = async (msg, args, member, author, rolID, rol2ID, auth) => {
+    if (member.roles.cache.some(r => auth.Perms.Unregister.includes(r.id))) {
+      await member.roles.remove(auth.Perms.Unregister).catch(() => { });
+      await member.roles.add(rolID).catch(() => { });
+      await client.message(client.embed(`${member} kullanıcısı başarıyla <@&${rolID[0]}> alarak kaydedildi! İyi Eğlenceler`, msg), msg.channel.id, 3500);
+      if (client.channels.cache.get(auth.GuildData.Chats.GenelChat)) client.message(client.embed(`Aramıza yeni biri katıldı! ${member} Hadi ona hoşgeldin diyelim.`), auth.GuildData.Chats.GenelChat, 7500);
     } else {
-      await uye.roles.remove(rol2ID).catch();
-      await uye.roles.add(rolID).catch();
-      client.message(client.embed(`${uye} **adlı üyeye <@&${rolID[0]}> rolü verildi.**`, msg), msg.channel.id, 3000);
+      await member.roles.remove(rol2ID).catch(() => { });
+      await member.roles.add(rolID).catch(() => { });
+      client.message(client.embed(`${member} kullanıcısına başarıyla <@&${rolID[0]}> rolü verildi.`, msg), msg.channel.id, 3000);
     };
   };
   
