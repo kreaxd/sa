@@ -1,5 +1,6 @@
 module.exports.operate = async ({client, msg, args}, fetch = require("node-fetch")) => {
-let member = (msg.mentions.users.first()) || (await client.users.fetch(args[0]));   
+let member = (msg.mentions.users.first()) || (await client.users.fetch(args[0]));  
+if (!member) return;
 let avatar = member.avatarURL({ dynamic: true, size: 2048 });
     msg.channel.send({
       embed: {
