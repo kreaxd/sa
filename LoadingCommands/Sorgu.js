@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, auth, author}, Database = require("../Models/Restriction.js")) => { 
-  if (!author.hasPermission("ADMINISTRATOR")) return;
+    if (!author.hasPermission("ADMINISTRATOR")) return;
   let member = args[0];
   let text;
   if ((!member) || (isNaN(member))) return client.message(client.embed(`Geçerli bir ceza sayısı giriniz.`, msg), msg.channel.id, 6500);
