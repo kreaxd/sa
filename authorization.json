@@ -5,6 +5,7 @@
         "GuildID": "801137625729335316",
         "Prefixes": ["!", "."],
         "BotOwners": ["644092051838861322"],
+        "TaglıAlım": true,
         "Chats": {
             "GenelChat": ""
         }
@@ -27,8 +28,8 @@
     },
     "Booster": "801165178468433942",
     "Tags": {
-        "RealTag": "",
-        "FakeTag": ""
+        "RealTag": "x",
+        "FakeTag": "w"
     },
     "CezaRoles": {
         "MuteRoles": "",
