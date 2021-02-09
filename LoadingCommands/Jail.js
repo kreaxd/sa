@@ -1,6 +1,6 @@
 module.exports.operate = async ({client, msg, args,auth, author}, fetch = require('node-fetch'), Database = require("../Models/Restriction.js"), Schema = require("../Models/Member.js")) => {
     if ((!author.roles.cache.some(r => auth.Perms.JailAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
-    let member = (msg.mentions.users.first()) || await (await fetch(`https://discord.com/api/users/${args[0]}`, {method:'GET', headers: {'Authorization': 'Bot ' + client.token}})).json();
+    let member = (msg.mentions.users.first()) || (await client.users.fetch(args[0])); 
     if ((!member) || (Object.keys(member).length == 1)) return client.message(client.noMember(msg), msg.channel.id, 6500);
     let member2 = msg.guild.members.cache.get(member.id);
     if ((member2) && (author.roles.highest.position <= member2.roles.highest.position)) return client.message(client.embed("Bu kişi senden yüksek veya aynı yetkiye sahip olduğu için cezalı atamazsın.", msg), msg.channel.id, 5000);

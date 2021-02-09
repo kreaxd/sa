@@ -1,9 +1,9 @@
-module.exports.operate = async ({client, msg, args}) => {
-let member = (msg.mentions.users.first()) || await (await fetch(`https://discord.com/api/users/${args[0]}`, {method:'GET', headers: {'Authorization': 'Bot ' + client.token}})).json() || msg.member
-    let avatar = member.avatarURL({ dynamic: true, size: 2048 });
+module.exports.operate = async ({client, msg, args}, fetch = require("node-fetch")) => {
+let member = (msg.mentions.users.first()) || (await client.users.fetch(args[0]));   
+let avatar = member.avatarURL({ dynamic: true, size: 2048 });
     msg.channel.send({
       embed: {
-        author: { name: member.avatar, icon_url: avatar },
+        author: { name: member.tag, icon_url: avatar },
         description: `[Resim Adresi](${avatar})`,
         footer: {
           text: `${msg.member.displayName} tarafından istendi.`,
