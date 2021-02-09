@@ -1,4 +1,4 @@
-module.exports.operate = async ({client, msg, args, member, author, auth}, Schema = require("../Models/Restriction.js"),Database = require("../Models/Member.js")) => {
+module.exports.operate = async ({client, msg, args, member, author, auth}, Schema = require("../Models/Restriction.js") ,Database = require("../Models/Member.js")) => {
     if ((!author.roles.cache.some(r => auth.Perms.JailAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
     if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
     const reason = args.slice(1).join(" ");
@@ -22,9 +22,9 @@ module.exports.operate = async ({client, msg, args, member, author, auth}, Schem
             member.roles.set(member.roles.cache.get(auth.Booster) ? [auth.Booster, auth.CezaRoles.JailRoles] : [auth.CezaRoles.JailRoles]).catch(() => { });
             client.message(client.embed(`${member} - (\`${member.id}\`) adlı üye ${author} tarafından **${reason}** sebebi ile uyarıldı ve ${UyarıSayısı}. uyarısını aldı otomatik olarak cezalıya yollandı.`, msg), msg.channel.id, 5000);
         }); 
-    } else {
+     } else {
         client.message(client.embed(`${member} - (\`${member.id}\`) adlı üye ${author} tarafından **${reason}** sebebi ile uyarıldı.(\`Uyarı Sayısı: ${UyarıSayısı}\`)`, msg), msg.channel.id, 7500);
-    }
+     }
     });
   };
   
