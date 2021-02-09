@@ -27,7 +27,7 @@ module.exports.operate = async ({client, msg, args, member, author, auth}, Schem
      client.message({embed: { 
     author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
     description: `${member} (\`${member.user.tag} - ${member.id}\`) üyesi ${author} tarafından ${UyarıSayısı}. uyarısını aldı. Sebep: ${reason}`, 
-    color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.MuteLog)
+    color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.WarningLog)
      }
     });
   };
