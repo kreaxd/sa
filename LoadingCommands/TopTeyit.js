@@ -8,29 +8,31 @@ module.exports.operate = async ({client, msg, args, author, auth}, Database = re
     let pages = listed.chunk(pageLimit);
     msg.channel.send({embed:{
       footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
-      description: `Sunucumuzun en fazla kayıt yapanları aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.teyitci.erkek) + Number(kisi.teyitci.kız)}** kayıta sahip`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}}).then(async x => {
+      description: `Sunucumuzun en fazla kayıt yapanları aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.Authorized.Man) + Number(kisi.Authorized.Woman)}** kayıta sahip`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.renk[Math.floor(Math.random()*client.renk.length)]}}).then(async x => {
       await x.react("◀");
       await x.react("❌");
       await x.react("▶");
       let collector = x.createReactionCollector((react, user) => ["◀","▶", "❌"].some(e => e == react.emoji.name) && user.id == author.id, { time: 200000 });
-      back.on("collect", async reaction => {
-        await reaction.users.remove(author.id).catch(err => { });
-        if (currentPage === 1) return;
-        currentPage--;
-        if (x) x.edit({embed:{title: `**Sayfa: ${currentPage}/${pages.length}**`,description: `Sunucumuzun en fazla kayıt yapanları aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.teyitci.erkek) + Number(kisi.teyitci.kız)}** kayıta sahip`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}});
-      });
-      go.on("collect", async reaction => {
-        await reaction.users.remove(author.id).catch(err => { });
-        if (currentPage == pages.length) return;
-        currentPage++;
-        if (x) x.edit({embed:{title: `**Sayfa: ${currentPage}/${pages.length}**`,description: `Sunucumuzun en fazla kayıt yapanları aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.teyitci.erkek) + Number(kisi.teyitci.kız)}** kayıta sahip`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}});
-      });
-      ex.on("collect", async reaction => {
-        await ex.stop();
-        await go.stop();
-        await back.stop();
-        x.delete();
-      });
+      collector.on("collect", async reaction => {
+        if (reaction.emoji.name === "◀") {
+          await reaction.users.remove(author.id).catch(err => { });
+          if (currentPage === 1) return;
+          currentPage--;
+          if (x) x.edit({embed:{
+            footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
+            description: `Sunucumuzun en fazla kayıt yapanları aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.Authorized.Man) + Number(kisi.Authorized.Woman)}** kayıta sahip`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.renk[Math.floor(Math.random()*client.renk.length)]}});
+        } else if (reaction.emoji.name === "▶") {
+          await reaction.users.remove(author.id).catch(err => { });
+          if (currentPage == pages.length) return;
+          currentPage++;
+          if (x) x.edit({embed:{
+            footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
+            description: `Sunucumuzun en fazla kayıt yapanları aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.Authorized.Man) + Number(kisi.Authorized.Woman)}** kayıta sahip`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.renk[Math.floor(Math.random()*client.renk.length)]}});
+        } else if (reaction.emoji.name === "❌") {
+           x.delete();
+           collector.stop();
+        }
+      })
     });
   });
 };
