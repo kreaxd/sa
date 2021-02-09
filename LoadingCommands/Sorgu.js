@@ -24,7 +24,7 @@ module.exports.operate = async ({client, msg, args, auth, author}, Database = re
 };
 
 module.exports.help = {
-  name: "qwe",
-  alias: []
+  name: "sorgu",
+  alias: ['cezasorgu','cezaid']
 }; 
 
