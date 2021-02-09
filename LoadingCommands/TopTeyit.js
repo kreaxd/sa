@@ -9,6 +9,7 @@ module.exports.operate = async ({client, msg, args, author, auth}, Database = re
     msg.channel.send({embed:{
       footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
       description: `Sunucumuzun en fazla kayıt yapanları aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.Authorized.Man) + Number(kisi.Authorized.Woman)}** kayıta sahip`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.renk[Math.floor(Math.random()*client.renk.length)]}}).then(async x => {
+      if (listed.length > pageLimit) {
       await x.react("◀");
       await x.react("❌");
       await x.react("▶");
@@ -31,8 +32,9 @@ module.exports.operate = async ({client, msg, args, author, auth}, Database = re
         } else if (reaction.emoji.name === "❌") {
            x.delete();
            collector.stop();
-        }
-      })
+          };
+        });
+      };
     });
   });
 };
