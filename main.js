@@ -9,6 +9,7 @@ const client = new Client({ disableMentions: "everyone", ignoreDirect: true, ign
 client.commands = new Map();
 client.aliases = new Map();
 client.locked = new Set();
+client.snipe = new Set();
 client.AFKLAR = new Set();
 client.AFKLAR2 = new Set();
 client.reklamcilar = new Set();

@@ -14,9 +14,7 @@ class MessageDelete {
 }
 
 function messageDelete(msg) {
-  let Hook = new Discord.WebhookClient(cfg.webHooks.messageLog.id, cfg.webHooks.messageLog.token);
-  new MessageDelete(msg, cfg.sunucu).logla(Hook);
-  new MessageDelete(msg, cfg.sunucu).snipe();
+  new MessageDelete(msg, auth.GuildData.GuildID).snipe();
 };
 
 module.exports.event = {
