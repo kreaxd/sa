@@ -12,7 +12,7 @@ let member = (msg.mentions.users.first()) || await (await fetch(`https://discord
       let Sure = ms((msg.content.slice(msg.content.indexOf("auto") + 5)));
       if (!Sure || !ms(Sure)) return client.message(client.embed(`Geçerli bir zaman dilimi girmelisin.`, msg), msg.channel.id, 5000);
       msg.channel.send({embed:{ 
-      footer: { text: `${currentPage}/${pages.length}`},
+      footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
       description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,
       thumbnail: { url: msg.guild.iconURL({dynamic:true})}, 
       author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true})}, 
@@ -21,7 +21,7 @@ let member = (msg.mentions.users.first()) || await (await fetch(`https://discord
           if (currentPage >= pages.length) return clearInterval(this);
           currentPage = currentPage + 1;
           xd.edit({embed:{
-            footer: { text: `${currentPage}/${pages.length}`},
+            footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
             description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,
             thumbnail: { url: msg.guild.iconURL({dynamic:true})}, 
             author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true})}, 
@@ -30,11 +30,11 @@ let member = (msg.mentions.users.first()) || await (await fetch(`https://discord
       });
     } else {
       msg.channel.send({embed:{
-        footer: { text: `${currentPage}/${pages.length}`},
+        footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
         description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,
-        thumbnail: {url: msg.author.avatarURL({dynamic:true})}, 
-        author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, 
-        color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}}).then(async xd => {
+        thumbnail: { url: msg.guild.iconURL({dynamic:true})}, 
+        author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true})}, 
+        color:client.renk[Math.floor(Math.random()*client.renk.length)]}}).then(async xd => {
         if (listed.length > pageLimit) {
           await xd.react("◀");
           await xd.react("❌");
@@ -45,12 +45,22 @@ let member = (msg.mentions.users.first()) || await (await fetch(`https://discord
               if (currentPage === 1) return;
               await reaction.users.remove(author.id).catch(err => { });
               currentPage--;
-              xd.edit({embed:{title: `**Sayfa: ${currentPage}/${pages.length}**`,description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}});
+              xd.edit({embed:{
+                footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
+                description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,
+                thumbnail: { url: msg.guild.iconURL({dynamic:true})}, 
+                author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true})}, 
+                color:client.renk[Math.floor(Math.random()*client.renk.length)]}});
             } else if (reaction.emoji.name === "▶") {
               if (currentPage === pages.length) return;
               await reaction.users.remove(author.id).catch(err => { });
               currentPage++;
-              xd.edit({embed:{title: `**Sayfa: ${currentPage}/${pages.length}**`,description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.favoriRenkler[Math.floor(Math.random()*client.favoriRenkler.length)]}});
+              xd.edit({embed:{
+                footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
+                description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,
+                thumbnail: { url: msg.guild.iconURL({dynamic:true})}, 
+                author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true})}, 
+                color: client.renk[Math.floor(Math.random()*client.renk.length)]}});
             } else if (reaction.emoji.name === "❌") {
               xd.delete();
               collector.stop();
