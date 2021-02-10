@@ -9,7 +9,7 @@ let VeriCheck = await Database.find({SunucuID: msg.guild.id})
     })
   })
 if (tagarray.includes(member.id)) return client.message(client.embed(`Bu kullanıcı başka birisi tarafından tag aldırıldığı için sana ekleyemem.`, msg), msg.channel.id, 6500);
-if (!member.user.username.includes(auth.Tags.RealTag)) return client.message(client.embed("Kullanıcının isminde tagımız bulunmuyor bu yüzden işlem iptal edildi.",msg),msg.channel.id,6500);
+//if (!member.user.username.includes(auth.Tags.RealTag)) return client.message(client.embed("Kullanıcının isminde tagımız bulunmuyor bu yüzden işlem iptal edildi.",msg),msg.channel.id,6500);
 member.send({embed: { 
 color: client.renk[Math.floor(Math.random() * client.renk.length)],
 author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
@@ -30,6 +30,7 @@ if (!Veri) { new Database({SunucuID: msg.guild.id, userID: author.id, Authorized
   Veri.Authorized.TagMembers.push(member.id)
   Veri.save()
 }
+client.message(client.embed(`${author} adlı yetkili ${member} (\`${member.id}\`) adlı kullanıcıya tagımızı (\`${auth.Tags.RealTag}\`) aldırdı ve **+3** puan kazandı.`, msg), auth.Logs.TagLog)
 });
 çarpı.on("collect", r => {
 x.delete().catch(()=> { });
@@ -37,6 +38,8 @@ x.delete().catch(()=> { });
 setTimeout(() => {
 x.delete().catch(() => { });
 }, 1000 * 60 * 3)
+}).catch(() => { 
+  client.message(client.embed(`Bir hata oluştu zaten gönderilmiş bir mesaj var ya da kullanıcının DM kutusu kapalı.`, msg), msg.channel.id, 6500);
 });
 };
   
