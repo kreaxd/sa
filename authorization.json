@@ -2,19 +2,18 @@
     "Token": "ODAyMTQ4Mjc2NDIxMDAxMjQ2.YArAzA.ReslmBy6DAwv62rBvwLwoYmow8U",
     "MongooseURL": "mongodb+srv://mazee1:maze12345@cluster0.w6u4p.mongodb.net/xddd?retryWrites=true&w=majority",
     "GuildData": {
-        "GuildID": "801137625729335316",
+        "GuildID": "802929377527595008",
         "Prefixes": ["!", "."],
-        "BotOwners": ["644092051838861322"],
+        "BotOwners": ["644092051838861322", "785229024296566804"],
         "TaglıAlım": true,
         "Chats": {
-            "GenelChat": ""
+            "GenelChat": "808977737091645470"
         }
     },
     "Reacts": {
-       "onay": "",
-       "duztik": "802276704202653717",
-       "iptal": "802216000522551356",
-       "mute": ""
+       "duztik": "809081006954774599",
+       "iptal": "809081006635876393",
+       "mute": "809121681082941451"
     },
     "Perms": {
         "MuteAuth": [],
@@ -27,22 +26,22 @@
         "Erkek": [],
         "Kız": []
     },
-    "Booster": "801165178468433942",
+    "Booster": "802952552915402764",
     "Tags": {
-        "RealTag": "x",
-        "FakeTag": "w"
+        "RealTag": "∞",
+        "FakeTag": "•"
     },
     "CezaRoles": {
-        "MuteRoles": "",
-        "JailRoles": "801165178468433942"
+        "MuteRoles": "808977729541111808",
+        "JailRoles": "808977728144801803"
     },
    "Logs": {
-      "CezaPuanLog": "801137625729335319",
-       "MuteLog": "801137625729335319",
-       "BanLog": "801137625729335319",
-       "JailLog": "801137625729335319",
-       "WarningLog": "801137625729335319",
-       "TagLog": "801137625729335319"
+      "CezaPuanLog": "809121479592902676",
+       "MuteLog": "808977724122464316",
+       "BanLog": "808977723455176704",
+       "JailLog": "809121609368993792",
+       "WarningLog": "809121680126771262",
+       "TagLog": "808977806407106600"
    }
 
 }
