@@ -1,11 +1,14 @@
 module.exports.operate = async ({client, msg, args, member ,author, auth}, Database = require("../Models/Member.js"),{MessageEmbed} = require("discord.js")) => {
 if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
 if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
+    let tagarray = [];
 Database.find({SunucuID: msg.guild.id}, async (err,res) => { 
-  if ((res) && (res.Authorized)) {
-    msg.channel.send("qwewq")
-  }
+  res.forEach(x => {
+    if(x.Authorized.TagMembers) tagarray.push(x.Authorized.TagMembers);
+      console.log(tagarray)
+  })
 });
+
 //if (!member.user.username.includes(auth.Tags.RealTag)) return client.message(client.embed("Kullanıcının isminde tagımız bulunmuyor bu yüzden işlem iptal edildi.",msg),msg.channel.id,6500);
 member.send({embed: { 
 color: client.renk[Math.floor(Math.random() * client.renk.length)],
