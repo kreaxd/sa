@@ -3,15 +3,15 @@ if (!author.voice.channel) return client.message(client.embed("Komutu kullanmak 
 if (!member) return client.message(client.embed("Çekmek istediğin bir kullanıcıyı seçmelisin!",msg), msg.channel.id, 6500);
 if (!member.voice.channel || author.voice.channelID == member.voice.channelID ) return client.message(client.embed('Kullanıcı ile aynı kanaldasınız ya da kullanıcı bir sesli kanalda değil!',msg),msg.channel.id,6500);
 let reason = args.slice(1).join(" ") || 'Sebep belirtilmedi.'
-if ((author.roles.cache.some(r => auth.Perms.TransportAuth.includes(r.id))) & (author.permissions.has("ADMINISTRATOR"))) {
+if ((author.roles.cache.some(r => auth.Perms.TransportAuth.includes(r.id))) || (author.permissions.has("ADMINISTRATOR"))) {
 await member.voice.setChannel(author.voice.channelID).catch(() => { });
 msg.react(client.react("duztik")).catch(() => { });
 } else {
-client.message({embed: { 
-color: client.renk[Math.floor(Math.random() * client.renk.length)]},
+msg.channel.send({embed: { 
+color: client.renk[Math.floor(Math.random() * client.renk.length)],
 author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
 description: `${author} seni **${reason}** sebebiyle yanına çağırıyor gitmek ister misin?`,
-footer: { text: "30 saniye içinde herhangi bir tepki vermezseniz komut iptal olur."}}).then(async x => {
+footer: { text: "30 saniye içinde herhangi bir tepki vermezseniz komut iptal olur."}}}).then(async x => {
 await x.react(client.react("duztik")).catch(() => { });
 await x.react(client.react("iptal")).catch(() => { });
 const onay = (reaction, user) => reaction.emoji.id === auth.Reacts.duztik && user.id === member.id;
@@ -27,7 +27,11 @@ msg.react(client.react("duztik")).catch(()=> { });
 x.delete().catch(()=> { });
 msg.react(client.react("iptal")).catch(()=> { });
 })
-})
+setTimeout(() => {
+  x.delete().catch(() => { });
+}, 30000)
+  
+});
 };
 };
   
