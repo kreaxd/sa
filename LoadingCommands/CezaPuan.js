@@ -4,7 +4,7 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
   let cezaPuan = await Schema.findOne({SunucuID: msg.guild.id, userID: member.id})
   if (!cezaPuan) return client.message(`\`\`\`Bu kullanıcı herhangi bir ceza puanına sahip değil\`\`\``, msg.channel.id, 6500);
   client.message(`<@${member.id}> \`\`\`Bu kullanıcının toplam ceza puanı ${cezaPuan.CezaPuan}.\`\`\``, msg.channel.id, 6500);
-  
+  msg.react(client.react("duztik")).catch(() => { });
   };
     
   module.exports.help = {

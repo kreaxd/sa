@@ -7,6 +7,7 @@ module.exports.operate = async ({client, msg, args, member, author, auth}, Datab
     const History = res.map((e, i) => `\`${i + 1}) - ${e.Name}\` (<@&${e.Roles}> - <@${e.Author}> - \`${e.Author}\`)`);
     client.message(client.embed(`${member} kullanıcısının tüm kayıt verileri aşağıda listelenmiştir listelere bakarak kayıt ediniz sorun görüyorsanız üst yetkililere ulaşın!\n\n${History.slice(0, 20).join("\n")}`, msg), msg.channel.id);
   });
+  msg.react(client.react("duztik")).catch(() => { });
 };
 
 module.exports.help = {
