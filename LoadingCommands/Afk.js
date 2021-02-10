@@ -17,12 +17,17 @@ module.exports.operate = async ({client, msg, args, author}, Database = require(
           if (author.manageable) author.setNickname(author.displayName.replace("〔AFK〕", "")).catch(err => this.msg.channel.send(err.message));
           res.AFK = {};
           res.save();
-      } else if ((res) && (res.AFK) && (!res.AFK.mod)) {
+      } else if ((res) && (!res.AFK)) {
         res.AFK = { mod: true, reason: reason, date: Date.now() };
         res.save();
         if ((author.manageable) && (author.displayName.length < 28)) author.setNickname(`〔AFK〕${author.displayName}`).catch(err => msg.channel.send(err.message));
         client.message(`${author}, Başarıyla AFK moduna geçtin ve mesajını şu şekilde ayarladım **${reason}**.`,msg.channel.id, 4500);
-      };
+      } else if ((res) && (res.AFK) && (!res.AFK.mod)) {
+         res.AFK = { mod: true, reason: reason, date: Date.now() };
+        res.save();
+        if ((author.manageable) && (author.displayName.length < 28)) author.setNickname(`〔AFK〕${author.displayName}`).catch(err => msg.channel.send(err.message));
+        client.message(`${author}, Başarıyla AFK moduna geçtin ve mesajını şu şekilde ayarladım **${reason}**.`,msg.channel.id, 4500);
+      }
     });
     if (client.AFKLAR2.has(author.id)) setTimeout(() => client.AFKLAR2.delete(author.id), client.getDate(7, "saniye"));
     if (client.reklamcilar.has(author.id)) setTimeout(() => client.reklamcilar.delete(author.id), client.getDate(10, "saniye"));
