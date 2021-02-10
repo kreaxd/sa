@@ -7,7 +7,7 @@ module.exports.operate = async ({client, msg, args, member, auth, author}, ms = 
   let Sayi;
   let reason = args.slice(2).join(" ") || "Sebep belirtilmedi.";
   if (!Time || !ms(Time)) return client.message(`\`\`\`Geçerli bir süre belirtmelisin! Ex: .mute @Mâze 5m Hakaret\`\`\``,msg.channel.id, 6500);
-  if (auth.CezaRoles.MuteRoles !== "") await member.roles.add(auth.CezaRoles.MuteRole).catch(() => { });
+  if (auth.CezaRoles.MuteRoles !== "") await member.roles.add(auth.CezaRoles.MuteRoles).catch(() => { });
   Database.countDocuments().then(async x => {
   VeriNumber = ( x + 1 );
   Schema.findOne({SunucuID: msg.guild.id, userID: member.id}, async (err, res) => {

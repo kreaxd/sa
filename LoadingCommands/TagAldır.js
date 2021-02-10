@@ -49,6 +49,9 @@ Zaman[author.id].kullanim = 0;
 });
 setTimeout(() => {
 x.delete().catch(() => { });
+  if (Zaman[author.id].kullanim >= 1) {
+Zaman[author.id].kullanim = 0;
+}
 }, 1000 * 60 * 3)
 }).catch(() => { 
   client.message(client.embed(`Bir hata oluştu zaten gönderilmiş bir mesaj var ya da kullanıcının DM kutusu kapalı.`, msg), msg.channel.id, 6500);
