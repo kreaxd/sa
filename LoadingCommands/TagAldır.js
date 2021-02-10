@@ -13,7 +13,7 @@ let VeriCheck = await Database.find({SunucuID: msg.guild.id})
     })
   })
 if (tagarray.includes(member.id)) return client.message(client.embed(`Bu kullanıcı başka birisi tarafından tag aldırıldığı için sana ekleyemem.`, msg), msg.channel.id, 6500);
-//if (!member.user.username.includes(auth.Tags.RealTag)) return client.message(client.embed("Kullanıcının isminde tagımız bulunmuyor bu yüzden işlem iptal edildi.",msg),msg.channel.id,6500);
+if (!member.user.username.includes(auth.Tags.RealTag)) return client.message(client.embed("Kullanıcının isminde tagımız bulunmuyor bu yüzden işlem iptal edildi.",msg),msg.channel.id,6500);
 client.message(client.embed(`Kullanıcıya tag aldırma mesajı başarıyla gönderildi.` ,msg), msg.channel.id, 6500);
 msg.react(client.react("duztik")).catch(() => { });
 member.send({embed: { 
