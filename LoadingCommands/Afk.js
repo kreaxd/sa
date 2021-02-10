@@ -11,16 +11,19 @@ module.exports.operate = async ({client, msg, args, author}, Database = require(
     Database.findOne({SunucuID: msg.guild.id, userID: author.id}, async (err, res) => {
       if (!res) {
         new Database({SunucuID: msg.guild.id, userID: author.id, AFK: { mod: true, reason: reason, date: Date.now() } }).save();
-        if ((author.manageable) && (author.displayName.length < 28)) author.setNickname(`[AFK] ${author.displayName}`).catch(err => msg.channel.send(err.message));
-        client.message(client.embed(`Başarıyla AFK moduna geçiş yaptın.` , msg),msg.channel.id, 4500);
-      } else if ((res.AFK) && (res.AFK.mod)) {
-          if (author.manageable) author.setNickname(author.displayName.replace("[AFK]", "")).catch(err => this.msg.channel.send(err.message));
-          client.message(client.embed(`Başarıyla AFK moduna geçiş yaptın.` , msg),msg.channel.id, 4500);
-      } else if ((!res.AFK) || ())
+        if ((author.manageable) && (author.displayName.length < 28)) author.setNickname(`〔AFK〕${author.displayName}`).catch(err => msg.channel.send(err.message));
+        client.message(client.embed(`• Başarıyla AFK moduna geçiş yaptın.` , msg),msg.channel.id, 4500);
+      } else if ((res) && (res.AFK.mod)) {
+          if (author.manageable) author.setNickname(author.displayName.replace("〔AFK〕", "")).catch(err => this.msg.channel.send(err.message));
+          client.message(client.embed(`• Başarıyla AFK modundan çıkış yaptın.` , msg),msg.channel.id, 4500);
+          res.AFK= {};
+          res.save();
+      } else if ((res) && (!res.AFK.mod)) {
         res.AFK = { mod: true, reason: reason, date: Date.now() };
         res.save();
-        if ((author.manageable) && (author.displayName.length < 28)) author.setNickname(`[AFK] ${author.displayName}`).catch(err => msg.channel.send(err.message));
-        client.message(client.embed(`Başarıyla AFK moduna geçiş yaptın.` , msg),msg.channel.id, 4500);
+        if ((author.manageable) && (author.displayName.length < 28)) author.setNickname(`〔AFK〕${author.displayName}`).catch(err => msg.channel.send(err.message));
+        client.message(client.embed(`• Başarıyla AFK moduna geçiş yaptın.` , msg),msg.channel.id, 4500);
+       
       };
     });
     if (client.AFKLAR2.has(author.id)) setTimeout(() => client.AFKLAR2.delete(author.id), client.getDate(7, "saniye"));

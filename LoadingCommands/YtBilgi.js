@@ -10,8 +10,9 @@ if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (
       client.message(embed2.setDescription(`
 **• Kayıt Bilgileri**
 \`>\` Kayıt: ${res.Authorized.Man + res.Authorized.Woman || 0} (\`${res.Authorized.Man} erkek, ${res.Authorized.Woman} kız.\`) 
-\`>\` Son 10 kayıt ettiği kullanıcılar:\n${res.Authorized.Members.map(x => `<@${x}>`).slice(0, 10).join(",")}\n
 \`>\` Tag: 
+\`>\` Son 10 kayıt ettiği kullanıcılar:\n${res.Authorized.Members.map(x => `<@${x}>`).slice(0, 10).join(",")}\n
+
 **• Ceza Bilgileri**
 \`>\` Chat Mute: ${res.RestNumber.MuteNumber || 0}
 \`>\` Voice Mute: ${res.RestNumber.VMuteNumber || 0}

@@ -15,7 +15,7 @@ class AFK {
         if (afkveri.mod) {
           res.AFK = {};
           res.save();
-          if (author.manageable) author.setNickname(author.displayName.replace("[AFK]", "")).catch(err => this.msg.channel.send(err.message));
+          if (author.manageable) author.setNickname(author.displayName.replace("〔AFK〕", "")).catch(err => this.msg.channel.send(err.message));
           let süre = parsems(Date.now() - afkveri.date);
           this.msg.channel.send(client.embed("**`AFK` modundan başarıyla çıkış yaptın.**", this.msg)).then(msg => msg.delete({ timeout: 5000 }));
         } else { };
