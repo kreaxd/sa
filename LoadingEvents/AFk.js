@@ -15,7 +15,7 @@ class AFK {
         if (afkveri.mod) {
           res.AFK = {};
           res.save();
-          if (author.manageable) author.setNickname(author.displayName.replace("〔AFK〕", "")).catch(err => this.msg.channel.send(err.message));
+          if (author.manageable) author.setNickname(author.displayName.replace("[AFK]", "")).catch(err => this.msg.channel.send(err.message));
           let süre = parsems(Date.now() - afkveri.date);
           this.msg.channel.send(client.embed("**`AFK` modundan başarıyla çıkış yaptın.**", this.msg)).then(msg => msg.delete({ timeout: 5000 }));
         } else { };
@@ -34,16 +34,16 @@ class AFK {
             await client.AFKLAR.add(uye.id);
             setTimeout(() => client.AFKLAR.delete(uye.id), client.getDate(5, "saniye"));
             if (süre.days !== 0) {
-              client.message({embed: {description:`${uye} kullanıcısı **${süre.days}** gün **${süre.hours}** saat **${süre.minutes}** dakika önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}}, this.msg.channel.id, 6000);
+              client.message({embed: {description:`${uye} kullanıcısı **${süre.days}** gün **${süre.hours}** saat **${süre.minutes}** dakika önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``}, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}, this.msg.channel.id, 6000);
               return;
             } else if (süre.hours !== 0) {
-              client.message({embed: {description:`${uye} kullanıcısı **${süre.hours}** saat **${süre.minutes}** dakika önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}}, this.msg.channel.id, 6000);
+              client.message({embed: {description:`${uye} kullanıcısı **${süre.hours}** saat **${süre.minutes}** dakika önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``}, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}, this.msg.channel.id, 6000);
               return;
             } else if (süre.minutes !== 0) {
-              client.message({embed: {description:`${uye} kullanıcısı **${süre.minutes}** dakika önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}}, this.msg.channel.id, 6000); 
+              client.message({embed: {description:`${uye} kullanıcısı **${süre.minutes}** dakika önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``}, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}, this.msg.channel.id, 6000); 
               return;
             } else if (süre.seconds !== 0) {
-              client.message({embed: {description:`${uye} kullanıcısı biraz önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}}, this.msg.channel.id, 6000);
+              client.message({embed: {description:`${uye} kullanıcısı biraz önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``}, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}, this.msg.channel.id, 6000);
               return;
             };
           } else { };
