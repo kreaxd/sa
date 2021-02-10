@@ -9,7 +9,7 @@ class AFK {
   }
   
   AFKcikis(author) {
-    Database.findOne({SunucuID: auth.Guild, userID: this.msg.author.id}, async (err, res) => {
+    Database.findOne({SunucuID: this.msg.guild.id, userID: this.msg.author.id}, async (err, res) => {
       if (res) {
         let afkveri = res.AFK || {};
         if (afkveri.mod) {
@@ -25,7 +25,7 @@ class AFK {
   
   isAFK(uye) {
     if ((uye.id !== this.msg.author.id) && (!client.AFKLAR.has(uye.id))) {
-      Database.findOne({SunucuID: this.msg.sunucu, userID: uye.id}, async (err, res) => {
+      Database.findOne({SunucuID: this.msg.guild.id, userID: uye.id}, async (err, res) => {
         if (res) {
           let afkveri = res.AFK || {};
           if (afkveri.mod) {
@@ -52,9 +52,9 @@ class AFK {
     };
   }  
 }
-
+  if (["!tag", ".tag"].some(x => this.msg.content.toLowerCase().startsWith(x))) return this.msg.channel.send(auth.Tags.RealTag);
 function afkControl(message) {
-  if (message.author.bot || message.channel.type === "dm" || message.content.startsWith(prefix) || message.guild.id !== sunucu) return null;
+  if (message.author.bot || message.channel.type === "dm" || auth.GuildData.Prefixes.some(x => message.content.toLowerCase().startWith(x)) || message.guild.id !== auth.GuildData.GuildID) return null;
   let uye = message.guild.member(message.mentions.users.first());
   let author = message.guild.member(message.author);
   new AFK(message).AFKcikis(author);
