@@ -4,7 +4,7 @@ if (!args[0]) return client.message(client.noMember(msg), msg.channel.id, 6500);
 let reasonn = args.slice(1).join(" ") || "Sebep Girilmedi";
 msg.guild.fetchBan(args[0]).then(async ({ user, reason }) => {
 let Data = await Database.find({Activity: true, userID: user.id, Type: "BAN" });
-if ((Data.length <= 0)) return null;
+if ((Data.length <= 0)) {};
 Data.forEach(x => {
 x.Activity = false;
 x.save();
