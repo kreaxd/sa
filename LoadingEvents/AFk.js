@@ -1,7 +1,6 @@
 const client = process.client;
 const Database = require("../Models/Member.js");
 const parsems = require("parse-ms");
-const ms = require("ms")
 const auth = require("../authorization.json");
 
 class AFK {
@@ -9,41 +8,37 @@ class AFK {
     this.msg = msg;
   }
   AFKcikis(author) {
-    Database.findOne({SunucuID: this.msg.guild.id, userID: this.msg.author.id}, async (err, res) => {
-      if (res) {
-        let afkveri = res.AFK || {};
-        if (afkveri.mod) {
-          res.AFK = {};
-          res.save();
-          if (author.manageable) author.setNickname(author.displayName.replace("[AFK]", "")).catch(err => this.msg.channel.send(err.message));
-          let süre = ms(Date.now() - afkveri.date);
-      client.message(`${this.msg.author} AFK modundan başarıyla çıkış yaptın, ${client.tarih(süre)} AFK olmuştun.`, this.msg.channel.id, 6000);
-          
-    /*if (süre.days !== 0) {
-      client.message(`${this.msg.author} AFK modundan başarıyla çıkış yaptın, **${süre.days}** gün **${süre.hours}** saat önce AFK olmuştun.`, this.msg.channel.id, 6000);
-    
+  Database.findOne({SunucuID: this.msg.guild.id, userID: this.msg.author.id}, async (err, res) => {
+  if (res) {
+    let afkveri = res.AFK || {};
+    if (afkveri.mod) {
+      res.AFK = {};
+      res.save();
+    if (author.manageable) author.setNickname(author.displayName.replace("〔AFK〕", "")).catch(() => { });
+    let süre = parsems(Date.now() - afkveri.date); 
+    if (süre.days !== 0) {
+      client.message(`${this.msg.author} AFK modundan başarıyla çıkış yaptın, ${süre.days} gün ${süre.hours} saat önce AFK olmuştun.`, this.msg.channel.id, 6000);
       return;
     } else if (süre.hours !== 0) {
-      client.message(`${this.msg.author} AFK modundan başarıyla çıkış yaptın, **${süre.hours}** saat **${süre.minutes}** dakika önce AFK olmuştun.`, this.msg.channel.id, 6000);
+      client.message(`${this.msg.author} AFK modundan başarıyla çıkış yaptın, ${süre.hours} saat ${süre.minutes} dakika önce AFK olmuştun.`, this.msg.channel.id, 6000);
       return;
     } else if (süre.minutes !== 0) {
-      client.message(`${this.msg.author} AFK modundan başarıyla çıkış yaptın, **${süre.minutes}** dakika önce AFK olmuştun.`, this.msg.channel.id, 6000); 
+      client.message(`${this.msg.author} AFK modundan başarıyla çıkış yaptın, ${süre.minutes} dakika önce AFK olmuştun.`, this.msg.channel.id, 6000); 
       return;
     } else if (süre.seconds !== 0) {
-      client.message({embed: {description:`${uye} kullanıcısı biraz önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``}, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}, this.msg.channel.id, 6000);
+      client.message(`${this.msg.author} AFK modundan başarıyla çıkış yaptın, biraz önce AFK olmuştun.`, this.msg.channel.id, 6000);
       return;
-            };
-            /*/
-        } else { };
-      } else { };
-    });
-  }
-  
+    };
+  } else { };
+} else { };
+});
+}
+  @〔AFK〕⍭ Rumeysa | 18 9 dakika önce AFK moduna geçti. Sebep: düşünüo
   isAFK(uye) {
     if ((uye.id !== this.msg.author.id) && (!client.AFKLAR.has(uye.id))) {
-      Database.findOne({SunucuID: this.msg.guild.id, userID: uye.id}, async (err, res) => {
-        if (res) {
-          let afkveri = res.AFK || {};
+    Database.findOne({SunucuID: this.msg.guild.id, userID: uye.id}, async (err, res) => {
+      if (res) {
+         let afkveri = res.AFK || {};
           if (afkveri.mod) {
             let süre = parsems(Date.now() - afkveri.date);
             let reason = afkveri.reason;
