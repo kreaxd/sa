@@ -16,7 +16,7 @@ module.exports.operate = async ({client, msg, args, auth, author, member}, Schem
       Veri.History.push({ Name: `${tag} ${isim}`, Roles: auth.Perms.Erkek[0], Author: author.id});
       Veri.save();
     };
-   } else if ((isim) || (yas)) {
+   } else if ((isim) && (yas)) {
     member.setNickname(`${tag} ${isim} | ${yas}`).catch(() => { });
     if (!Veri) { new Schema({SunucuID: msg.guild.id, userID: member.id, History: [{ Name: `${tag} ${isim} | ${yas}`, Roles: auth.Perms.Erkek[0], Author: author.id }]}).save();
     } else {
