@@ -43,6 +43,9 @@ Zaman[author.id].kullanim = 0;
 });
 çarpı.on("collect", r => {
 x.delete().catch(()=> { });
+if (Zaman[author.id].kullanim >= 1) {
+Zaman[author.id].kullanim = 0;
+}
 });
 setTimeout(() => {
 x.delete().catch(() => { });
