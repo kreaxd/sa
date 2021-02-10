@@ -33,35 +33,35 @@ class AFK {
 } else { };
 });
 }
-  @〔AFK〕⍭ Rumeysa | 18 9 dakika önce AFK moduna geçti. Sebep: düşünüo
+  
   isAFK(uye) {
     if ((uye.id !== this.msg.author.id) && (!client.AFKLAR.has(uye.id))) {
     Database.findOne({SunucuID: this.msg.guild.id, userID: uye.id}, async (err, res) => {
       if (res) {
-         let afkveri = res.AFK || {};
-          if (afkveri.mod) {
-            let süre = parsems(Date.now() - afkveri.date);
-            let reason = afkveri.reason;
-            await client.AFKLAR.add(uye.id);
-            setTimeout(() => client.AFKLAR.delete(uye.id), client.getDate(5, "saniye"));
-            if (süre.days !== 0) {
-              client.message({embed: {description:`${uye} kullanıcısı **${süre.days}** gün **${süre.hours}** saat **${süre.minutes}** dakika önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``}, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}, this.msg.channel.id, 6000);
-              return;
-            } else if (süre.hours !== 0) {
-              client.message({embed: {description:`${uye} kullanıcısı **${süre.hours}** saat **${süre.minutes}** dakika önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``}, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}, this.msg.channel.id, 6000);
-              return;
-            } else if (süre.minutes !== 0) {
-              client.message({embed: {description:`${uye} kullanıcısı **${süre.minutes}** dakika önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``}, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}, this.msg.channel.id, 6000); 
-              return;
-            } else if (süre.seconds !== 0) {
-              client.message({embed: {description:`${uye} kullanıcısı biraz önce **AFK** moduna girdi.\nAFK Nedeni: \`${reason}\``}, color: client.renk[Math.floor(Math.random() * client.renk.length)], timestamp: new Date()}, this.msg.channel.id, 6000);
-              return;
-            };
-          } else { };
-        } else { };
-      });
-    };
-  }  
+        let afkveri = res.AFK || {};
+        if (afkveri.mod) {
+          let süre = parsems(Date.now() - afkveri.date);
+          let reason = afkveri.reason;
+          await client.AFKLAR.add(uye.id);
+          setTimeout(() => client.AFKLAR.delete(uye.id), client.getDate(5, "saniye"));
+      if (süre.days !== 0) {
+        client.message(`${uye} ${süre.days} gün ${süre.hours} saat önce AFK moduna geçti. Sebep: ${reason}`,this.msg.channel.id, 6000);
+        return;
+      } else if (süre.hours !== 0) {
+        client.message(`${uye} ${süre.hours} saat ${süre.minutes} dakika önce AFK moduna geçti. Sebep: ${reason}`, this.msg.channel.id, 6000);
+        return;
+      } else if (süre.minutes !== 0) {
+        client.message(`${uye} ${süre.minutes} dakika önce AFK moduna geçti. Sebep: ${reason}`, this.msg.channel.id, 6000); 
+        return;
+      } else if (süre.seconds !== 0) {
+        client.message(`${uye} biraz önce AFK moduna geçti. Sebep: ${reason}`, this.msg.channel.id, 6000);
+        return;
+        };
+      } else { };
+    } else { };
+  });
+};
+}  
 }
 
 function afkControl(message) {
