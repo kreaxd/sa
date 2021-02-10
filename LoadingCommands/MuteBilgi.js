@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, member, auth, author}, ms = require("ms"), Database = require("../Models/Restriction.js")) => {
-    if ((!author.roles.cache.some(r => auth.Perms.MuteAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
+    if ((!author.roles.cache.some(r => auth.Perms.MuteAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
     if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
     if (!args[1]) {
         Database.find({userID: member.id, Activity: true, $or: [{Type: "MUTE"}, {Type: "VOICEMUTE"}]}, async(err, res) => {

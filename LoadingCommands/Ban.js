@@ -1,6 +1,6 @@
 let BanSize = new Set();
 module.exports.operate = async ({client, msg, args,auth, author}, fetch = require('node-fetch'), { GuildMember } = require("discord.js"), Database = require("../Models/Restriction.js"), Schema = require("../Models/Member.js")) => {
-    if ((!author.roles.cache.some(r => auth.Perms.BanAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
+    if ((!author.roles.cache.some(r => auth.Perms.BanAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
     if (!BanSize[author.id])
         BanSize[author.id] = { kullanim: 0};
     if (BanSize[author.id].kullanim >= 3) return client.message(client.embed(`Bir gün içinde maximum 3 tane ban atabilirsin.`, msg), msg.channel.id, 6500);

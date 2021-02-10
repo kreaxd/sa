@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, member, author, auth}, Schema = require("../Models/Restriction.js") ,Database = require("../Models/Member.js")) => {
-    if ((!author.roles.cache.some(r => auth.Perms.JailAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
+    if ((!author.roles.cache.some(r => auth.Perms.JailAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
     if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
     const reason = args.slice(1).join(" ");
     let UyarıSayısı;

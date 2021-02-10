@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, author, member, auth}, Database = require("../Models/Restriction.js")) => {
-    if ((!author.roles.cache.some(r => auth.Perms.MuteAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
+    if ((!author.roles.cache.some(r => auth.Perms.MuteAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
     if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
     if (author.roles.highest.position <= member.roles.highest.position) return client.message(client.embed("Bu kişi senden yüksek veya aynı yetkiye sahip olduğu için sesli susturulmasını kaldıramazsın.", msg), msg.channel.id, 5000);
     let reason = args.splice(1).join(" ") || "Sebep Girilmedi.";

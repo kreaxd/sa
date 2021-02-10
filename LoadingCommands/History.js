@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, member, author, auth}, Database = require("../Models/Member.js")) => { 
-  if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
+  if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
     if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
   Database.findOne({SunucuID: msg.guild.id, userID: member.id}, async (err, res) => {
     if (!res) return client.message(client.embed(`Kullanıcının kayıt geçmişinde herhangi bir kayıt bulunmuyor!`,msg),msg.channel.id,6500);

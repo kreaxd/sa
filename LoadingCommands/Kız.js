@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, auth, author, member}, Schema = require("../Models/Member.js")) => {
-  if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
+  if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
   if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
   let xd = (auth.Perms.Erkek,auth.Perms.Kız)
   if (((auth.GuildData.TaglıAlım) === true) && (!member.user.username.includes(auth.Tags.RealTag)) & (!member.roles.cache.get(auth.Booster))) return client.message(client.embed(`Şu an taglı alımda bulunuyoruz, kayıt olabilmek için tagımıza (\`${auth.Tags.RealTag}\`) sahip olman ya da boost basman gerekli.` ,msg),msg.channel.id, 6500); 

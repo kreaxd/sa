@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args,auth, author}, Database = require("../Models/Restriction.js")) => {
-if ((!author.roles.cache.some(r => auth.Perms.BanAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
+if (!author.permissions.has("ADMINISTRATOR")) return;
 if (!args[0]) return client.message(client.noMember(msg), msg.channel.id, 6500);
 let reasonn = args.slice(1).join(" ") || "Sebep Girilmedi";
 msg.guild.fetchBan(args[0]).then(async ({ user, reason }) => {

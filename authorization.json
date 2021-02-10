@@ -19,7 +19,7 @@
     "Perms": {
         "MuteAuth": [],
         "JailAuth": [],
-        "RegisterAuth": [],
+        "RegisterAuth": ["808707511678795836"],
         "YTRoles": [],
         "BanAuth": [],
         "TransportAuth": [],

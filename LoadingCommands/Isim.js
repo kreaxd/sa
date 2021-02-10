@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, member, auth, author}) => {
-  if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) & (!author.permissions.has("ADMINISTRATOR"))) return;
+  if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
   if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
   const isim = args.slice(1).filter(arg => isNaN(arg)).map(arg => arg.charAt(0).toUpperCase() + arg.slice(arg.charAt(0).length).toLowerCase()).join(" ");
   const yas = args.slice(1).filter(arg => !isNaN(arg))[0];
