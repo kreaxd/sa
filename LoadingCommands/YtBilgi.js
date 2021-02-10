@@ -6,11 +6,17 @@ if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) & (!
      if (!res) {
       client.message(client.embed(`Kullanıcının herhangi bir yetkili bilgisi bulunamamaktadır.`, msg), msg.channel.id, 6500);
      } else {
+       res.Authorized.Members = 
       client.message(embed2.setDescription(`
-**• Kayıt Bilgileri**\n
-\`>\` Kız: ${res.Authorized.Woman || 0}
-\`>\` Erkek: ${res.Authorized.Man || 0}
-\`), msg.channel.id)
+**• Kayıt Bilgileri**
+\`>\` Kayıt : ${res.Authorized.Man + res.Authorized.Woman || 0} (\`${res.Authorized.Man} erkek, ${res.Authorized.Woman} kız.\`) 
+\`>\` Son 10 kayıt ettiği kullanıcı: ${res.Authorized.Members.map(x => `<@${x}>`).slice(0, 10).join(",")}\n
+**• Ceza Bilgileri**
+\`>\` Chat Mute: ${res.RestNumber.MuteNumber || 0}
+\`>\` Voice Mute: ${res.RestNumber.VMuteNumber || 0}
+\`>\` Jail: ${res.RestNumber.JailNumber || 0}
+\`>\` Ban: ${res.RestNumber.BanNumber || 0}  `), msg.channel.id)
+
      }
   });
 };
@@ -19,19 +25,3 @@ if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) & (!
     name: "xd",
     alias: [""]
   };
-
-const mongoose = require("mongoose");
-
-const member = mongoose.Schema({
-  SunucuID: String,
-  userID: String,
-  AFK: Object,
-  History: Array,
-  Authorized: { Man: { type: Number, default: 0 }, Woman: { type: Number, default: 0 }, Members: Array },
-  RestNumber: { BanNumber: { type: Number, default: 0 }, JailNumber: { type: Number, default: 0 }, VMuteNumber: { type: Number, default: 0 }, MuteNumber: { type: Number, default: 0 } },
-  CezaPuan: { type: Number, default: 0},
-  Uyarılar: Array,
-  Nots: Array
-});
-
-module.exports = mongoose.model("members", member);
