@@ -1,9 +1,8 @@
 module.exports.operate = async ({client, msg, args, auth, author, member}, Schema = require("../Models/Member.js")) => {
   if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
   if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
-  let xd = (auth.Perms.Erkek,auth.Perms.Kız)
-  if (((auth.GuildData.TaglıAlım) === true) && (!member.user.username.includes(auth.Tags.RealTag)) & (!member.roles.cache.get(auth.Booster)) & (!member.roles.cache.get(auth.Perms.Vip))) return client.message(client.embed(`Şu an taglı alımda bulunuyoruz, kayıt olabilmek için tagımıza (\`${auth.Tags.RealTag}\`) sahip olman ya da boost basman gerekli.` ,msg),msg.channel.id, 6500); 
-  if (xd.some(x => member.roles.cache.get(x.id))) return client.message(client.embed(`Bu kullanıcı zaten <@&${auth.Perms.Erkek[0]}> ya da <@&${auth.Perms.Kız[0]}> rolüne sahip eğer bir sorun var ise üst yönetime ulaşabilirsin.`, msg), msg.channel.id, 6500);
+  //if (((auth.GuildData.TaglıAlım) === true) && (!member.user.username.includes(auth.Tags.RealTag)) & (!member.roles.cache.get(auth.Booster)) & (!member.roles.cache.get(auth.Perms.Vip))) return client.message(client.embed(`Şu an taglı alımda bulunuyoruz, kayıt olabilmek için tagımıza (\`${auth.Tags.RealTag}\`) sahip olman ya da boost basman gerekli.` ,msg),msg.channel.id, 6500); 
+  if (member.roles.cache.some(x => auth.Perms.KızErkek.includes(x.id))) return client.message(client.embed(`Bu kullanıcı zaten <@&${auth.Perms.Erkek[0]}> ya da <@&${auth.Perms.Kız[0]}> rolüne sahip eğer bir sorun var ise üst yönetime ulaşabilirsin.`, msg), msg.channel.id, 6500);
   const isim = args.slice(1).filter(arg => isNaN(arg)).map(arg => arg.charAt(0).toUpperCase() + arg.slice(arg.charAt(0).length).toLowerCase()).join(" ");
   const yas = args.slice(1).filter(arg => !isNaN(arg))[0];
   const tag = member.user.username.includes(auth.Tags.RealTag) ? auth.Tags.RealTag : (auth.Tags.FakeTag === "" ? auth.Tags.RealTag : auth.Tags.FakeTag);
