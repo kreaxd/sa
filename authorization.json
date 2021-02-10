@@ -1,6 +1,6 @@
 { 
-    "Token": "ODAyMTQ4Mjc2NDIxMDAxMjQ2.YArAzA.ReslmBy6DAwv62rBvwLwoYmow8U",
-    "MongooseURL": "mongodb+srv://mazee1:maze12345@cluster0.w6u4p.mongodb.net/xddd?retryWrites=true&w=majority",
+    "Token": "Nzc1OTI2MTA3MDI3Mjc1Nzg3.X6tbfw.nC1HzUFR4oBbgeyo7jD9OhOOY-c",
+    "MongooseURL": "mongodb+srv://mazee1:maze12345@cluster0.w6u4p.mongodb.net/revoliamod?retryWrites=true&w=majority",
     "GuildData": {
         "GuildID": "802929377527595008",
         "Prefixes": ["!", "."],
@@ -16,13 +16,13 @@
        "mute": "809121681082941451"
     },
     "Perms": {
-        "MuteAuth": [],
-        "JailAuth": [],
-        "RegisterAuth": ["808707511678795836"],
+        "MuteAuth": ["808977718044917800"],
+        "JailAuth": ["808977716396818492"],
+        "RegisterAuth": ["808977718536306730"],
         "YTRoles": [],
-        "BanAuth": [],
-        "TransportAuth": [],
-        "Unregister": ["808707511678795836"],
+        "BanAuth": ["808977716015398932"],
+        "TransportAuth": ["808977716610859029"],
+        "Unregister": ["808977743999795210","809122976687194152"],
         "Erkek": ["808977743596617728", "809124178379669624"],
         "Kız": ["808977743186100234","809124909678198854"]
     },

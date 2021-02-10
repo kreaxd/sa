@@ -24,6 +24,6 @@ if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (
 };
   
   module.exports.help = {
-    name: "xd",
-    alias: [""]
+    name: "ytbilgi",
+    alias: ["ybilgi"]
   };
