@@ -33,6 +33,7 @@ module.exports.operate = async ({client, msg, args, auth, author, member}, Schem
     res.save();
   }
   });
+  msg.react(client.react("duztik")).catch(() => { });
 };
     
   module.exports.help = {
