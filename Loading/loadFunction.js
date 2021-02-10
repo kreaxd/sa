@@ -12,16 +12,10 @@ module.exports = (client, auth, moment) => {
      };
   
     client.Kayıt = async (msg, args, member, author, rolID, rol2ID, auth) => {
-    if (member.roles.cache.some(r => auth.Perms.Unregister.includes(r.id))) {
       await member.roles.remove(auth.Perms.Unregister).catch(() => { });
       await member.roles.add(rolID).catch(() => { });
       await client.message(client.embed(`${member} kullanıcısı başarıyla <@&${rolID[0]}> alarak kaydedildi! İyi Eğlenceler`, msg), msg.channel.id, 3500);
       if (client.channels.cache.get(auth.GuildData.Chats.GenelChat)) client.message(client.embed(`Aramıza yeni biri katıldı! ${member} Hadi ona hoşgeldin diyelim.`, msg), auth.GuildData.Chats.GenelChat, 7500);
-    } else {
-      await member.roles.remove(rol2ID).catch(() => { });
-      await member.roles.add(rolID).catch(() => { });
-      client.message(client.embed(`${member} kullanıcısına başarıyla <@&${rolID[0]}> rolü verildi.`, msg), msg.channel.id, 3000);
-    };
   };
   
     client.embed = (message, msj) => {
