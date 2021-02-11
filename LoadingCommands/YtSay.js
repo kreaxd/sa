@@ -5,7 +5,9 @@ module.exports.operate = async ({client, msg, args, author, auth}) => {
   });
   if (!args[0]) {
     let xd = yetkililer.map(u => u.user);
-    msg.channel.send(`Aktif Olup Seste Olmayan Yetkililer:\n ${xd.join(",")}`);
+    client.chunkArray(xd, 25).forEach(r => {
+      msg.channel.send(`Aktif Olup Seste Olmayan Yetkililer:\n ${r.join(",")}`);
+    });
   } else if (["dm", "dm-at"].includes(args[0])) {
     yetkililer.forEach(member => member.send(`Merhabalar sunucumuzun ses aktifliğini arttırmak için lütfen müsait isen public odalara değil isen alone odalarına geçer misin?`).catch(err => {
     msg.channel.send(`${member} adlı üyeye dmden mesaj atamıyorum. Müsait isen public odalara değil isen alone odalarına geçiş yapabilirsin.`)
