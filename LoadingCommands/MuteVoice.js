@@ -1,7 +1,7 @@
 module.exports.operate = async ({client, msg, args, member, auth, author}, ms = require("ms"), Database = require("../Models/Restriction.js"), Schema = require("../Models/Member.js")) => {
   if ((!author.roles.cache.some(r => auth.Perms.MuteAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
   if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
-  if (author.roles.highest.position <= member.roles.highest.position) return client.message(client.embed("Bu kişi senden yüksek veya aynı yetkiye sahip olduğu için mute atamazsın.", msg), msg.channel.id, 5000);
+  if (author.roles.highest.position <= member.roles.highest.position) return client.message(client.embed(`${client.react("iptal")} | Bu kişi senden yüksek veya aynı yetkiye sahip olduğu için mute atamazsın.`, msg), msg.channel.id, 5000);
   let Time = args[1];
   let VeriNumber = 0;
   let Sayi;

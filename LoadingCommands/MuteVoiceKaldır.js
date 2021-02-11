@@ -1,10 +1,10 @@
 module.exports.operate = async ({client, msg, args, author, member, auth}, Database = require("../Models/Restriction.js")) => {
     if ((!author.roles.cache.some(r => auth.Perms.MuteAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
     if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
-    if (author.roles.highest.position <= member.roles.highest.position) return client.message(client.embed("Bu kişi senden yüksek veya aynı yetkiye sahip olduğu için sesli susturulmasını kaldıramazsın.", msg), msg.channel.id, 5000);
+    if (author.roles.highest.position <= member.roles.highest.position) return client.message(client.embed(`${client.react("iptal")} | Bu kişi senden yüksek veya aynı yetkiye sahip olduğu için sesli susturulmasını kaldıramazsın.`, msg), msg.channel.id, 5000);
     let reason = args.splice(1).join(" ") || "Sebep Girilmedi.";
     let Data = await Database.find({Activity: true, userID: member.id, Type: "VOICEMUTE" });
-    if ((Data.length <= 0) & (!member.voice.serverMute)) return client.message(client.embed("Belirttiğin kişi herhangi bir ses mute cezasına sahip değil.", msg), msg.channel.id, 5500);
+    if ((Data.length <= 0) & (!member.voice.serverMute)) return client.message(client.embed(`${client.react("iptal")} | Belirttiğin kişi herhangi bir ses mute cezasına sahip değil.`, msg), msg.channel.id, 5500);
     if (member.voice.channel) member.voice.setMute(false).catch(() => { });
     Data.forEach(x => {
       x.Activity = false;

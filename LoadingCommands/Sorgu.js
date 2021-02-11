@@ -4,7 +4,7 @@ module.exports.operate = async ({client, msg, args, auth, author}, Database = re
   let text;
   if ((!member) || (isNaN(member))) return client.message(client.embed(`Geçerli bir ceza sayısı giriniz.`, msg), msg.channel.id, 6500);
   let xd = await Database.findOne({CezaID: member})
-  if (!xd) return client.message(client.embed(`Bu sayıya ait herhangi bir ceza bilgisi bulunmamaktadır.`, msg), msg.channel.id, 6500);
+  if (!xd) return client.message(client.embed(`${client.react("iptal")} | Bu sayıya ait herhangi bir ceza bilgisi bulunmamaktadır.`, msg), msg.channel.id, 6500);
   if (["MUTE", "VOICEMUTE"].includes(xd.Type)) {
     text = `• Cezayı Alan: <@${xd.userID}> - (\`${xd.userID}\`) 
 • Cezayı Veren: <@${xd.Author}> - (\`${xd.Author}\`)

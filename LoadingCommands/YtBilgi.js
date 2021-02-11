@@ -4,7 +4,7 @@ if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (
   let embed2 = new Discord.MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setAuthor(member.user.tag, member.user.displayAvatarURL({dynamic:true})).setThumbnail(msg.guild.iconURL({dynamic:true}));
     Database.findOne({SunucuID: msg.guild.id, userID: member.id}, async (err,res) => { 
      if (!res) {
-      client.message(client.embed(`Kullanıcının herhangi bir yetkili bilgisi bulunamamaktadır.`, msg), msg.channel.id, 6500);
+      client.message(client.embed(`${client.react("iptal")} | Kullanıcının herhangi bir yetkili bilgisi bulunamamaktadır.`, msg), msg.channel.id, 6500);
      } else {
        res.Authorized.Members = res.Authorized.Members.reverse();
        res.Authorized.TagMembers = res.Authorized.TagMembers.reverse();

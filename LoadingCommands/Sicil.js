@@ -2,7 +2,7 @@ module.exports.operate = async ({client, msg, args, author, cfg}, Database = req
   if (!author.hasPermission("")) return;
 let member = (msg.mentions.users.first()) || await (await fetch(`https://discord.com/api/users/${args[0]}`, {method:'GET', headers: {'Authorization': 'Bot ' + client.token}})).json();
   Database.find({userID: member.id}, async (err, res) => {
-    if (res.length <= 0) return client.message(client.embed(`Kullanıcının ceza listesinde herhangi bir ceza bulunmuyor!`, msg), msg.channel.id, 5500);
+    if (res.length <= 0) return client.message(client.embed(`${client.react("iptal")} | Kullanıcının ceza listesinde herhangi bir ceza bulunmuyor!`, msg), msg.channel.id, 5500);
     let listed = res.reverse();
     let currentPage = 1;
     const pageLimit = 5;
@@ -10,7 +10,7 @@ let member = (msg.mentions.users.first()) || await (await fetch(`https://discord
     const pages = History.chunk(pageLimit);
     if (msg.content.includes("auto")) {
       let Sure = ms((msg.content.slice(msg.content.indexOf("auto") + 5)));
-      if (!Sure || !ms(Sure)) return client.message(client.embed(`Geçerli bir zaman dilimi girmelisin.`, msg), msg.channel.id, 5000);
+      if (!Sure || !ms(Sure)) return client.message(client.embed(`${client.react("iptal")} | Geçerli bir zaman dilimi girmelisin.`, msg), msg.channel.id, 5000);
       msg.channel.send({embed:{ 
       footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
       description:`${History.slice(currentPage === 1 ? 0 : Number((currentPage * pageLimit) - pageLimit), Number(currentPage * pageLimit)).join("\n")}`,

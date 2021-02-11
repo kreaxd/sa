@@ -3,10 +3,10 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
     let member = (msg.mentions.users.first()) || await (await fetch(`https://discord.com/api/users/${args[0]}`, {method:'GET', headers: {'Authorization': 'Bot ' + client.token}})).json();
     if ((!member) || (Object.keys(member).length == 1)) return client.message(client.noMember(msg), msg.channel.id, 6500);
     let member2 = msg.guild.members.cache.get(member.id);
-    if ((member2) && (author.roles.highest.position <= member2.roles.highest.position)) return client.message(client.embed("Bu kişi senden yüksek veya aynı yetkiye sahip olduğu için cezalı rolünü alamazsın.", msg), msg.channel.id, 5000);
+    if ((member2) && (author.roles.highest.position <= member2.roles.highest.position)) return client.message(client.embed(`${client.react("iptal")} | Bu kişi senden yüksek veya aynı yetkiye sahip olduğu için cezalı rolünü alamazsın.`, msg), msg.channel.id, 5000);
     let reason = args.slice(1).join(" ") || "Sebep belirtilmedi.";
     let Data = await Database.find({Activity: true, userID: member.id, Type: "JAIL" });
-    if ((Data.length <= 0) || ((member2) && (!member2.roles.cache.get(auth.CezaRoles.JailRoles)))) return client.message(client.embed("Belirttiğin kişi herhangi bir jail cezasına sahip değil!", msg), msg.channel.id, 5500);
+    if ((Data.length <= 0) || ((member2) && (!member2.roles.cache.get(auth.CezaRoles.JailRoles)))) return client.message(client.embed(`${client.react("iptal")} | Belirttiğin kişi herhangi bir jail cezasına sahip değil.`, msg), msg.channel.id, 5500);
     if ((member2) && (member2.roles.cache.get(auth.CezaRoles.JailRoles))) member2.roles.set(member2.roles.cache.get(auth.Booster) ? [auth.Booster, auth.Perms.Unregister] : [auth.Perms.Unregister]).catch(() => { });
     Data.forEach(x => {
       x.Activity = false;

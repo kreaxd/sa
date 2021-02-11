@@ -1,7 +1,7 @@
 module.exports.operate = async ({client, msg, args, member ,author, auth}, {MessageEmbed} = require("discord.js")) => {
-if (!author.voice.channel) return client.message(client.embed("Komutu kullanmak herhangi bir sesli kanala bağlanmalısın!", msg), msg.channel.id, 6500);
-if (!member) return client.message(client.embed("Çekmek istediğin bir kullanıcıyı seçmelisin!",msg), msg.channel.id, 6500);
-if (!member.voice.channel || author.voice.channelID == member.voice.channelID ) return client.message(client.embed('Kullanıcı ile aynı kanaldasınız ya da kullanıcı bir sesli kanalda değil!',msg),msg.channel.id,6500);
+if (!author.voice.channel) return client.message(client.embed("Bu komutu kullanmak herhangi bir sesli kanala bağlanmalısın.", msg), msg.channel.id, 6500);
+if (!member) return client.message(client.embed("Yanına gitmek istediğin bir kullanıcıyı seçmelisin.", msg), msg.channel.id, 6500);
+if (!member.voice.channel || author.voice.channelID == member.voice.channelID ) return client.message(client.embed('Kullanıcı ile aynı kanaldasınız ya da kullanıcı bir sesli kanalda değil!', msg),msg.channel.id,6500);
 let reason = args.slice(1).join(" ") || 'Sebep belirtilmedi.'
 if ((author.roles.cache.some(r => auth.Perms.TransportAuth.includes(r.id))) || (author.permissions.has("ADMINISTRATOR"))) {
 await author.voice.setChannel(member.voice.channelID).catch(() => { });
