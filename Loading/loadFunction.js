@@ -15,7 +15,7 @@ module.exports = (client, auth, moment) => {
       await member.roles.remove(auth.Perms.Unregister).catch(() => { });
       await member.roles.add(rolID).catch(() => { });
       await client.message(client.embed(`${member} kullanıcısı başarıyla <@&${rolID[0]}> alarak kaydedildi! İyi Eğlenceler`, msg), msg.channel.id, 3500);
-      //if (client.channels.cache.get(auth.GuildData.Chats.GenelChat)) client.message(client.embed(`Aramıza yeni biri katıldı! ${member} Hadi ona hoşgeldin diyelim.`, msg), auth.GuildData.Chats.GenelChat, 7500);
+      if (client.channels.cache.get(auth.GuildData.Chats.GenelChat)) client.message(client.embed(`Aramıza yeni biri katıldı! ${member} Hadi ona hoşgeldin diyelim.`, msg), auth.GuildData.Chats.GenelChat, 7500);
   };
   
     client.embed = (message, msj) => {
@@ -32,7 +32,7 @@ module.exports = (client, auth, moment) => {
         return {
           embed: {
             author: { name: message.guild.member(message.author).user.username, icon_url: message.author.displayAvatarURL({dynamic: true}) },
-            description: `Argümanları düzgün yerleştiriniz, etiketlediğiniz veya ID'sini belirttiğiniz kişinin düzgün olmasına dikkat ediniz.`,
+            description: `${client.react("iptal")} | Argümanları düzgün yerleştiriniz, etiketlediğiniz veya ID'sini belirttiğiniz kişinin düzgün olmasına dikkat ediniz.`,
             color: client.renk[Math.floor(Math.random() * client.renk.length)],
         }
       };
