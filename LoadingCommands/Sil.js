@@ -6,7 +6,7 @@ module.exports.operate = async ({client, msg, args, auth, author}) => {
   let silinmis = 0;
   if (sayi <= 100) {
     await msg.channel.bulkDelete(sayi);
-    await msg.channel.send(`${sayi} adet mesaj silinmiştir`).then(x => x.delete({timeout: 3500}));
+    await msg.channel.send(`${sayi} adet mesaj silinmiştir`).then(x => x.delete({timeout: 3500})).catch(() => { });
     return;
   }
   for (let mesaj = 0; mesaj < Math.floor(sayi/100); mesaj++) {
@@ -15,7 +15,7 @@ module.exports.operate = async ({client, msg, args, auth, author}) => {
   }
   if (sayi > 0)
     await msg.channel.bulkDelete(sayi).then(xd => (silinmis += xd.size));
-        await msg.channel.send(`${silinmis} adet mesaj silinmiştir`).then(x => x.delete({timeout: 3500}));
+        await msg.channel.send(`${silinmis} adet mesaj silinmiştir`).then(x => x.delete({timeout: 3500})).catch(() => { });
 };
 
 module.exports.help = {
