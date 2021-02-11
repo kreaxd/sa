@@ -1,4 +1,4 @@
-module.exports.operate = async ({client, msg, args, author, cfg}, Database = require("../Models/Restriction.js"), ms = require("ms")) => { 
+module.exports.operate = async ({client, msg, args, author, cfg}, fetch = require("node-fetch"), Database = require("../Models/Restriction.js"), ms = require("ms")) => { 
   if (!author.hasPermission("")) return;
 let member = (msg.mentions.users.first()) || await (await fetch(`https://discord.com/api/users/${args[0]}`, {method:'GET', headers: {'Authorization': 'Bot ' + client.token}})).json();
   Database.find({userID: member.id}, async (err, res) => {
