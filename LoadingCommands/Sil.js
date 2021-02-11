@@ -9,7 +9,7 @@ module.exports.operate = async ({client, msg, args, auth, author}) => {
     await msg.channel.send(`${sayi} adet mesaj silinmiştir`).then(x => x.delete({timeout: 3500}));
     return;
   }
-  for (const mesaj = 0; mesaj < Math.floor(sayi/100); mesaj++) {
+  for (let mesaj = 0; mesaj < Math.floor(sayi/100); mesaj++) {
     await msg.channel.bulkDelete(100).then(xd => (silinmis += xd.size));
     sayi = sayi - 100;
   }

@@ -5,8 +5,8 @@ module.exports.operate = async ({client, msg, args, author, auth}, {MessageEmbed
         Sayi[author.id] = { kullanim: 0 };
     if (Sayi[author.id].kullanim >= 3) return client.message(client.embed(`Bir gün içinde maximum 3 kere ismin değiştirebilirsin.`, msg), msg.channel.id, 6500);
     if (!args.join(" ")) return client.message(client.embed(`Herhangi bir isim girmelisin.`, msg), msg.channel.id, 6500);
-    if (args.join(" ").lenght > 24) return client.message(client.embed(`Kullanmak istediğin kullanıcı adı 24 karakterden uzun olamaz.`, msg), msg.channel.id, 6500);
-    await msg.member.setNickname(`${msg.member.user.username.includes(auth.Tags.RealTag) ? auth.Tags.RealTag : auth.Tags.FakeTag}  ${args.join(" ")}`).catch(() => { });
+    if (args.join(" ").lenght > 20) return client.message(client.embed(`Kullanmak istediğin kullanıcı adı 20 karakterden uzun olamaz.`, msg), msg.channel.id, 6500);
+    await msg.member.setNickname(`${msg.member.user.username.includes(auth.Tags.RealTag) ? auth.Tags.RealTag : auth.Tags.FakeTag} ${args.join(" ")}`).catch(() => { });
     msg.react(client.react("duztik")).catch(() => { })
     Sayi[author.id].kullanim++;
     setTimeout(() => {

@@ -12,8 +12,8 @@ if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (
 **• Kayıt Bilgileri**
 \`>\` Kayıt: ${res.Authorized.Man + res.Authorized.Woman || 0} (\`${res.Authorized.Man} erkek, ${res.Authorized.Woman} kız.\`) 
 \`>\` Tag aldırma sayısı: ${res.Authorized.Tags} 
-\`>\` Son 10 tag aldırdığı kullanıcılar:\n${res.Authorized.TagMembers.map(x => `<@${x}>`).slice(0, 10).join(",")}
-\`>\` Son 10 kayıt ettiği kullanıcılar:\n${res.Authorized.Members.map(x => `<@${x}>`).slice(0, 10).join(",")}\n
+\`>\` Son 10 tag aldırdığı kullanıcılar:\n${res.Authorized.TagMembers.map(x => `<@${x}>`).slice(0, 10).join(",") || "Kullanıcı yok."}
+\`>\` Son 10 kayıt ettiği kullanıcılar:\n${res.Authorized.Members.map(x => `<@${x}>`).slice(0, 10).join(",") || "Kullanıcı yok."}\n
 
 **• Ceza Bilgileri**
 \`>\` Chat Mute: ${res.RestNumber.MuteNumber || 0}
