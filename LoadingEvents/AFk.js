@@ -45,16 +45,16 @@ class AFK {
           await client.AFKLAR.add(uye.id);
           setTimeout(() => client.AFKLAR.delete(uye.id), client.getDate(5, "saniye"));
       if (süre.days !== 0) {
-        client.message(`${uye} ${süre.days} gün ${süre.hours} saat önce AFK moduna geçti. Sebep: ${reason}`,this.msg.channel.id, 6000);
+        this.msg.channel.send(`${uye} ${süre.days} gün ${süre.hours} saat önce AFK moduna geçti. Sebep: ${reason}`, {  disableMentions: "everyone" }).then(x => x.delete({timeout: 6000})).catch(() => { });
         return;
       } else if (süre.hours !== 0) {
-        client.message(`${uye} ${süre.hours} saat ${süre.minutes} dakika önce AFK moduna geçti. Sebep: ${reason}`, this.msg.channel.id, 6000);
+       this.msg.channel.send(`${uye} ${süre.hours} saat ${süre.minutes} dakika önce AFK moduna geçti. Sebep: ${reason}`, {  disableMentions: "everyone" }).then(x => x.delete({timeout: 6000})).catch(() => { });
         return;
       } else if (süre.minutes !== 0) {
-        client.message(`${uye} ${süre.minutes} dakika önce AFK moduna geçti. Sebep: ${reason}`, this.msg.channel.id, 6000); 
+        this.msg.channel.send(`${uye} ${süre.minutes} dakika önce AFK moduna geçti. Sebep: ${reason}`, {  disableMentions: "everyone" }).then(x => x.delete({timeout: 6000})).catch(() => { });
         return;
       } else if (süre.seconds !== 0) {
-        client.message(`${uye} biraz önce AFK moduna geçti. Sebep: ${reason}`, this.msg.channel.id, 6000);
+        this.msg.channel.send(`${uye} biraz önce AFK moduna geçti. Sebep: ${reason}`, {  disableMentions: "everyone" }).then(x => x.delete({timeout: 6000})).catch(() => { });
         return;
         };
       } else { };
