@@ -8,7 +8,7 @@ class Command {
 
   async useCommand() {
     if (!Array.isArray(auth.GuildData.Prefixes)) auth.GuildData.Prefixes = [auth.GuildData.Prefixes];
-     if (["!tag", ".tag"].some(x => this.msg.content.toLowerCase().startsWith(x))) return this.msg.channel.send(auth.Tags.RealTag);
+     if (["!tag"].some(x => this.msg.content.toLowerCase().startsWith(x))) return this.msg.channel.send(auth.Tags.RealTag);
     if (!auth.GuildData.Prefixes.some(x => this.msg.content.startsWith(x.toLowerCase()))) return;
     if (this.msg.author.bot || this.msg.guild.id !== auth.GuildData.GuildID || this.msg.channel.type === "dm") return;
     let args = this.msg.content.slice(auth.GuildData.Prefixes.some(x => x.toLowerCase().length)).trim().split(/ +/g);
