@@ -25,16 +25,3 @@ client.on("message", async msg => {
   if (botVoiceChannel) botVoiceChannel.join().catch(err => console.error("Bot ses kanalına bağlanamadı!"));
 });
 
-const MainBot = new Client();
-const { CronJob } = require('cron');
-
-new CronJob('00 00 00 1 * 0', function() {
-    
-    const Time = 1000 * 60 * 60 * 24 * 7 * 4;
-    const Guild = MainBot.guilds.cache.first();
-    
-    Guild.members.cache.filter((member) => (member.joinedTimestamp - Date.now()) >= Time).forEach((member) => member.roles.add('1_AY'));
-    Guild.members.cache.filter((member) => (member.joinedTimestamp - Date.now()) >= Time * 3).forEach((member) => member.roles.add('3_AY'));
-    Guild.members.cache.filter((member) => (member.joinedTimestamp - Date.now()) >= Time * 6).forEach((member) => member.roles.add('6_AY'));
-
-}, null, true, 'Europa/Istanbul');
