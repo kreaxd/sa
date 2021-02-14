@@ -6,15 +6,15 @@ description: `**<@&808977716942471199> Yardım Menüsü**
 Öncelikle bir rol vermek istiyorsanız <@&808977716942471199> rolüne sahip olmanız gerekiyor. Bu komut sayesinde aşağıdaki rolleri kullanıcılara verebilirsiniz.
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
-**>** .streamer [@Kullanıcı]
-**>** .streamercezalı [@Kullanıcı]
-**>** .vokal [@Kullanıcı]
-**>** .ressam [@Kullanıcı]
-**>** .şair [@Kullanıcı]
-**>** .yazılım [@Kullanıcı]
-**>** .voiceaktor [@Kullanıcı]
-**>** .golive [@Kullanıcı]
-**>** .muzisyen [@Kullanıcı]
+<@&${auth.YetkiVer.streamer}>: \`.streamer [@Kullanıcı]\`
+<@&${auth.YetkiVer.streamercezali}>: \`.streamercezalı [@Kullanıcı]\`
+<@&${auth.YetkiVer.vokal}>: \`.vokal [@Kullanıcı]\`
+<@&${auth.YetkiVer.ressam}>: \`.ressam [@Kullanıcı]\`
+<@&${auth.YetkiVer.şair}>: \`.şair [@Kullanıcı]\`
+<@&${auth.YetkiVer.yazilim}>: \`.yazılım [@Kullanıcı]\`
+<@&${auth.YetkiVer.voiceactor}>: \`.voiceaktor [@Kullanıcı]\`
+<@&${auth.YetkiVer.golive}>: \`.golive [@Kullanıcı]\`
+<@&${auth.YetkiVer.muzisyen}>: \`.müzisyen [@Kullanıcı]\`
 `,}})
 };
   
