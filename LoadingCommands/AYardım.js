@@ -2,8 +2,8 @@ module.exports.operate = async ({client, msg, args, member ,author, auth}, {Mess
 msg.channel.send({embed: { 
 color: client.renk[Math.floor(Math.random() * client.renk.length)],
 author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
-description: `**<@&808977716942471199> Yardım Menüsü**
-Öncelikle bir rol vermek istiyorsanız <@&808977716942471199> rolüne sahip olmanız gerekiyor. Bu komut sayesinde aşağıdaki rolleri kullanıcılara verebilirsiniz.
+description: `**<@&${auth.YetkiVer.ability}> Yardım Menüsü**
+Öncelikle bir rol vermek istiyorsanız <@&${auth.YetkiVer.ability}> rolüne sahip olmanız gerekiyor. Bu komut sayesinde aşağıdaki rolleri kullanıcılara verebilirsiniz.
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
 <@&${auth.YetkiVer.streamer}>: \`.streamer [@Kullanıcı]\`
