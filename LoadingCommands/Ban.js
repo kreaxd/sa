@@ -3,7 +3,7 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
     if ((!author.roles.cache.some(r => auth.Perms.BanAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
     if (!BanSize[author.id])
         BanSize[author.id] = { kullanim: 0};
-    if (BanSize[author.id].kullanim >= 3) return client.message(client.embed(`Bir gün içinde maximum 3 tane ban atabilirsin.`, msg), msg.channel.id, 6500);
+    if (BanSize[author.id].kullanim >= 2) return client.message(client.embed(`Bir gün içinde maximum 2 tane ban atabilirsin.`, msg), msg.channel.id, 6500);
     let member = (msg.mentions.users.first()) || await (await fetch(`https://discord.com/api/users/${args[0]}`, {method:'GET', headers: {'Authorization': 'Bot ' + client.token}})).json();
     if ((!member) || (Object.keys(member).length == 1)) return client.message(client.noMember(msg), msg.channel.id, 6500);
     let member2 = msg.guild.members.cache.get(member.id);
