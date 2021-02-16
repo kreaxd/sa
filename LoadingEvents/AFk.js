@@ -14,7 +14,7 @@ class AFK {
     if (afkveri.mod) {
       res.AFK = {};
       res.save();
-    if (author.manageable) author.setNickname(author.displayName.replace("〔AFK〕", "")).catch(() => { });
+    if (author.manageable) author.setNickname(author.displayName.replace("[AFK]", "")).catch(() => { });
     let süre = parsems(Date.now() - afkveri.date); 
     if (süre.days !== 0) {
       client.message(`${this.msg.author} AFK modundan başarıyla çıkış yaptın, ${süre.days} gün ${süre.hours} saat önce AFK olmuştun.`, this.msg.channel.id, 6000);
