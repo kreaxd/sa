@@ -32,11 +32,13 @@ class Talent {
      client.Talent(this.msg, member, author, auth.Perms.Muzisyen);
     } else if ((komut) && (komut === "streamercezalı" || komut === "scezalı")) {
      client.Talent(this.msg, member, author, auth.Perms.StreamerCezalı);
-    } 
+    } else if ((komut) && (komut === "vip" || komut === "elite")) {
+      client.Talent(this.msg, member, author, auth.Perms.Vip);
+    }
   }
 }
 
-
+//zaten vip var aq sala değiş şunları
 module.exports.event = {
   name: "message",
   eventOn: message => new Talent(message).TalentPerms()
