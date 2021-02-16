@@ -6,7 +6,7 @@ class Talent {
   }
 
   async TalentPerms() {
-    client.komutlar = ["vip", "elite", "streamer", "şair", "vokal", "vocal", "ressam"];
+    client.komutlar = ["vip", "elite", "streamer", "şair", "vokal", "vocal", "ressam", "tasarımcı", "tasarım", "yazılım", "muzisyen", "müzisyen", "müzik"];
     if (!Array.isArray(auth.GuildData.Prefixes)) auth.GuildData.Prefixes = [auth.GuildData.Prefixes];
     if (!auth.GuildData.Prefixes.some(x => this.msg.content.startsWith(x.toLowerCase()))) return;
     if (this.msg.author.bot || this.msg.guild.id !== auth.GuildData.GuildID || this.msg.channel.type === "dm") return;
@@ -16,45 +16,21 @@ class Talent {
     let author = this.msg.guild.member(this.msg.author);
     let member = this.msg.guild.member(this.msg.mentions.users.first()) || this.msg.guild.members.cache.get(args[0]);
     let komut = client.komutlar.find(k => k === command);
-        client.Talent = async (msg, member, author, rol) => {
-      if ((!author.roles.cache.some(r => auth.Perms.TalentAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
-      if (!member) return client.message(client.noMember(this.msg), this.msg.channel.id, 6500);
-      await member.roles.cache.has(rol) ? member.roles.remove(rol) : member.roles.add(rol).catch(() => { });
-      await msg.react(client.react("duztik")).catch(() => { });
-      client.message(client.embed(`${member} adlı üyede <@&${rol}> permi için gerekli işlemler yapılmıştır.`, msg), msg.channel.id, 4500);
-      return client.message(client.embed(`${author} adlı yetkili ${member} (\`${member.id}\`) adlı kullanıcıya <@&${rol}> permi için gerekli işlemler yapılmıştır.`, msg), auth.GuildData.Chats.AbilityLog)
-    }
     if ((komut) && (komut === "vip" || komut === "elite")) {
-      clientç.Talent(this.msg, member, a)
+      client.Talent(this.msg, member, author, auth.Perms.Vip);
     } else if ((komut) && (komut === "streamer")) {
-      if ((!author.roles.cache.some(r => auth.Perms.TalentAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
-      if (!member) return client.message(client.noMember(this.msg), this.msg.channel.id, 6500);
-      await member.roles.cache.has(auth.Talent.Streamer) ? member.roles.remove(auth.Talent.Streamer) : member.roles.add(auth.Talent.Streamer);
-      await this.msg.react(client.react("duztik")).catch(() => { });
-      client.message(client.embed(`${member} adlı üyede <@&${auth.Talent.Streamer}> permi için gerekli işlemler yapılmıştır.`, this.msg), this.msg.channel.id, 4500);
-      return client.message(client.embed(`${author} adlı yetkili ${member} (\`${member.id}\`) adlı kullanıcıya <@&${auth.Talent.Streamer}> permi için gerekli işlemler yapılmıştır.`, this.msg), auth.GuildData.Chats.AbilityLog)
+      client.Talent(this.msg, member, author, auth.Perms.Streamer);
     } else if ((komut) && (komut === "şair")) {
-      if ((!author.roles.cache.some(r => auth.Perms.TalentAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
-      if (!member) return client.message(client.noMember(this.msg), this.msg.channel.id, 6500);
-      await member.roles.cache.has(auth.Talent.Şair) ? member.roles.remove(auth.Talent.Şair) : member.roles.add(auth.Talent.Şair);
-      await this.msg.react(client.react("duztik")).catch(() => { });
-      client.message(client.embed(`${member} adlı üyede <@&${auth.Talent.Şair}> permi için gerekli işlemler yapılmıştır.`, this.msg), this.msg.channel.id, 4500);
-      return client.message(client.embed(`${author} adlı yetkili ${member} (\`${member.id}\`) adlı kullanıcıya <@&${auth.Talent.Şair}> permi için gerekli işlemler yapılmıştır.`, this.msg), auth.GuildData.Chats.AbilityLog)
+      client.Talent(this.msg, member, author, auth.Perms.Şair);
     } else if ((komut) && (komut === "vokal" || komut === "vocal")) {
-      if ((!author.roles.cache.some(r => auth.Perms.TalentAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
-      if (!member) return client.message(client.noMember(this.msg), this.msg.channel.id, 6500);
-      await member.roles.cache.has(auth.Talent.Vokal) ? member.roles.remove(auth.Talent.Vokal) : member.roles.add(auth.Talent.Vokal);
-      await this.msg.react(client.react("duztik")).catch(() => { });
-      client.message(client.embed(`${member} adlı üyede <@&${auth.Talent.Vokal}> permi için gerekli işlemler yapılmıştır.`, this.msg), this.msg.channel.id, 4500);
-      return client.message(client.embed(`${author} adlı yetkili ${member} (\`${member.id}\`) adlı kullanıcıya <@&${auth.Talent.Vokal}> permi için gerekli işlemler yapılmıştır.`, this.msg), auth.GuildData.Chats.AbilityLog)
+      client.Talent(this.msg, member, author, auth.Perms.Vokal);  
     } else if ((komut) && (komut === "ressam")) {
-      if ((!author.roles.cache.some(r => auth.Perms.TalentAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
-      if (!member) return client.message(client.noMember(this.msg), this.msg.channel.id, 6500);
-      await member.roles.cache.has(auth.Talent.Ressam) ? member.roles.remove(auth.Talent.Ressam) : member.roles.add(auth.Talent.Ressam);
-      await this.msg.react(client.react("duztik")).catch(() => { });
-      client.message(client.embed(`${member} adlı üyede <@&${auth.Talent.Ressam}> permi için gerekli işlemler yapılmıştır.`, this.msg), this.msg.channel.id, 4500);
-      return client.message(client.embed(`${author} adlı yetkili ${member} (\`${member.id}\`) adlı kullanıcıya <@&${auth.Talent.Ressam}> permi için gerekli işlemler yapılmıştır.`, this.msg), auth.GuildData.Chats.AbilityLog)
-    }
+     client.Talent(this.msg, member, author, auth.Perms.Ressam);
+    } else if ((komut) && (komut === "yazılım" || komut === "tasarımcı" || komut === "tasarım")) {
+     client.Talent(this.msg, member, author, auth.Perms.YazTas);
+    } else if ((komut) && (komut === "muzisyen" || komut === "müzisyen" || komut === "müzik")) {
+     client.Talent(this.msg, member, author, auth.Perms.Muzisyen);
+    } 
   }
 }
 

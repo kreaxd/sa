@@ -20,7 +20,7 @@ module.exports = (client, auth, moment) => {
   
     client.Talent = async (msg, member, author, rol) => {
       if ((!author.roles.cache.some(r => auth.Perms.TalentAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
-      if (!member) return client.message(client.noMember(this.msg), this.msg.channel.id, 6500);
+      if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
       await member.roles.cache.has(rol) ? member.roles.remove(rol) : member.roles.add(rol).catch(() => { });
       await msg.react(client.react("duztik")).catch(() => { });
       client.message(client.embed(`${member} adlı üyede <@&${rol}> permi için gerekli işlemler yapılmıştır.`, msg), msg.channel.id, 4500);
