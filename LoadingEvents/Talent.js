@@ -6,7 +6,7 @@ class Talent {
   }
 
   async TalentPerms() {
-    client.komutlar = ["vip", "elite", "streamer", "şair", "vokal", "vocal", "ressam", "tasarımcı", "tasarım", "yazılım", "muzisyen", "müzisyen", "müzik"];
+    client.komutlar = ["vip", "elite", "streamer", "streamercezalı", "scezalı", "şair", "vokal", "vocal", "ressam", "tasarımcı", "tasarım", "yazılım", "muzisyen", "müzisyen", "müzik"];
     if (!Array.isArray(auth.GuildData.Prefixes)) auth.GuildData.Prefixes = [auth.GuildData.Prefixes];
     if (!auth.GuildData.Prefixes.some(x => this.msg.content.startsWith(x.toLowerCase()))) return;
     if (this.msg.author.bot || this.msg.guild.id !== auth.GuildData.GuildID || this.msg.channel.type === "dm") return;
@@ -30,9 +30,12 @@ class Talent {
      client.Talent(this.msg, member, author, auth.Perms.YazTas);
     } else if ((komut) && (komut === "muzisyen" || komut === "müzisyen" || komut === "müzik")) {
      client.Talent(this.msg, member, author, auth.Perms.Muzisyen);
+    } else if ((komut) && (komut === "streamercezalı" || komut === "scezalı")) {
+     client.Talent(this.msg, member, author, auth.Perms.StreamerCezalı);
     } 
   }
 }
+
 
 module.exports.event = {
   name: "message",
