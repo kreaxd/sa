@@ -1,40 +1,25 @@
 const auth = require('../authorization.json');
 const client = process.client;
+class Talent {
+  constructor(msg) {
+    this.msg = msg;
+  }
 
-client.komutlar = [
-  {isim: "vip", rol: "590673911167975437"},
-  {isim: "elite", rol: "604116530166235166"},
-  {isim: "important", rol: "582928589964705792"},
-  {isim: "rapper", rol: "615947945485008945"},
-  {isim: "beatboxer", rol: "701780622326366309"},
-  {isim: "vocalist", rol: "582928585510223893"},
-  {isim: "gitarist", rol: "591040795281326101"},
-  {isim: "kemanist", rol: "606187559500120064"},
-  {isim: "piyanist", rol: "627557650724421643"},
-  {isim: "designer", rol: "605119171033825300"},
-  {isim: "gamer", rol: "631524481386676244"},
-  {isim: "intro-maker", rol: "629746296647057418"},
-  {isim: "poet", rol: "598628757326266371"},
-  {isim: "painter", rol: "597808607463211045"},
-  {isim: "instagram-user", rol: "641288137934635017"},
-  {isim: "lovers", rol: "595644405273067532"},
-  {isim: "sap", rol: "662988962134229002"},
-  {isim: "ekip", rol: "582928588349636608"},
-  {isim: "terapist", rol: "689184135960461399"},
-  {isim: "rehber", rol: "626907350602743838"},
-  {isim: "uyarı1", rol: "611937755257372683"},
-  {isim: "uyarı2", rol: "611937759745146908"},
-  {isim: "uyarı3", rol: "611937764820385812"},
-  {isim: "streamer", rol: "696703917664370849"},
-  {isim: "yetkilial1", rol: "589975289249923083"},
-  {isim: "yetkilial2", rol: "592791364370956308"},
-  {isim: "yetkilial3", rol: "589975277610860555"},
-  {isim: "teyitver", rol: "589975277610860555"},
-];
+  async TalentPerms() {
+    if (!Array.isArray(auth.GuildData.Prefixes)) auth.GuildData.Prefixes = [auth.GuildData.Prefixes];
+    if (!auth.GuildData.Prefixes.some(x => this.msg.content.startsWith(x.toLowerCase()))) return;
+    if (this.msg.author.bot || this.msg.guild.id !== auth.GuildData.GuildID || this.msg.channel.type === "dm") return;
+    let args = auth.GuildData.Prefixes.some(x => this.msg.content.substring(x.oLowerCase().length)).split(" ");
+  }
+}
 
-module.exports = (message) => {
+module.exports.event = {
+  name: "message",
+  eventOn: message => new Talent(message).TalentPerms()
+};
+
+
   if (!message.content.startsWith(conf.prefix)) return;
-  let ayar = db.get('ayar') || {};
   let args = message.content.substring(conf.prefix.length).split(" ");
   let command = args[0];
   args = args.splice(1);
