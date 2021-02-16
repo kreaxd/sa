@@ -3,20 +3,20 @@ module.exports.operate = async ({client, msg, args, member ,author, auth}, {Mess
 msg.channel.send({embed: { 
 color: client.renk[Math.floor(Math.random() * client.renk.length)],
 author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
-description: `**<@&${auth.Perms.TalentAuth[0]}> Yardım Menüsü**
+description: `**Rol Yardım Menüsü**
 Öncelikle bir rol vermek istiyorsanız <@&${auth.Perms.TalentAuth[0]}> rolüne sahip olmanız gerekiyor. Bu komut sayesinde aşağıdaki rolleri kullanıcılara verebilirsiniz.
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
-<@&${auth.YetkiVer.streamer}>: \`.streamer [@Kullanıcı]\`
-<@&${auth.YetkiVer.streamercezali}>: \`.streamercezalı [@Kullanıcı]\`
-<@&${auth.YetkiVer.vokal}>: \`.vokal [@Kullanıcı]\`
-<@&${auth.YetkiVer.ressam}>: \`.ressam [@Kullanıcı]\`
-<@&${auth.YetkiVer.şair}>: \`.şair [@Kullanıcı]\`
-<@&${auth.YetkiVer.yazilim}>: \`.yazılım [@Kullanıcı]\`
-<@&${auth.YetkiVer.voiceactor}>: \`.voiceaktor [@Kullanıcı]\`
-<@&${auth.YetkiVer.golive}>: \`.golive [@Kullanıcı]\`
-<@&${auth.YetkiVer.muzisyen}>: \`.müzisyen [@Kullanıcı]\`
-`,}})
+<@&${auth.Talent.Streamer}>: \`.streamer [@Kullanıcı]\`
+<@&${auth.Talent.StreamerCezalı}>: \`.streamercezalı [@Kullanıcı]\`
+<@&${auth.Talent.Vokal}>: \`.vokal [@Kullanıcı]\`
+<@&${auth.Talent.Ressam}>: \`.ressam [@Kullanıcı]\`
+<@&${auth.Talent.Şair}>: \`.şair [@Kullanıcı]\`
+<@&${auth.Talent.YazTas}>: \`.yazılım [@Kullanıcı]\`
+<@&${auth.Talent.VoiceActor}>: \`.voiceaktor [@Kullanıcı]\`
+<@&${auth.Talent.GoLive}>: \`.golive [@Kullanıcı]\`
+<@&${auth.Talent.Muzisyen}>: \`.müzisyen [@Kullanıcı]\`
+`,}});
 };
   
 module.exports.help = {
