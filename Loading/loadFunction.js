@@ -3,20 +3,29 @@ module.exports = (client, auth, moment) => {
     client.renk = new Array("#1f0524", "#0b0067", "#4a0038", "#07052a", "#FFDF00", "#00FFFF", "#0091CC", "#0047AB", "#384B77", "#ffffff", "#000000", "#04031a", "#f9ffba");
 
     client.message = (content, Channel, timeout) => {
-        const channel = client.channels.cache.get(Channel);
-          if (!timeout) {
-            if (channel) channel.send(content).catch(() => { });
-          } else {
-            if (channel) channel.send(content).then((msg) => msg.delete({ timeout: timeout })).catch(() => { });
-          }
-     };
+    const channel = client.channels.cache.get(Channel);
+      if (!timeout) {
+        if (channel) channel.send(content).catch(() => { });
+      } else {
+        if (channel) channel.send(content).then((msg) => msg.delete({ timeout: timeout })).catch(() => { });
+      }
+    };
   
     client.Kayıt = async (msg, args, member, author, rolID, rol2ID, auth) => {
       await member.roles.remove(auth.Perms.Unregister).catch(() => { });
       await member.roles.add(rolID).catch(() => { });
       await client.message(client.embed(`${member} kullanıcısı başarıyla <@&${rolID[0]}> alarak kaydedildi! İyi Eğlenceler`, msg), msg.channel.id, 3500);
       if (client.channels.cache.get(auth.GuildData.Chats.GenelChat)) client.message(client.embed(`Aramıza yeni biri katıldı! ${member} Hadi ona hoşgeldin diyelim.`, msg), auth.GuildData.Chats.GenelChat, 7500);
-  };
+    };
+  
+    client.Talent = async (msg, member, author, rol) => {
+      if ((!author.roles.cache.some(r => auth.Perms.TalentAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
+      if (!member) return client.message(client.noMember(this.msg), this.msg.channel.id, 6500);
+      await member.roles.cache.has(rol) ? member.roles.remove(rol) : member.roles.add(rol).catch(() => { });
+      await msg.react(client.react("duztik")).catch(() => { });
+      client.message(client.embed(`${member} adlı üyede <@&${rol}> permi için gerekli işlemler yapılmıştır.`, msg), msg.channel.id, 4500);
+      return client.message(client.embed(`${author} adlı yetkili ${member} (\`${member.id}\`) adlı kullanıcıya <@&${rol}> permi için gerekli işlemler yapılmıştır.`, msg), auth.GuildData.Chats.AbilityLog)
+    }
   
     client.embed = (message, msj) => {
         return {
