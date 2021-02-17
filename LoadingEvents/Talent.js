@@ -17,25 +17,25 @@ class Talent {
     let member = this.msg.guild.member(this.msg.mentions.users.first()) || this.msg.guild.members.cache.get(args[0]);
     let komut = client.komutlar.find(k => k === command);
     if ((komut) && (komut === "vip" || komut === "elite")) {
-      client.Talent(this.msg, member, author, auth.Perms.Vip);
+      client.Talent(this.msg, member, author, auth.Talent.Vip);
     } else if ((komut) && (komut === "streamer")) {
-      client.Talent(this.msg, member, author, auth.Perms.Streamer);
+      client.Talent(this.msg, member, author, auth.Talent.Streamer);
     } else if ((komut) && (komut === "şair")) {
-      client.Talent(this.msg, member, author, auth.Perms.Şair);
+      client.Talent(this.msg, member, author, auth.Talent.Şair);
     } else if ((komut) && (komut === "vokal" || komut === "vocal")) {
-      client.Talent(this.msg, member, author, auth.Perms.Vokal);  
+      client.Talent(this.msg, member, author, auth.Talent.Vokal);  
     } else if ((komut) && (komut === "ressam")) {
-     client.Talent(this.msg, member, author, auth.Perms.Ressam);
+     client.Talent(this.msg, member, author, auth.Talent.Ressam);
     } else if ((komut) && (komut === "yazılım" || komut === "tasarımcı" || komut === "tasarım")) {
-     client.Talent(this.msg, member, author, auth.Perms.YazTas);
+     client.Talent(this.msg, member, author, auth.Talent.YazTas);
     } else if ((komut) && (komut === "muzisyen" || komut === "müzisyen" || komut === "müzik")) {
-     client.Talent(this.msg, member, author, auth.Perms.Muzisyen);
+     client.Talent(this.msg, member, author, auth.Talent.Muzisyen);
     } else if ((komut) && (komut === "streamercezalı" || komut === "scezalı")) {
-     client.Talent(this.msg, member, author, auth.Perms.StreamerCezalı);
+     client.Talent(this.msg, member, author, auth.Talent.StreamerCezalı);
     } else if ((komut) && (komut === "golive" || komut === "yayın")) {
-      client.Talent(this.msg, member, author, auth.Perms.GoLive);
+      client.Talent(this.msg, member, author, auth.Talent.GoLive);
     } else if ((komut) && (komut === "actor" || komut === "voiceactor" || komut === "vactor")) {
-      client.Talent(this.msg, member, author, auth.Perms.VoiceActor);
+      client.Talent(this.msg, member, author, auth.Talent.VoiceActor);
     }
   }
 }
