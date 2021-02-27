@@ -20,7 +20,7 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
                 { name: "`Verilen Zaman:`", value:`**${client.toDate(new Date(Date.now()))}**`, inline: true },
           ],
         }]
-        }, auth.Logs.RolVerLog).catch(() => { });
+        }, auth.Logs.RolVerLog)
   } else if (["al"]) {
     msg.channel.send({
       embeds: [{
@@ -33,7 +33,7 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
             { name: "`Alınma Zamanı:`", value:`**${client.toDate(new Date(Date.now()))}**`, inline: true },
       ],
     }]
-    }, auth.Logs.RolVerLog).catch(() => { });
+    }, auth.Logs.RolVerLog)
   } else { };
   if(msg.guild.members.cache.get(kullanici.id).roles.cache.has(rol.id)) {
     msg.guild.members.cache.get(kullanici.id).roles.remove(rol.id)
