@@ -6,7 +6,7 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
     if(!yetki) return ({embed: {description: `Lütfen bir rol girin.` }});
     const kullanici = msg.mentions.members.first() || msg.guild.members.cache.find(r=>r.user.username===kisi) || msg.guild.members.cache.get(kisi)
     const rol = msg.mentions.roles.first() || msg.guild.roles.cache.find(r=>r.name===yetki) || msg.guild.roles.cache.get(yetki)
-    if(rol === "ADMINISTRATOR" && "MANAGE_ROLES" && "CHANGE_NICKNAME" && "KICK_MEMBERS" && "BAN_MEMBERS" && "MANAGE_GUILD" && "MANAGE_CHANNEL" && "MANAGE_EMOJIS" && "CHANGE_NICKNAME" && "MANAGE_WEBHOOKS" && "MENTIONS_EVERYONE") return msg.channel.send({embed: {description: `YT veya Yönet Rolleri veremezsin :)`}})
+    if(yetki === "ADMINISTRATOR" && "MANAGE_ROLES" && "CHANGE_NICKNAME" && "KICK_MEMBERS" && "BAN_MEMBERS" && "MANAGE_GUILD" && "MANAGE_CHANNEL" && "MANAGE_EMOJIS" && "CHANGE_NICKNAME" && "MANAGE_WEBHOOKS" && "MENTIONS_EVERYONE") return msg.channel.send({embed: {description: `YT veya Yönet Rolleri veremezsin :)`}})
     if(!kullanici) return msg.channel.send({embed: {description:`\`${kisi}\` isimli/ID'li bir kullanıcı bulunamadı.`}})
     if(!rol) return msg.channel.send({embed: {description:`\`${yetki}\` isimli/ID'li bir rol bulunamadı.`}})
     if(msg.guild.members.cache.get(kullanici.id).roles.cache.has(rol.id)) {
@@ -23,7 +23,7 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
     color: client.renk[Math.floor(Math.random() * client.renk.length)],
             footer: { text: msg.member.user.tag + " tarafından.", icon_url: msg.author.avatarURL({dynamic:true}) }
           }]
-          },auth.Logs.RolVerLog).catch(() => { });
+          },auth.Logs.RolVerLog)
     } else {
        client.message({
             embeds: [{
@@ -38,7 +38,7 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
     color: client.renk[Math.floor(Math.random() * client.renk.length)],
             footer: { text: msg.member.user.tag + " tarafından.", icon_url: msg.author.avatarURL({dynamic:true}) }
           }]
-          }, auth.Logs.RolVerLog).catch(() => { });
+          }, auth.Logs.RolVerLog)
     }
     if(msg.guild.members.cache.get(kullanici.id).roles.cache.has(rol.id)) {
     msg.guild.members.cache.get(kullanici.id).roles.remove(rol.id)
