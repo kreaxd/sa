@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, args, msg, author, auth}, Discord = require("discord.js")) => {
-    if ((!author.roles.cache.some(r => auth.Perms.MuteAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
+  if ((!author.permissions.has("ADMINISTRATOR"))) return;
   const kisi = args.join(" ").split(" ")[0]
   const yetki = args.join(" ").split(" ")[0];
   if(!kisi) return msg.channel.send({embed: {description:"Lütfen bir kullanıcı gir."}});
@@ -8,8 +8,8 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
   const rol = msg.mentions.roles.first() || msg.guild.roles.cache.find(r=>r.name===yetki) || msg.guild.roles.cache.get(yetki)
   if(!kullanici) return msg.channel.send({embed: {description:`\`${kisi}\` isimli/ID'li bir kullanıcı bulunamadı.`}})
   if(!rol) return msg.channel.send({embed: {description:`\`${yetki}\` isimli/ID'li bir rol bulunamadı.`}})
-  if (["ver"]) {
-      msg.channel.send({
+  if (!args[0]) {
+    msg.channel.send({
           embeds: [{
               author: { name: msg.author.tag },
               title: `[Verilen Yetki]`,
@@ -21,7 +21,7 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
           ],
         }]
         }, auth.Logs.RolVerLog)
-  } else if (["al"]) {
+  } else if (["al"].includes(args[0])) {
     msg.channel.send({
       embeds: [{
           author: { name: msg.author.tag },
