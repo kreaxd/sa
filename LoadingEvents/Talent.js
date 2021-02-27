@@ -17,7 +17,7 @@ class Talent {
     let member = this.msg.guild.member(this.msg.mentions.users.first()) || this.msg.guild.members.cache.get(args[0]);
     let komut = client.komutlar.find(k => k === command);
     if ((komut) && (komut === "vip" || komut === "elite")) {
-      client.Talent(this.msg, member, author, auth.Talent.Vip);
+      client.Talent(this.msg, member, author, auth.Perms.Vip);
     } else if ((komut) && (komut === "streamer")) {
       client.Talent(this.msg, member, author, auth.Talent.Streamer);
     } else if ((komut) && (komut === "şair")) {
