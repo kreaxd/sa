@@ -8,8 +8,9 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
   const rol = msg.mentions.roles.first() || msg.guild.roles.cache.find(r=>r.name===yetki) || msg.guild.roles.cache.get(yetki)
   if(!kullanici) return msg.channel.send({embed: {description:`\`${kisi}\` isimli/ID'li bir kullanıcı bulunamadı.`}})
   if(!rol) return msg.channel.send({embed: {description:`\`${yetki}\` isimli/ID'li bir rol bulunamadı.`}})
-  if (!args[0]) {
-    msg.channel.send({
+  if (!args[1]) {
+    
+    client.message({
           embeds: [{
               author: { name: msg.author.tag },
               title: `[Verilen Yetki]`,
@@ -21,8 +22,10 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
           ],
         }]
         }, auth.Logs.RolVerLog)
-  } else if (["al"].includes(args[0])) {
-    msg.channel.send({
+        msg.guild.members.cache.get(kullanici.id).roles.add(rol.id)
+        return msg.channel.send({embed: {author: { name: msg.author.tag }, title: `[Yetki Verilmesi]`, description:` Rol Verilen Üye: \`${kullanici.user.tag}\`  \`${rol.name}\` isimli rol verilmiştir.`}})        
+  } else if (["al"].includes(args[1])) {
+    client.message({
       embeds: [{
           author: { name: msg.author.tag },
           title: `[Alınan Yetki]`,
@@ -34,14 +37,9 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
       ],
     }]
     }, auth.Logs.RolVerLog)
-  } else { };
-  if(msg.guild.members.cache.get(kullanici.id).roles.cache.has(rol.id)) {
     msg.guild.members.cache.get(kullanici.id).roles.remove(rol.id)
-    return msg.channel.send({embed: {author: { name: msg.author.tag }, title: `[Yetkili : ${author}]`, description:` Rolü Alınan Üye: \`${kullanici.user.tag}\`  \`${rol.name}\` isimli rol alınmıştır.`}})    
-    } else {
-    msg.guild.members.cache.get(kullanici.id).roles.add(rol.id)
-    return msg.channel.send({embed: {author: { name: msg.author.tag }, title: `[Yetkili : ${author}]`, description:` Rol Verilen Üye: \`${kullanici.user.tag}\`  \`${rol.name}\` isimli rol verilmiştir.`}})    
-  };
+    return msg.channel.send({embed: {author: { name: msg.author.tag }, title: `[Yetki Alınması]`, description:` Rolü Alınan Üye: \`${kullanici.user.tag}\`  \`${rol.name}\` isimli rol alınmıştır.`}})    
+  } else { };
 };
 module.exports.help = {
   name: "rol",
