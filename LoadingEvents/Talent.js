@@ -36,7 +36,8 @@ class Talent {
       client.Talent(this.msg, member, author, auth.Talent.GoLive);
     } else if ((komut) && (komut === "actor" || komut === "voiceactor" || komut === "vactor")) {
       client.Talent(this.msg, member, author, auth.Talent.VoiceActor);
-    }
+    } else if ((komut) && (komut === "streamer")) {
+      client.Talent(this.msg, member, author, auth.Talent.Streamer);
   }
 }
 
