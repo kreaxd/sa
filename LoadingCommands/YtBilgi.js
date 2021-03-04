@@ -23,6 +23,7 @@ if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (
 
      }
   });
+  msg.react(client.react("duztik")).catch(() => { });
 };
   
   module.exports.help = {
