@@ -1,4 +1,4 @@
-module.exports.operate = async ({client, msg, args, author, auth}) => {
+module.exports.operate = async ({client, msg, args, author, auth}, Discord = require("discord.js"), moment = require("moment")) => {
     if (msg.channel.id !== "816627215017836565") return msg.channel.send("sadece bu kanalda çalışan bir komut <#816627215017836565>");
     if (!author.permissions.has("ADMINISTRATOR")) return;
     let rol = msg.mentions.roles.first() || msg.guild.roles.cache.get(args[0]);
@@ -6,12 +6,12 @@ module.exports.operate = async ({client, msg, args, author, auth}) => {
       if (!args[1]) {
         let listed = Array.from(rol.members.array().map((val, ind) => `\`${ind + 1}.\` ${val} - (\`${val.id}\`)`).values());
         client.chunkArray(listed, 20).forEach(r => {
-            msg.channel.send(`**${rol} Rolünün bilgileri;**\n・Rolün rengi:\`${rol.hexColor}\`\n・Rol ID: ${rol.id}\n・Roldeki kişi sayısı: \`${rol.members.size}\`\n・・・・・・・・・・・・・・・・・・・\n**Roldeki kişiler:**\n${r.join("\n")}`)
+            msg.channel.send(`**${rol} Rolünün bilgileri;**\n・Rolün rengi:\`${rol.hexColor}\`\n・Rol ID: ${rol.id}\n・Roldeki kişi sayısı: \`${rol.members.size}\`\n${moment(rol.createdAt).format('D.MMMM.YYYY')}・・・・・・・・・・・・・・・・・・・\n**Roldeki kişiler:**\n${r.join("\n")}`)
         })
     } else if (["ses"].includes(args[1])) {
         let listed = Array.from(rol.members.array().map((val, ind) => `\`${ind + 1}.\` ${val} - \`${val.voice.channel ? `✅` : `❌`}\``).values());
         client.chunkArray(listed, 20).forEach(r => {
-            msg.channel.send(`**${rol} Rolünün ses bilgileri;**\n・Rolün rengi:\`${rol.hexColor}\`\n・Rol ID: ${rol.id}\n・Roldeki kişi sayısı: \`${rol.members.size}\`\n・・・・・・・・・・・・・・・・・・・\n**Roldeki kişiler:**\n${r.join("\n")}`)
+            msg.channel.send(`**${rol} Rolünün ses bilgileri;**\n・Rolün rengi:\`${rol.hexColor}\`\n・Rol ID: ${rol.id}\n・Roldeki kişi sayısı: \`${rol.members.size}\`\n${moment(rol.createdAt).format('D.MMMM.YYYY')}・・・・・・・・・・・・・・・・・・・\n**Roldeki kişiler:**\n${r.join("\n")}`)
         });
     };
   };
