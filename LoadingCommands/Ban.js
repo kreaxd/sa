@@ -31,7 +31,7 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
     
   module.exports.help = {
     name: "ban",
-    alias: ["bb", "maze", "kimsebas", "kimsebaş"]
+    alias: ["bb", "kimsebas", "kimsebaş"]
   };
  
 

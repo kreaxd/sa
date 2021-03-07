@@ -6,7 +6,7 @@ module.exports.operate = async ({client, msg, args, member, auth, author}, ms = 
   let VeriNumber = 0;
   let Sayi;
   let reason = args.slice(2).join(" ") || "Sebep belirtilmedi.";
-  if (!Time || !ms(Time)) return client.message(`\`\`\`Geçerli bir süre belirtmelisin! Ex: .mute @Mâze 5m Hakaret\`\`\``,msg.channel.id, 6500);
+  if (!Time || !ms(Time)) return client.message(`\`\`\`Geçerli bir süre belirtmelisin! Ex: .mute @ibidi 5m Hakaret\`\`\``,msg.channel.id, 6500);
   if (auth.CezaRoles.MuteRoles !== "") await member.roles.add(auth.CezaRoles.MuteRoles).catch(() => { });
   Database.countDocuments().then(async x => {
   VeriNumber = ( x + 1 );
