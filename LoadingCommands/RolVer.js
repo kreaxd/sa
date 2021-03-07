@@ -9,7 +9,6 @@ module.exports.operate = async ({client, args, msg, author, auth}, Discord = req
   if(!kullanici) return msg.channel.send({embed: {description:`\`${kisi}\` isimli/ID'li bir kullanıcı bulunamadı.`}})
   if(!rol) return msg.channel.send({embed: {description:`\`${yetki}\` isimli/ID'li bir rol bulunamadı.`}})
   if (!args[1]) {
-    
     client.message({
           embeds: [{
               author: { name: msg.author.tag },
