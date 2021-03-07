@@ -7,12 +7,12 @@ module.exports.operate = async ({client, msg, args, author, auth}) => {
         let listed = Array.from(rol.members.array().map((val, ind) => `\`${ind + 1}.\` ${val} - (\`${val.id}\`)`).values());
         client.chunkArray(listed, 20).forEach(r => {
           msg.channel.send(`**${rol} Rolünün bilgileri;**\n・Rol Rengi:\`${rol.hexColor}\`\n・Rol ID: ${rol.id}\n・Rol Kişi Sayısı: \`${rol.members.size}\`\n・・・・・・・・・・・・・・・・・・・\n**Roldeki Kişiler:**\n${r.join("\n")}`)
-      })
+        })
     } else if (["ses"].includes(args[1])) {
-        let listed = Array.from(rol.members.array().map((val, ind) => `\`${ind + 1}.\` ${val} - (\`${val.id}\`) - ${val.voice.channel ? `${auth.Reacts.duztik}` : `${auth.Reacts.iptal}\` `).values());
+        let listed = Array.from(rol.members.array().map((val, ind) => `\`${ind + 1}.\` ${val} - (\`${val.id}\`) - ${val.voice.channel ? `${auth.Reacts.duztik}` : `${auth.Reacts.iptal}`} `).values());
         client.chunkArray(listed, 20).forEach(r => {
             msg.channel.send(`**${rol} Rolünün bilgileri;**\n・Rol Rengi:\`${rol.hexColor}\`\n・Rol ID: ${rol.id}\n・Rol Kişi Sayısı: \`${rol.members.size}\`\n・・・・・・・・・・・・・・・・・・・\n**Roldeki Kişiler:**\n${r.join("\n")}`)
-        })
+        });
     };
   };
   
