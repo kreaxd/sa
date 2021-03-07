@@ -92,7 +92,7 @@ const ekip5onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Seste toplam **${ekip4ses}** kullanıcı var.
 \`>\` Aktif olup seste olmayan **${ekip4onlineses}** kullanıcı var.
 
-**${auth.Ekip.Ekip5}** Bilgileri;
+**<@&$${auth.Ekip.Ekip5}>** Bilgileri;
 \`>\` Ekipte toplam **${ekip5}** üye var.
 \`>\` Ekipte toplam sunucu tagını almış **${ekip5tag}** üye var.
 \`>\` Seste toplam **${ekip5ses}** kullanıcı var.

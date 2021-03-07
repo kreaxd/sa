@@ -12,9 +12,9 @@
     ],
     "include": [
       "\\.js$",
-      "\\.coffee$",
-      "\\.json"
+      "\\.coffee$",      "\\.json"
     ]
   },
   "throttle":900000
 }
+s
