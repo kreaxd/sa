@@ -6,7 +6,7 @@ module.exports.operate = async ({client, msg, author, member, auth}, Discord = r
     msg.react(client.react("duztik"));
     await msg.channel.send(`${member}** adlı üye başarıyla Deneme Yetkisi rolü verilmiştir.**`);
      client.message({embed: { 
-        author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
+      author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
       description: `${author} yetkili tarafından ${member} adlı üyeye başarıyla **Deneme Yetkisi** rolü verilmiştir.`,
       color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.yetkiliLog); 
   };

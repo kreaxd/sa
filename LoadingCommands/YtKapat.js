@@ -6,6 +6,6 @@ module.exports.operate = async ({client, msg, member ,args, auth, author}) => {
 };
 
 module.exports.help = {
-  name: "ytkapat",
+  name: "yt",
   alias: []
 }; 
