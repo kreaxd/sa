@@ -67,7 +67,7 @@ const ekip5onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Aktif olup seste olmayan **${ekip5onlineses}** kullanıcı var.
 `))
      } else if (["tüm"].includes(args[0])) {
-  msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
+  msg.channel.send(new MessageEmbed().setAuthor(msg.guild.name , msg.guild.iconURL ({dynamic: true})).setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
 **<@&${auth.Ekip.Ekip1}>** Bilgileri;
 \`>\` Ekipte toplam **${ekip1}** üye var.
 \`>\` Ekipte toplam sunucu tagını almış **${ekip1tag}** üye var.
@@ -92,7 +92,7 @@ const ekip5onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Seste toplam **${ekip4ses}** kullanıcı var.
 \`>\` Aktif olup seste olmayan **${ekip4onlineses}** kullanıcı var.
 
-**<@&$${auth.Ekip.Ekip5}>** Bilgileri;
+**<@&${auth.Ekip.Ekip5}>** Bilgileri;
 \`>\` Ekipte toplam **${ekip5}** üye var.
 \`>\` Ekipte toplam sunucu tagını almış **${ekip5tag}** üye var.
 \`>\` Seste toplam **${ekip5ses}** kullanıcı var.
