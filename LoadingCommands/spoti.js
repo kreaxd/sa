@@ -14,13 +14,13 @@ module.exports.operate = async ({client, msg, args, uye, author}) => {
     msg.channel.send({
       embed: {
         author: { name: `${isim}`, icon_url: image, url: URL },
-        color: client.favoriRenkler[Math.floor(Math.random() * client.favoriRenkler.length)],
+        color: client.renk[Math.floor(Math.random() * client.renk.length)],
         thumbnail: { url: u.displayAvatarURL({dynamic:true}) },
         description: `\`Şarkı Adı:\` **__${isim}__**\n\`Sanatçı:\` **__${soyleyen}__**\n\`Albüm İsmi:\` **__${albümİsmi}__**\n\n\`Şarkının Başlama Saati:\` **${baslangicSaati}** \n\`Şarkının Bitiş Saati:\` **${bitisSaati}**`,
         footer: { text: msg.guild.member(u).displayName + " tarafından istendi.", icon_url: u.avatarURL({dynamic:true}) },
         timestamp: new Date()
       }
-    }).then(msj => msj.delete({ timeout: 7000 }));
+    });
   } else {
     msg.channel.send("**Bu üye spotify dinlemiyor.**");
   };
