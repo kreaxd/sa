@@ -9,6 +9,7 @@ module.exports.operate = async ({client, msg, author, member, auth}, Discord = r
       author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
       description: `${author} yetkili tarafından ${member} adlı üyeye başarıyla **Deneme Yetkisi** rolü verilmiştir.`,
       color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.yetkiliLog); 
+      await msg.channel.send(`${member} adlı kullanıcı aramıza katılmıştır. `, auth.Logs.yetkilichat);
   };
 
   module.exports.help = {
