@@ -20,11 +20,11 @@ const xd = new Discord.MessageEmbed()
 \`Kullanıcı ID\` **•** ${mention.id}
 \`Profil\` **•** ${mention} ${mention.presence.status.replace('online', 'Çevrim İçi').replace('idle', 'Boşta').replace('dnd', 'Rahatsız Etmeyin').replace('offline', 'Çevrim Dışı')}
 \`Bağlandığı yer\` **•** ${sa}
-\`Kuruluş Tarihi\` **•** ${moment(mention.createdAt).format('D.MMMM.YYYY')}
+\`Kuruluş Tarihi\` **•** ${moment(mention.createdAt).format('D/MMMM/YYYY')}
 
 **• Kullanıcı bilgisi**
 \`Takma Ad\` **•** **${mentionMember.displayName}**
-\`Sunucuya Giriş Tarihi\` **•** ${moment(mentionMember.joinedAt).format('D.MMMM.YYYY')}
+\`Sunucuya Giriş Tarihi\` **•** ${moment(mentionMember.joinedAt).format('D/MMMM/YYYY')}
 \`Roller\` **•** ${(mentionMember.roles.cache.filter(a => a.name !== '@everyone').map(a => a).join(' ') ? mentionMember.roles.cache.filter(a => a.name !== '@everyone').map(a => a).join(', ') : 'Hiç yok.')}
 `)
 .setFooter(mention.username, mention.avatarURL({dynamic: true}))
