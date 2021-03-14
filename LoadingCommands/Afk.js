@@ -1,4 +1,5 @@
-module.exports.operate = async ({client, msg, args, author}, Database = require("../Models/Member.js")) => {
+module.exports.operate = async ({client, msg, args, author, auth}, Database = require("../Models/Member.js")) => {
+    client.channels.cache.get(auth.Chats.KomutChat).send(`**${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında \`${msg.content}\` komutunu kullandı.`)
     if (client.AFKLAR2.has(author.id)) return null;
     let reason = args.join(" ") || "Şu anda AFK'yım en kısa sürede döneceğim.";
     if ((client.reklamcilar.has(author.id)) && (reason.includes("discord.gg") || reason.includes("@everyone") || reason.includes("@here") || reason.includes(msg.mentions.roles.first()))) return msg.guild.members.ban(author.id, { reason: "reklam", days: 7});
@@ -25,7 +26,10 @@ module.exports.operate = async ({client, msg, args, author}, Database = require(
     if (client.reklamcilar.has(author.id)) setTimeout(() => client.reklamcilar.delete(author.id), client.getDate(10, "saniye"));
   };
   
+
   module.exports.help = {
     name: "afk",
     alias: ["afık"]
   };
+
+
