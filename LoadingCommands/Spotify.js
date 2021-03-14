@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, uye, author, auth}) => {
-  if (msg.channel.id !== "815993004832587818") return msg.channel.send("sadece bu kanalda çalışan bir komut <#815993004832587818>");
+  if (msg.channel.id !== "820621002101882891") return msg.channel.send("sadece bu kanalda çalışan bir komut <#820621002101882891>");
   const moment = require("moment");
   let u = msg.mentions.users.first() || client.users.cache.get(args[0]) || msg.author;
   if (!u.presence.activities[1]) return msg.channel.send("**Bu üyenin profilinde herhangi bir oynuyor aktivitesi yok.**").then(m => m.delete({ timeout: 5000 }));
