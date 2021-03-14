@@ -8,6 +8,7 @@ module.exports.operate = async ({client, msg, args, member, author, auth}, Datab
     client.message(client.embed(`${member} kullanıcısının tüm kayıt verileri aşağıda listelenmiştir listelere bakarak kayıt ediniz sorun görüyorsanız üst yetkililere ulaşın!\n\n${History.slice(0, 20).join("\n") || "Veri Yok."}`, msg), msg.channel.id);
   });
   msg.react(client.react("duztik")).catch(() => { });
+      client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
 };
 
 module.exports.help = {
