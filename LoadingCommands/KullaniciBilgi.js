@@ -1,4 +1,4 @@
-module.exports.operate = async ({client, msg, author, member}, Discord = require("discord.js"), moment = require("moment"), {MessageEmbed} = require("discord.js")) => {
+module.exports.operate = async ({client, msg, author, member, auth}, Discord = require("discord.js"), moment = require("moment"), {MessageEmbed} = require("discord.js")) => {
     let mention = msg.author;
     if(msg.mentions.members.first()) mention = msg.mentions.members.first().user;
     let mentionMember = msg.guild.members.cache.get(mention.id);
@@ -43,6 +43,7 @@ ${flags}
 .setTimestamp()
 .setColor(client.renk[Math.floor(Math.random() * client.renk.length)])
 msg.channel.send(xd)
+        client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
 };
  
 module.exports.help = {

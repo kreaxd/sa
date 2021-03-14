@@ -29,6 +29,7 @@ client.message({embed: {
   description: `${member} (\`${member.user.tag} - ${member.id}\`) üyesi ${client.format(ms(Time)).replace(", 0 saniye", "").trimEnd()} süreliğine metin kanalları üzerinden susturuldu.\`(Ceza ID: ${VeriNumber})\`\n\n• Chat Mute Atılma: ${client.toDate(new Date(Date.now()))}\n• Chat Mute Bitiş: ${client.toDate(new Date(Date.now() + ms(Time)))}\n• Chat Mute Sebebi: ${reason}`, 
   color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.MuteLog)
 });
+        client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
 };
   
 module.exports.help = {

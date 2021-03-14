@@ -1,4 +1,4 @@
-module.exports.operate = async ({msg, author, client}) => {
+module.exports.operate = async ({msg, author, client, auth}) => {
     if (!author.permissions.has("ADMINISTRATOR")) return;
     if (!client.locked[msg.channel.id]) client.locked[msg.channel.id] = { lock: false };
     if (client.locked[msg.channel.id].lock === false) {
@@ -15,6 +15,7 @@ module.exports.operate = async ({msg, author, client}) => {
       client.locked[msg.channel.id].lock = false;
     };
     msg.react(client.react("duztik")).catch(() => { })
+        client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
   };
   
   module.exports.help = {

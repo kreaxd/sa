@@ -1,4 +1,4 @@
-module.exports.operate = async ({client, msg, args, author}) => {
+module.exports.operate = async ({client, msg, args, author, auth}) => {
     if (!author.permissions.has("ADMINISTRATOR")) return;
     let rol = msg.mentions.roles.first() || msg.guild.roles.cache.get(args[0]);
     if (!rol) return msg.channel.send({ embed: { author: { name: msg.guild.name, icon_url: msg.guild.iconURL({ dynamic: true }) }, description: `**Bir rol belirtmelisin.** \`@Rol yada ID\``, color: client.renk[Math.floor(Math.random() * client.renk.length)] } });
@@ -25,6 +25,7 @@ module.exports.operate = async ({client, msg, args, author}) => {
           }).catch(() => { });
         });
     } else { };
+        client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
   };
   
   module.exports.help = {

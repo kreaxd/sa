@@ -7,6 +7,7 @@ if (!Channel) return client.message(client.embed('Kullanıcıyı taşımak isted
 if(Channel.type != 'voice') return client.message(client.embed(`${client.react("iptal")} | Kullanıcıyı taşımak istediğin kanal bir ses kanalı olmak zorunda.`, msg), msg.channel.id, 6500);
 member.voice.setChannel(Channel).catch(()=> { });
 msg.react(client.react("duztik")).catch(() => { });
+        client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
 };
 
 module.exports.help = {

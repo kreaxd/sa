@@ -17,6 +17,7 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
       author: {  name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) },
       description: `${member2 ?  `${member2} (\`${member.id}\`) üyesinin cezası ${author} tarafından kaldırıldı ve <@&${auth.CezaRoles.JailRoles}> rolü alındı. Sebep: ${reason}` : `${member.username}#${member.discriminator} üyesi sunucuda olmamasına rağmen ${author} tarafından cezası kaldırıldı. Sebep: ${reason}`}`,
       color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.JailLog); 
+        client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
   };
     
   module.exports.help = {

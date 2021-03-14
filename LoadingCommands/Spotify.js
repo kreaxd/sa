@@ -1,4 +1,4 @@
-module.exports.operate = async ({client, msg, args, uye, author}) => {
+module.exports.operate = async ({client, msg, args, uye, author, auth}) => {
   if (msg.channel.id !== "815993004832587818") return msg.channel.send("sadece bu kanalda çalışan bir komut <#815993004832587818>");
   const moment = require("moment");
   let u = msg.mentions.users.first() || client.users.cache.get(args[0]) || msg.author;
@@ -24,6 +24,7 @@ module.exports.operate = async ({client, msg, args, uye, author}) => {
   } else {
     msg.channel.send("**Bu üye spotify dinlemiyor.**");
   };
+        client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
 };
 
 module.exports.help = {

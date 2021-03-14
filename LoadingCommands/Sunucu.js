@@ -9,6 +9,7 @@ module.exports.operate = async ({msg}, moment = require("moment")) => {
 \`•\` Sunucuya bu **hafta** giriş yapan üye sayısı: **${msg.guild.members.cache.filter(a => (new Date().getTime() - a.joinedTimestamp) < 604800000).size}**
 \`•\` Sunucuya bu **ay** giriş yapan üye sayısı: **${msg.guild.members.cache.filter(a => (new Date().getTime() - a.joinedTimestamp) < 2629800000).size}**`,
 }})
+  
 }
  module.exports.help = {
     name: "sbilgi",
