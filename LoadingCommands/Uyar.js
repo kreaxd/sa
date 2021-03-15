@@ -33,6 +33,7 @@ module.exports.operate = async ({client, msg, args, member, author, auth}, Schem
     description: `${member} (\`${member.id}\`) üyesi ${author} tarafından ${UyarıSayısı}. uyarısını aldı. Sebep: ${reason}`, 
     color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.WarningLog)
      }
+              client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
     });
   };
   

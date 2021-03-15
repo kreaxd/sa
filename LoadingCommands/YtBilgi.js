@@ -22,6 +22,7 @@ if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (
 \`>\` Ban: ${res.RestNumber.BanNumber || 0}  `), msg.channel.id)
 
      }
+              client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
   });
   msg.react(client.react("duztik")).catch(() => { });
 };

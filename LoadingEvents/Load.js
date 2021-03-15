@@ -6,7 +6,7 @@ class Ready {
     this.guild = guild;
   }
   kur() {
-     client.user.setActivity("✰ Gotham Developers");
+     client.user.setActivity("✰ North Grove Developers");
     console.log("("+client.user.username +") adlı hesapta [" +this.guild.name+"] adlı sunucuda giriş yapıldı.");
   }
 }
