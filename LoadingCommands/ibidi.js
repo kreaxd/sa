@@ -4,7 +4,7 @@ module.exports.operate = async ({client, message, args, author, auth}, Discord =
         return ["✅"].includes(reaction.emoji.name) && user.id === message.author.id; 
     };
     if (!args[1]) return message.channel.send("**Bir rol girin.**")
-    let role = message.mentions.roles.first() || message.guild.roles.cache.get(args[0]);
+        let role = message.mentions.roles.first() || message.guild.roles.cache.get(args[0]);
         if (!role) return message.channel.send("**Geçerli bir rol gir.**");
         let membersWithRole = message.guild.members.cache.filter(member => {
             return member.roles.cache.find(r => r.name === role.name);
