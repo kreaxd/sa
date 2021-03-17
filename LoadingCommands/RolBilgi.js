@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, author, auth}, Discord = require("discord.js"), moment = require("moment")) => {
-    if (msg.channel.id !== "820621002101882891") return msg.channel.send("sadece bu kanalda çalışan bir komut <#820621002101882891>");
+    if (msg.channel.id !== "820553159902625832") return msg.channel.send("sadece bu kanalda çalışan bir komut <#820553159902625832>");
     if (!author.permissions.has("ADMINISTRATOR")) return;
     let rol = msg.mentions.roles.first() || msg.guild.roles.cache.get(args[0]);
     if (!rol) return msg.channel.send({ embed: { author: { name: msg.guild.name, icon_url: msg.guild.iconURL({ dynamic: true }) }, description: `**Bir rol belirtmelisin.** \`@Rol yada ID\``, color: client.renk[Math.floor(Math.random() * client.renk.length)] } });
@@ -20,6 +20,6 @@ module.exports.operate = async ({client, msg, args, author, auth}, Discord = req
   };
   
   module.exports.help = {
-    name: "rol",
-    alias: ["ibidibye"]
+    name: "rolbilgi",
+    alias: ["ibidibye","rol-bilgi"]
   };
