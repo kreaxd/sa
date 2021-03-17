@@ -24,6 +24,7 @@ module.exports.operate = async ({client, msg, args, auth, author, member}, Schem
     };
   };
   client.Kayıt(msg, args, member, author, auth.Perms.Erkek, auth.Perms.Kız, auth);
+  client.message(client.embed(`K`,msg), auth.Logs.KayıtLog, 6500);
   Schema.findOne({SunucuID: msg.guild.id, userID: author.id}, async (err,res) => {
     if (!res) { new Schema({SunucuID: msg.guild.id, userID: author.id, Authorized: { Man: 1, Members: [member.id]}}).save()
   } else {
