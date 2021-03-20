@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, auth}, {MessageEmbed} = require("discord.js")) => {
-     if(!msg.member.roles.cache.has("818478992092954714") && !msg.member.roles.cache.has("805875752075001868")) return 
+     if(!msg.member.roles.cache.has("821835566889828432") && !msg.member.roles.cache.has("805875752075001868")) return 
      let emb = new MessageEmbed().setColor(`2F3136`).setAuthor(`${msg.author.tag}`, msg.author.avatarURL({dynamic: true}))
      let member = msg.guild.member(msg.mentions.users.first() || msg.guild.members.cache.get(args[1]));
      if(!member) return msg.channel.send(emb.setDescription(`Lütfen bir üyeyi etiketle ve tekrar dene!`))
