@@ -16,7 +16,7 @@ module.exports.operate = async ({client, msg, args, author, auth}, Discord = req
       msg.channel.send(`**${rol} Rolünün ses bilgileri;**\n・Rolün rengi:\`${rol.hexColor}\`\n・Rol ID: ${rol.id}\n・Roldeki kişi sayısı: \`${rol.members.size}\`\n・Rolün oluşturulma tarihi: \`${moment(rol.createdAt).format('D MMMM YYYY')}\`\n・・・・・・・・・・・・・・・・・・・\n**Roldeki kişiler:**\n${r.join("\n")}`)
         });
     };
-        client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
+    client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
   };
   
   module.exports.help = {

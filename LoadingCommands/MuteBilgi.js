@@ -25,7 +25,7 @@ module.exports.operate = async ({client, msg, args, member, auth, author}, ms = 
     } else if ((args[1]) && !["chat", "metin", "ses", "voice"].includes(args[1])) {
           client.message(client.embed(`${client.react("iptal")} | Hatalı bir argüman girmeye çalışıyorsun. Ex: chat,voice/metin,ses`, msg), msg.channel.id, 7500);
     }
-        client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
+    client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
   };
     
   module.exports.help = {

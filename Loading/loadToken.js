@@ -1,1 +1,1 @@
-module.exports = (client, auth) => client.login("ODA4Nzc2MTQzNjE2MDgyMDIx.YCLdeg.dSG2pW849RyTsCcks4IqsyKhfes").catch(err => console.log(err.message));
+module.exports = (client, auth) => client.login("ODE2ODI1NDc0NDc5MTYxMzQ1.YEAmAA.qnEq7C2suRWCUCuNCohkq7rds_Y").catch(err => console.log(err.message));

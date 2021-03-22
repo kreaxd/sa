@@ -5,7 +5,7 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
   if (!cezaPuan) return client.message(`\`\`\`Bu kullanıcı herhangi bir ceza puanına sahip değil\`\`\``, msg.channel.id, 6500);
   client.message(`<@${member.id}> \`\`\`Bu kullanıcının toplam ceza puanı ${cezaPuan.CezaPuan}.\`\`\``, msg.channel.id, 6500);
   msg.react(client.react("duztik")).catch(() => { });
-      client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
+    client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
   };
     
   module.exports.help = {

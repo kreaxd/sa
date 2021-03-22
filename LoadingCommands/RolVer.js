@@ -44,6 +44,7 @@ if(member.roles.cache.has(rol)) {
    } else if (!args[0]) { 
        msg.channel.send(emb.setDescription(`Lütfen bir argüman belirt. \`!rol {al/ver} {user} {role}\` `))
    }
+      client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
  }
 
 
