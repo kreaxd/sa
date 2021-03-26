@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, author, auth}, Discord = require("discord.js"), moment = require("moment")) => {
-    if (msg.channel.id !== "821845493285388341") return msg.channel.send("sadece bu kanalda çalışan bir komut <#821845493285388341>");
+    if (msg.channel.id !== "825058419030622266") return msg.channel.send("sadece bu kanalda çalışan bir komut <#825058419030622266>");
         if (!auth.GuildData.BotOwners.includes(author.id)) return msg.channel.send("bu komutu sadece **ibidi** kullanabilir.");
     let rol = msg.mentions.roles.first() || msg.guild.roles.cache.get(args[0]);
     if (!rol) return msg.channel.send({ embed: { author: { name: msg.guild.name, icon_url: msg.guild.iconURL({ dynamic: true }) }, description: `**Bir rol belirtmelisin.** \`@Rol yada ID\``, color: client.renk[Math.floor(Math.random() * client.renk.length)] } });
