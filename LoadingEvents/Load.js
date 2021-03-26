@@ -6,7 +6,7 @@ class Ready {
     this.guild = guild;
   }
   kur() {
-     client.user.setActivity("Westa ❤️ ibidi");
+     client.user.setActivity("Rewind ❤️ ibidi.");
     console.log("("+client.user.username +") adlı hesapta [" +this.guild.name+"] adlı sunucuda giriş yapıldı.");
   }
 }
