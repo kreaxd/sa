@@ -1,8 +1,14 @@
 module.exports.operate = async ({client, msg, args, author, auth}, {MessageEmbed} = require("discord.js")) => {
  if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
-            var etiket =  msg.guild.members.cache.filter(s => !s.bot).filter(member => member.user.discriminator == "1485").size;
+    const etiket =  msg.guild.members.cache.filter(s => !s.bot).filter(member => member.user.discriminator == "1485").size;
     const MemberSize = msg.guild.memberCount;
     const TaglıSize = msg.guild.members.cache.filter(u => u.user.username.includes(auth.Tags.RealTag)).size;
+    const TaglıSize2 = msg.guild.members.cache.filter(u => u.user.username.includes("Réwind")).size;
+    const TaglıSize3 = msg.guild.members.cache.filter(u => u.user.username.includes("Rèwînd")).size;
+    const TaglıSize4 = msg.guild.members.cache.filter(u => u.user.username.includes("Rewînd")).size;
+    const TaglıSize5 = msg.guild.members.cache.filter(u => u.user.username.includes("rewind")).size;
+    const TaglıSize6 = msg.guild.members.cache.filter(u => u.user.username.includes("réwind")).size;
+    const TaglıSize7 = msg.guild.members.cache.filter(u => u.user.username.includes("réwînd")).size;
     const OnlineSize = msg.guild.members.cache.filter(u => u.presence.status !== "offline").size;
     const VoiceSize = msg.guild.channels.cache.filter(c => c.type === "voice").map(c=> c.members.size).reduce((a,b) => a+b) || 0;
     const boost = msg.guild.premiumSubscriptionCount
@@ -10,8 +16,15 @@ module.exports.operate = async ({client, msg, args, author, auth}, {MessageEmbed
       msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
 \`•\` Sunucumuzda toplam **${MemberSize}** üye var.
 \`•\` Sunucumuzda toplam **${OnlineSize}** çevrimiçi üye var.
-\`•\` Toplam **${TaglıSize}** kişi tagımıza sahip.
-\`•\` Toplam **${etiket}** \`(Rewind#1845)\`[<@&823593190434799677>] kişi etiketimize sahip.
+\`•\` Toplam 
+Rewind: **${TaglıSize}**
+Réwind: **${TaglıSize2}**
+Rèwînd: **${TaglıSize3}**
+Rewînd: **${TaglıSize4}**
+rewind: **${TaglıSize5}**
+réwind: **${TaglıSize6}**
+réwînd: **${TaglıSize7}**
+\`•\` Toplam **${etiket}** \`(#1485)\` etiketimizi alan taglı üyemiz var.
 \`•\` Sunucumuzda toplam **${boost}** boost bulunmakta. **(${boostlevel}. seviye)**
 \`•\` Seste toplam **${VoiceSize}** kullanıcı var.`))
     msg.react(client.react("duztik")).catch(() => { }); // .setThumbnail(msg.guild.iconURL({dynamic: true}))
