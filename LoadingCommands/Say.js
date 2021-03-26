@@ -16,14 +16,7 @@ module.exports.operate = async ({client, msg, args, author, auth}, {MessageEmbed
       msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
 \`•\` Sunucumuzda toplam **${MemberSize}** üye var.
 \`•\` Sunucumuzda toplam **${OnlineSize}** çevrimiçi üye var.
-\`•\` Toplam 
-Rewind: **${TaglıSize}**
-Réwind: **${TaglıSize2}**
-Rèwînd: **${TaglıSize3}**
-Rewînd: **${TaglıSize4}**
-rewind: **${TaglıSize5}**
-réwind: **${TaglıSize6}**
-réwînd: **${TaglıSize7}**
+\`•\` Toplam \`Rewind:\` **${TaglıSize}** - \`Réwind:\` **${TaglıSize2}** - \`Rèwînd:\` **${TaglıSize3}** - \`Rewînd:\` **${TaglıSize4}** - \`rewind:\` **${TaglıSize5}** - \`réwind:\` **${TaglıSize6}** - \`réwînd:\` **${TaglıSize7}**
 \`•\` Toplam **${etiket}** \`(#1485)\` etiketimizi alan taglı üyemiz var.
 \`•\` Sunucumuzda toplam **${boost}** boost bulunmakta. **(${boostlevel}. seviye)**
 \`•\` Seste toplam **${VoiceSize}** kullanıcı var.`))
