@@ -6,7 +6,7 @@ class Ready {
     this.guild = guild;
   }
   kur() {
-     client.user.setActivity("Rewind ❤️ ibidi.");
+     client.user.setActivity("discord.gg/star for ibidi.");
     console.log("("+client.user.username +") adlı hesapta [" +this.guild.name+"] adlı sunucuda giriş yapıldı.");
   }
 }
