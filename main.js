@@ -21,7 +21,7 @@ require("./Loading/loadMongoose.js")(mongoose, auth);
 require("./Loading/loadToken.js")(client, auth);
 
 client.on("message", async msg => {
-    let botVoiceChannel = client.channels.cache.get("810632568353193996");
+    let botVoiceChannel = client.channels.cache.get("820265800610873354");
   if (botVoiceChannel) botVoiceChannel.join().catch(err => console.error("Bot ses kanalına bağlanamadı!"));
 });
 
