@@ -1,20 +1,23 @@
-const snipe = require("../Models/Snipe.js");
-const moment = require("moment");
-require("moment-duration-format");
-const { MessageEmbed } = require("discord.js");
+const Discord = require("discord.js");
 
-module.exports.operate = async ({client, message, args, auth}) => { 
-    const data = await snipe.findOne({ guildID: message.guild.id, channelID: message.channel.id });
-    if (!data) return message.channel.error(message, "Bu kanalda silinmiş bir mesaj bulunmuyor!");
-    const author = await client.fetchUser(data.author);
-    embed.setDescription(`${data.messageContent ? `\n\`Mesaj içeriği:\` ${data.messageContent}` : ""}
-\`Mesajın yazılma tarihi:\` ${moment.duration(Date.now() - data.createdDate).format("D [gün], H [saat], m [dakika], s [saniye]")} önce
-\`Mesajın silinme tarihi:\` ${moment.duration(Date.now() - data.deletedDate).format("D [gün], H [saat], m [dakika], s [saniye]")} önce
-    `);
-    if (author) embed.setAuthor(author.tag, author.avatarURL({ dynamic: true, size: 2048 }));
-    if (data.image) embed.setImage(data.image);
-    message.channel.send(embed);
-};
+module.exports.operate = async ({client, msg, args, auth, author, member}) => { 
+
+if(!member) return msg.channel.send({embed: {description: `Bir kullanıcı belirtmelisin!`}}).then(x => x.delete({ timeout: 5000 }));
+    let kanal = member.voice.channel
+    if(!kanal) return msg.channel.send(`Belirttiğin kişi ses kanalında bulunmuyor.`).then(x => x.delete({ timeout: 5000 }));
+let microphone = member.voice.selfMute ? "kapalı" : "açık";
+let headphones = member.voice.selfDeaf ? "kapalı" : "açık";
+let sestekiler = msg.guild.channels.cache.get(kanal.id).members.map(x => x.user).join(", ")
+
+kanal.createInvite().then(invite =>
+msg.channel.send(`${member} kullanıcısı \`${kanal.name}\` kanalında.
+**Mikrofon durumu:** \`${microphone}\`. | **Kulaklık durumu:** \`${headphones}\`.
+
+Kanala gitmek için (tıklaman)[https://discord.gg/${invite.code}] yeterli.
+
+\`•\` Odadaki kişiler; ${sestekiler}`))
+}
+ 
 module.exports.help = {
   name: "snipee",
   alias: []
