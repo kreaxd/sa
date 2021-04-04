@@ -3,6 +3,10 @@ module.exports.operate = async ({client, msg, args, member, author, auth}) => {
       let kanal = member.voice.channel
     if (!member) return client.message(client.noMember(msg), msg.channel.id, 5000);
   let sestekiler = msg.guild.channels.cache.get(kanal.id).members.map(x => x.user).join(", ")
+  if (!sestekiler) {
+          client.message(client.embed(`${client.react("iptal")} | ${member} adlı kullanıcı herhangi bir ses kanalında bulunmuyor.`, msg), msg.channel.id, 6000);
+
+  }
     if (!member.voice.channel) {
       client.message(client.embed(`${client.react("iptal")} | ${member} adlı kullanıcı herhangi bir ses kanalında bulunmuyor.`, msg), msg.channel.id, 6000);
     } else { 
