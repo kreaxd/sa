@@ -29,6 +29,7 @@ client.message({embed: {
     description: `${member} (\`${member.user.tag} - ${member.id}\`) üyesi ${client.format(ms(Time)).replace(", 0 saniye", "").trimEnd()} süreliğine ses kanalları üzerinden susturuldu.\`(Ceza ID: ${VeriNumber})\`\n\n• Ses Mute Atılma: ${client.toDate(new Date(Date.now()))}\n• Ses Mute Bitiş: ${client.toDate(new Date(Date.now() + ms(Time)))}\n• Ses Mute Sebebi: ${reason}`,
     color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.MuteLog); 
 });
+    msg.react(client.react("duztik")).catch(() => { });
     client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
 };
 
