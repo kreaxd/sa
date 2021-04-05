@@ -1,12 +1,12 @@
-module.exports.operate = async ({client, message, args, author, auth}, Discord = require("discord.js"), moment = require("moment")) => {
+module.exports.operate = async ({client, msg, args, author, auth}, Discord = require("discord.js"), moment = require("moment")) => {
     if (!author.permissions.has("ADMINISTRATOR")) return;
  const filter = (reaction, user) => {
-        return ["✅"].includes(reaction.emoji.name) && user.id === message.author.id; 
+        return ["✅"].includes(reaction.emoji.name) && user.id === msg.author.id; 
     };
-    if (!args[1]) return message.channel.send("**Bir rol girin.**")
-        let role = message.mentions.roles.first() || message.guild.roles.cache.get(args[0]);
-        if (!role) return message.channel.send("**Geçerli bir rol gir.**");
-        let membersWithRole = message.guild.members.cache.filter(member => {
+          let role = msg.mentions.roles.first() || msg.guild.roles.cache.get(args[0]);
+    if (!args[0]) return msg.channel.send("**Bir rol girin.**")
+        if (!role) return msg.channel.send("**Geçerli bir rol gir.**");
+        let membersWithRole = msg.guild.members.cache.filter(member => {
             return member.roles.cache.find(r => r.name === role.name);
         }).map(member => {
             return member.user;
@@ -16,10 +16,10 @@ module.exports.operate = async ({client, message, args, author, auth}, Discord =
             false: "Hayır",
             true: "Evet"
         }
-    let sesteolmayan = message.guild.members.cache.filter(s => s.roles.cache.has(role.id)).filter(s => s.presence.status !== "offline").filter(s => !s.voice.channel).map(s => s).join(' ')
-    let sesteolan = message.guild.members.cache.filter(s => s.roles.cache.has(role.id)).filter(s => s.voice.channel).map(s => s).join(', ')
+    let sesteolmayan = msg.guild.members.cache.filter(s => s.roles.cache.has(role.id)).filter(s => s.presence.status !== "offline").filter(s => !s.voice.channel).map(s => s).join(' ')
+    let sesteolan = msg.guild.members.cache.filter(s => s.roles.cache.has(role.id)).filter(s => s.voice.channel).map(s => s).join(', ')
 
-        message.channel.send(`
+        msg.channel.send(`
 		Seste olan/olmayanları öğrenmek için tepkiye tıklayın
 Rol ismi: ${role.name}
 ID: ${role.id}
