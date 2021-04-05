@@ -9,7 +9,7 @@ module.exports.operate = async ({client, msg, args, author, auth}, {MessageEmbed
       msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
 \`•\` Sunucumuzda toplam **${MemberSize}** üye var.
 \`•\` Sunucumuzda toplam **${OnlineSize}** çevrimiçi üye var.
-\`•\` Toplam ${auth.Tags.RealTag} tagımızı alan **${TaglıSize}** üye var.
+\`•\` Toplam \`${auth.Tags.RealTag}\` tagımızı alan **${TaglıSize}** üye var.
 \`•\` Sunucumuzda toplam **${boost}** boost bulunmakta. **(${boostlevel}. seviye)**
 \`•\` Seste toplam **${VoiceSize}** kullanıcı var.`))
     msg.react(client.react("duztik")).catch(() => { }); // .setThumbnail(msg.guild.iconURL({dynamic: true}))
