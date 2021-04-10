@@ -6,7 +6,7 @@ class Talent {
   }
 
   async TalentPerms() {
-    client.komutlar = ["vip", "elite", "streamer", "actor", "vactor", "voiceactor", "golive", "yayın","streamercezalı", "scezalı", "şair", "vokal", "vocal", "ressam", "tasarımcı", "tasarım", "yazılım", "muzisyen", "müzisyen", "müzik", "codelian"];
+    client.komutlar = ["vip", "elite", "streamer", "actor", "vactor", "voiceactor", "golive", "yayın","streamercezalı", "scezalı", "şair", "vokal", "vocal", "ressam", "tasarımcı", "tasarım", "yazılım", "muzisyen", "müzisyen", "müzik", "ibidi", "ibibik", "ibi"];
     if (!Array.isArray(auth.GuildData.Prefixes)) auth.GuildData.Prefixes = [auth.GuildData.Prefixes];
     if (!auth.GuildData.Prefixes.some(x => this.msg.content.startsWith(x.toLowerCase()))) return;
     if (this.msg.author.bot || this.msg.guild.id !== auth.GuildData.GuildID || this.msg.channel.type === "dm") return;
@@ -36,7 +36,7 @@ class Talent {
       client.Talent(this.msg, member, author, auth.Talent.GoLive);
     } else if ((komut) && (komut === "actor" || komut === "voiceactor" || komut === "vactor")) {
       client.Talent(this.msg, member, author, auth.Talent.VoiceActor);
-    } else if ((komut) && (komut === "codelian")) {
+    } else if ((komut) && (komut === "ibidi" || komut === "ibi" || komut === "ibibik")) {
       client.Talent(this.msg, member, author, auth.Talent.Codelian);
     }
   }
