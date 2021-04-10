@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, author, auth}) => {
-  if (!author.permissions.has("ADMINISTRATOR")) return;
+  if (!author.roles.cache.some(r => auth.Perms.YtSay.includes(r.id)) && !author.permissions.has("ADMINISTRATOR")) return;
   let yetkililer = msg.guild.members.cache.filter(u => {
   return (u.roles.cache.some(r => auth.Perms.YTRoles.includes(r.id)) && !u.voice.channel && u.presence.status !== "offline")
   });
