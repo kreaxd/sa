@@ -1,5 +1,5 @@
 module.exports.operate = ({client, msg, args, author, uye, auth}) => {
-  if (!author.permissions.has("ADMINISTRATOR")) return;
+if ((!author.roles.cache.some(r => auth.Perms.ToplantıÇek.includes(r.id))) || (!author.permissions.has("ADMINISTRATOR"))) return;
   if (!args[0]) return msg.channel.send({embed: {description:"**Bir kanal idsi girmelisin.**"}}).then(msj => msj.delete({ timeout: 5000 }));
   if (!args[1]) {
     let kanal = author.voice.channelID;

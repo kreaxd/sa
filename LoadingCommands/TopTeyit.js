@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, author, auth}, Database = require("../Models/Member.js")) => {
-  if (!author.permissions.has("MANAGE_ROLES")) return;
+if ((!author.roles.cache.some(r => auth.Perms.TagAldır.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
   Database.find({SunucuID: msg.guild.id}, async (err, res) => {
     let listed = res.filter(x => ((x.Authorized.Woman + x.Authorized.Man) !== 0) && (msg.guild.members.cache.get(x.userID)) && ((msg.guild.members.cache.get(x.userID).permissions.has("ADMINISTRATOR")) || (msg.guild.members.cache.get(x.userID).roles.cache.some(x => auth.Perms.YTRoles.includes(x.id))))).sort((x, y) => (y.Authorized.Man + y.Authorized.Woman) - (x.Authorized.Man + x.Authorized.Woman));
     if (!listed.length) return client.message(client.embed(`Sunucuda her hangi bir kayıt bulunamamaktadır.`, msg), msg.channel.id, 5000);

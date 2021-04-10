@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, author, auth}, {MessageEmbed} = require("discord.js")) => {
-  if (!author.permissions.has("ADMINISTRATOR")) return;
+  if (!auth.GuildData.ToplantıÇek.includes(author.id) && !author.permissions.has("ADMINISTRATOR")) return;
     const MemberSize = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Perms.YTRoles.includes(x.id)))).size || 0;
     const TaglıSize = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Perms.YTRoles.includes(x.id))) && (u.user.username.includes(auth.Tags.RealTag))).size || 0;
     const OnlineSize = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Perms.YTRoles.includes(x.id))) && (u.presence.status !== "offline")).size;
