@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args,auth, author}) => {
-    if (!author.permissions.has("ADMINISTRATOR")) return;
+    if ((!author.roles.cache.some(r => auth.Perms.Rolsuz.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
     let rolsuz = msg.guild.members.cache.filter(m => (m.roles.cache.size) == 1)
     if(args[0] == "ver") {
       rolsuz.array().forEach((member,index) => {
