@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, auth}, {MessageEmbed} = require("discord.js")) => {
-     if(!msg.member.roles.cache.has("819917141896986665") && !msg.member.roles.cache.has("805875752075001868")) return 
+     if(!msg.member.roles.cache.has("826924665972588564") && !msg.member.roles.cache.has("826924665972588565")) return 
      let emb = new MessageEmbed().setColor(`2F3136`).setAuthor(`${msg.author.tag}`, msg.author.avatarURL({dynamic: true}))
      let member = msg.guild.member(msg.mentions.users.first() || msg.guild.members.cache.get(args[1]));
      if(!member) return msg.channel.send(emb.setDescription(`Lütfen bir üyeyi etiketle ve tekrar dene!`))
@@ -7,7 +7,7 @@ module.exports.operate = async ({client, msg, args, auth}, {MessageEmbed} = requ
      if(!rol) return msg.channel.send(`Lütfen bir rol belirt ve tekrar dene!`)
   
      if (!msg.member.hasPermission('ADMINISTRATOR')) {
-     if (rol.id === "805875752075001873") return msg.channel.send(`${msg.author}`, emb.setDescription(`Yetki rolünü (<@&805875752075001873>) veremezsiniz/alamazsınız!`)).then(msg.react('767841882864222229')).then(x => x.delete({timeout: 5000}))
+     if (rol.id === "826924665909280811") return msg.channel.send(`${msg.author}`, emb.setDescription(`Yetki rolünü (<@&826924665909280811>) veremezsiniz/alamazsınız!`)).then(msg.react('767841882864222229')).then(x => x.delete({timeout: 5000}))
      if (rol.id === "805875752087191626") return msg.channel.send(`${msg.author}`, emb.setDescription(`Yetki rolünü (<@&805875752087191626>) veremezsiniz/alamazsınız!`)).then(msg.react('767841882864222229')).then(x => x.delete({timeout: 5000}))
      if (rol.id === "805875752012349483") return msg.channel.send(`${msg.author}`, emb.setDescription(`Yetki rolünü (<@&805875752012349483>) veremezsiniz/alamazsınız!`)).then(msg.react('767841882864222229')).then(x => x.delete({timeout: 5000}))
      if (rol.id === "805875751940653157") return msg.channel.send(`${msg.author}`, emb.setDescription(`Yetki rolünü (<@&805875751940653157>) veremezsiniz/alamazsınız!`)).then(msg.react('767841882864222229')).then(x => x.delete({timeout: 5000}))
