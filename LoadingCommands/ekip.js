@@ -29,8 +29,13 @@ const ekip6 = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.
 const ekip6tag = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Ekip.Ekip5.includes(x.id))) && (u.user.username.includes(auth.Tags.RealTag))).size || 0;
 const ekip6ses = msg.guild.members.cache.filter(c => (c.roles.cache.some(x => auth.Ekip.Ekip5.includes(x.id))) && (c.voice.channel)).size || 0;
 const ekip6onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Ekip.Ekip5.includes(x.id))) && (u.presence.status !== "offline")).size;
+  
+const ekip7 = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Ekip.Ekip5.includes(x.id)))).size || 0;
+const ekip7tag = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Ekip.Ekip5.includes(x.id))) && (u.user.username.includes(auth.Tags.RealTag))).size || 0;
+const ekip7ses = msg.guild.members.cache.filter(c => (c.roles.cache.some(x => auth.Ekip.Ekip5.includes(x.id))) && (c.voice.channel)).size || 0;
+const ekip7onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Ekip.Ekip5.includes(x.id))) && (u.presence.status !== "offline")).size;
   if (!args[0]) {
-        msg.channel.send({embed: {footer: `Tüm Ekip Bilgilerine Bakmak İçin .ekip tüm yazabilirsiniz.`,title: `Ekip Bilgilendirme;`,description: `Ekip Komutları:\n\n\`.ekip 1\`: <@&${auth.Ekip.Ekip1}>\n\`.ekip 2\`: <@&${auth.Ekip.Ekip2}>\n \`.ekip 3\`: <@&${auth.Ekip.Ekip3}>\n \`.ekip 4\`: <@&${auth.Ekip.Ekip4}>\n \`.ekip 5\`: <@&${auth.Ekip.Ekip5}>\n \`.ekip 6\`: <@&${auth.Ekip.Ekip5}>`}})
+        msg.channel.send({embed: {footer: `Tüm Ekip Bilgilerine Bakmak İçin .ekip tüm yazabilirsiniz.`,title: `Ekip Bilgilendirme;`,description: `Ekip Komutları:\n\n\`.ekip 1\`: <@&${auth.Ekip.Ekip1}>\n\`.ekip 2\`: <@&${auth.Ekip.Ekip2}>\n \`.ekip 3\`: <@&${auth.Ekip.Ekip3}>\n \`.ekip 4\`: <@&${auth.Ekip.Ekip4}>\n \`.ekip 5\`: <@&${auth.Ekip.Ekip5}>\n \`.ekip 6\`: <@&${auth.Ekip.Ekip6}>\n\`.ekip 7\`: <@&${auth.Ekip.Ekip7}>`}})
     } else if (["1"].includes(args[0])) {
   msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
 **<@&${auth.Ekip.Ekip1}>** Bilgileri;
@@ -71,13 +76,21 @@ const ekip6onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Seste toplam **${ekip5ses}** kullanıcı var.
 \`>\` Aktif olup seste olmayan **${ekip5onlineses}** kullanıcı var.
 `))
-        } else if (["6"].includes(args[0])) {
+  } else if (["6"].includes(args[0])) {
   msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
   **<@&${auth.Ekip.Ekip6}>** Bilgileri;
-\`>\` Ekipte toplam **${ekip5}** üye var.
-\`>\` Ekipte toplam sunucu tagını almış **${ekip5tag}** üye var.
-\`>\` Seste toplam **${ekip5ses}** kullanıcı var.
-\`>\` Aktif olup seste olmayan **${ekip5onlineses}** kullanıcı var.
+\`>\` Ekipte toplam **${ekip6}** üye var.
+\`>\` Ekipte toplam sunucu tagını almış **${ekip6tag}** üye var.
+\`>\` Seste toplam **${ekip6ses}** kullanıcı var.
+\`>\` Aktif olup seste olmayan **${ekip6onlineses}** kullanıcı var.
+`))
+  } else if (["7"].includes(args[0])) {
+  msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
+  **<@&${auth.Ekip.Ekip7}>** Bilgileri;
+\`>\` Ekipte toplam **${ekip7}** üye var.
+\`>\` Ekipte toplam sunucu tagını almış **${ekip7tag}** üye var.
+\`>\` Seste toplam **${ekip7ses}** kullanıcı var.
+\`>\` Aktif olup seste olmayan **${ekip7onlineses}** kullanıcı var.
 `))
      } else if (["tüm"].includes(args[0])) {
   msg.channel.send(new MessageEmbed().setAuthor(msg.guild.name , msg.guild.iconURL ({dynamic: true})).setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
