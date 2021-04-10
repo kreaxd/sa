@@ -11,7 +11,10 @@ x.save();
 });
 msg.guild.members.unban(user.id, `${author.tag} tarafından banı açıldı.`);
 msg.channel.send(user.tag + " adlı kullanıcının yasağı kaldırıldı.")
-client.message(`${user.tag} adlı kullanıcının banı başarılı bir şekilde kaldırıldı. Sebep: ${reasonn}\nBanı kaldıran kişi: ${author}`, auth.Logs.BanLog);
+      client.message({embed: { 
+      author: {  name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) },
+      description: `• Yasağı Kaldırılan Üye: ${user.tag} (\`${user.username}#${user.discriminator} - ${user.id}\`)\n• Yasağı Kaldıran Yetkili: ${author} (\`${author.id}\`)\n• Yasak Kaldırma Sebebi: (\`${reasonn}\`)`,
+      color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.BanLog); 
 msg.react(client.react("duztik")).catch(() => { });
 }).catch(err => { msg.channel.send("**Hata**: " + err.message);                 
 });
