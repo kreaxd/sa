@@ -110,6 +110,12 @@ const ekip6onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Ekipte toplam sunucu tagını almış **${ekip5tag}** üye var.
 \`>\` Seste toplam **${ekip5ses}** kullanıcı var.
 \`>\` Aktif olup seste olmayan **${ekip5onlineses}** kullanıcı var.
+
+**<@&${auth.Ekip.Ekip6}>** Bilgileri;
+\`>\` Ekipte toplam **${ekip6}** üye var.
+\`>\` Ekipte toplam sunucu tagını almış **${ekip6tag}** üye var.
+\`>\` Seste toplam **${ekip6ses}** kullanıcı var.
+\`>\` Aktif olup seste olmayan **${ekip5onlineses}** kullanıcı var.
 `))
     };  
     client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
