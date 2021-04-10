@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, auth, author}) => { 
-  if (!author.hasPermission("ADMINISTRATOR")) return;
+  if (!author.roles.cache.some(r => auth.Perms.Sil.includes(r.id)) && !author.hasPermission("ADMINISTRATOR")) return;
   if (!args[0] || isNaN(args[0])) return;
   await msg.delete()
   let sayi = Number(args[0]);

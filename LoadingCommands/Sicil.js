@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, author, cfg, auth}, fetch = require("node-fetch"), Database = require("../Models/Restriction.js"), ms = require("ms")) => { 
-if (!author.hasPermission("MANAGE_ROLES")) return;
+if (!author.roles.cache.some(r => auth.Perms.Sicil.includes(r.id)) && !author.hasPermission("ADMINISTRATOR")) return;
 let member = (msg.mentions.users.first()) || await (await fetch(`https://discord.com/api/users/${args[0]}`, {method:'GET', headers: {'Authorization': 'Bot ' + client.token}})).json();
   Database.find({userID: member.id}, async (err, res) => {
     if (res.length <= 0) return client.message(client.embed(`${client.react("iptal")} | Kullanıcının ceza listesinde herhangi bir ceza bulunmuyor!`, msg), msg.channel.id, 5500);
