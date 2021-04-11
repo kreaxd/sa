@@ -1,5 +1,4 @@
 module.exports.operate = async ({client, msg, args, member, author, auth}) => {
-    if (!author.permissions.has("ADMINISTRATOR")) return;
       let kanal = member.voice.channel
     if (!member) return client.message(client.noMember(msg), msg.channel.id, 5000);
   let sestekiler = msg.guild.channels.cache.get(kanal.id).members.map(x => x.user).join(", ")
