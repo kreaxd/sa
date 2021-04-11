@@ -1,5 +1,5 @@
 module.exports.operate = async ({msg, author, client, auth}) => {
-    if (r => auth.Perms.Lock.includes(r.id) && !author.permissions.has("ADMINISTRATOR")) return;
+    if (!author.permissions.has("ADMINISTRATOR")) return;
     if (!client.locked[msg.channel.id]) client.locked[msg.channel.id] = { lock: false };
     if (client.locked[msg.channel.id].lock === false) {
       client.message(`\`\`\`Kanal başarıyla kilitlendi.\`\`\``, msg.channel.id, 6500);
