@@ -26,7 +26,11 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
   msg.channel.send(client.embed(`${member2 ?  `${member2} üyesine <@&${auth.CezaRoles.JailRoles}> rolü verildi. (\`#${VeriNumber}\`)` : `${member.username}#${member.discriminator} üyesi sunucuda olmamasına rağmen cezalıya atıldı. (\`#${VeriNumber}\`)`}`, msg))
    client.message({embed: { 
       author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
-      description: `<@${member.id}> (\`${member.id}\`) üyesine <@&${auth.CezaRoles.JailRoles}> rolü ${author} tarafından verildi. Sebep: ${reason} (\`#${VeriNumber}\`)`,
+      description: `• Ceza ID: #${VeriNumber} \`#${VeriNumber}\`
+      • Jaile atılan üye: <@${member.id}> (\`${member.id}\`) 
+      • Verilen rol: <@&${auth.CezaRoles.JailRoles}>
+      • Jaile atan yetkili: ${author} (\`${author.id}\`)
+      • Sebep: \`${reason}\``,
       color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.JailLog); 
     });
     client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)

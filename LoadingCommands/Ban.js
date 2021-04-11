@@ -18,7 +18,10 @@ module.exports.operate = async ({client, msg, args,auth, author}, fetch = requir
         msg.channel.send(client.embed(`<@${member.id}> - (\`${member.id}\`) kullanıcısı **${reason}** sebebiyle sunucudan yasaklandı. ${member2 ? "" : `(**Kullanıcı sunucuda olmadığı için ceza veremedim fakat girdiği gibi yasaklanacak.**)`}`, msg));
     client.message({embed: { 
       author: {  name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) },
-      description: `• Ceza ID: \`#${VeriNumber}\`\n• Yasaklanan Üye: <@${member.id}> (\`${member.username}#${member.discriminator} - ${member.id}\`)\n• Yasaklayan Yetkili: ${author} (\`${author.id}\`)\n• Yasaklanma Sebebi: (\`${reason}\`)`,
+      description: `• Ceza ID: \`#${VeriNumber}\`
+      • Yasaklanan Üye: <@${member.id}> (\`${member.username}#${member.discriminator} - ${member.id}\`)
+      • Yasaklayan Yetkili: ${author} (\`${author.id}\`)
+      • Yasaklanma Sebebi: (\`${reason}\`)`,
       color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.BanLog); 
     });
     BanSize[author.id].kullanim++;
