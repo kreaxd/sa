@@ -1,6 +1,6 @@
 let Zaman = new Set();
 module.exports.operate = async ({client, msg, args, member ,author, auth}, Database = require("../Models/Member.js"),{MessageEmbed} = require("discord.js")) => {
-if ((!author.roles.cache.some(r => auth.Perms.TagAldır.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
+    if ((!author.roles.cache.some(r => auth.Perms.Snipeee.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
 if (!Zaman[author.id])
 Zaman[author.id] = { kullanim: 0};
 if (Zaman[author.id].kullanim >= 1) return client.message(client.embed(`3 dakikada bir kere bu komudu kullanabilirsin.`, msg), msg.channel.id, 6500);
