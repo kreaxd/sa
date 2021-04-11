@@ -4,10 +4,10 @@ module.exports.operate = async ({client, msg, author, member, auth}, Discord = r
     await member.roles.add(auth.YetkiliAlım.AltYetki);
     await member.roles.add(auth.YetkiliAlım.BaslangicYetki3);
     msg.react(client.react("duztik"));
-    await msg.channel.send(`${member}** adlı üye başarıyla Deneme Yetkisi rolü verilmiştir.**`);
+    await msg.channel.send(`${member}** adlı üye başarıyla **Shade** rolü verilmiştir.**`);
      client.message({embed: { 
       author: { name: msg.member.user.tag, icon_url:  msg.member.user.displayAvatarURL({dynamic:true}) }, 
-      description: `${author} yetkili tarafından ${member} adlı üyeye başarıyla **Deneme Yetkisi** rolü verilmiştir.`,
+      description: `${author} yetkili tarafından ${member} adlı üyeye başarıyla **Shade** rolü verilmiştir.`,
       color: client.renk[Math.floor(Math.random() * client.renk.length)]}}, auth.Logs.yetkiliLog); 
       await msg.channel.send(`${member} adlı kullanıcı aramıza katılmıştır. `, auth.Logs.yetkilichat);
     client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
