@@ -49,7 +49,9 @@ const ekip8onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
         \`.ekip always\`: <@&${auth.Ekip.Ekip5}>
         \`.ekip vensai\`: <@&${auth.Ekip.Ekip6}>
         \`.ekip 0004\`: <@&${auth.Ekip.Ekip7}>
-        \`.ekip Roy\`: <@&${auth.Ekip.Ekip8}>`}})
+        \`.ekip Roy\`: <@&${auth.Ekip.Ekip8}>
+        
+**Not:** Tüm ekiplerin istatistiklerini görmek için \`.ekip tüm\` komutunu kullanabilirsiniz.`}})
     } else if (["star"].includes(args[0])) {
   msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
 **<@&${auth.Ekip.Ekip1}>** Bilgileri;
