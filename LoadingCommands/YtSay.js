@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, author, auth}) => {
-  if (!author.roles.cache.some(r => auth.Perms.YtRoles.includes(r.id)) && !author.permissions.has("ADMINISTRATOR")) return;
+  if (!author.permissions.has("ADMINISTRATOR")) return;
   let yetkililer = msg.guild.members.cache.filter(u => {
   return (u.roles.cache.some(r => auth.Perms.YTRoles.includes(r.id)) && !u.voice.channel && u.presence.status !== "offline")
   });
@@ -13,7 +13,7 @@ module.exports.operate = async ({client, msg, args, author, auth}) => {
     msg.channel.send(`${member} adlı üyeye dmden mesaj atamıyorum. Müsait isen public odalara değil isen alone odalarına geçiş yapabilirsin.`)
     }))
   }
-    client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
+        client.channels.cache.get(auth.GuildData.Chats.KomutChat).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n**${auth.Reacts.star} ${msg.author.tag}**(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
 };
   
   module.exports.help = {
