@@ -6,7 +6,7 @@ class Talent {
   }
 
   async TalentPerms() {
-    client.komutlar = ["elite", "streamer", "actor", "vactor", "voiceactor", "golive", "yayın","streamercezalı", "scezalı", "şair", "vokal", "vocal", "ressam", "tasarımcı", "tasarım", "yazılım", "muzisyen", "müzisyen", "müzik", "ibidi", "ibibik", "ibi"];
+    client.komutlar = ["elite", "streamer", "actor", "vactor", "voiceactor", "golive", "yayın","streamercezalı", "scezalı", "şair", "vokal", "vocal", "ressam", "tasarımcı", "tasarım", "yazılım", "muzisyen", "müzisyen", "müzik"];
     if (!Array.isArray(auth.GuildData.Prefixes)) auth.GuildData.Prefixes = [auth.GuildData.Prefixes];
     if (!auth.GuildData.Prefixes.some(x => this.msg.content.startsWith(x.toLowerCase()))) return;
     if (this.msg.author.bot || this.msg.guild.id !== auth.GuildData.GuildID || this.msg.channel.type === "dm") return;
