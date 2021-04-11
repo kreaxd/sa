@@ -39,6 +39,11 @@ const ekip8 = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.
 const ekip8tag = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Ekip.Ekip8.includes(x.id))) && (u.user.username.includes(auth.Tags.RealTag))).size || 0;
 const ekip8ses = msg.guild.members.cache.filter(c => (c.roles.cache.some(x => auth.Ekip.Ekip8.includes(x.id))) && (c.voice.channel)).size || 0;
 const ekip8onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Ekip.Ekip8.includes(x.id))) && (u.presence.status !== "offline")).size;
+  
+  const ekip9 = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Ekip.Ekip9.includes(x.id)))).size || 0;
+const ekip9tag = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Ekip.Ekip9.includes(x.id))) && (u.user.username.includes(auth.Tags.RealTag))).size || 0;
+const ekip9ses = msg.guild.members.cache.filter(c => (c.roles.cache.some(x => auth.Ekip.Ekip9.includes(x.id))) && (c.voice.channel)).size || 0;
+const ekip9onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x => auth.Ekip.Ekip9.includes(x.id))) && (u.presence.status !== "offline")).size;
   if (!args[0]) {
         msg.channel.send({embed: {footer: `Tüm Ekip Bilgilerine Bakmak İçin .ekip tüm yazabilirsiniz.`,title: `Ekip Bilgilendirme;`,description: `Ekip Komutları:
         
@@ -50,6 +55,7 @@ const ekip8onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
         \`.ekip vensai\`: <@&${auth.Ekip.Ekip6}>
         \`.ekip 0004\`: <@&${auth.Ekip.Ekip7}>
         \`.ekip Roy\`: <@&${auth.Ekip.Ekip8}>
+        \`.ekip Row\`: <@&${auth.Ekip.Ekip9}>
         
 **Not:** Tüm ekiplerin istatistiklerini görmek için \`.ekip tüm\` komutunu kullanabilirsiniz.`}})
     } else if (["star"].includes(args[0])) {
@@ -116,6 +122,14 @@ const ekip8onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Seste toplam **${ekip8ses}** kullanıcı var.
 \`>\` Aktif olup seste olmayan **${ekip8onlineses}** kullanıcı var.
 `))
+      } else if (["row"].includes(args[0])) {
+  msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
+  **<@&${auth.Ekip.Ekip9}>** Bilgileri;
+\`>\` Ekipte toplam **${ekip9}** üye var.
+\`>\` Ekipte toplam sunucu tagını almış **${ekip9tag}** üye var.
+\`>\` Seste toplam **${ekip9ses}** kullanıcı var.
+\`>\` Aktif olup seste olmayan **${ekip9onlineses}** kullanıcı var.
+`))
      } else if (["tüm"].includes(args[0])) {
   msg.channel.send(new MessageEmbed().setAuthor(msg.guild.name , msg.guild.iconURL ({dynamic: true})).setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
 **<@&${auth.Ekip.Ekip1}>** Bilgileri;
@@ -165,6 +179,12 @@ const ekip8onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Ekipte toplam sunucu tagını almış **${ekip8tag}** üye var.
 \`>\` Seste toplam **${ekip8ses}** kullanıcı var.
 \`>\` Aktif olup seste olmayan **${ekip8onlineses}** kullanıcı var.
+
+**<@&${auth.Ekip.Ekip9}>** Bilgileri;
+\`>\` Ekipte toplam **${ekip9}** üye var.
+\`>\` Ekipte toplam sunucu tagını almış **${ekip9tag}** üye var.
+\`>\` Seste toplam **${ekip9ses}** kullanıcı var.
+\`>\` Aktif olup seste olmayan **${ekip9onlineses}** kullanıcı var.
 `))
     };  
     client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)

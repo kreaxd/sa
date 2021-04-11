@@ -2,7 +2,7 @@ module.exports.operate = async ({client, msg, author, member, auth}, Discord = r
     if ((!author.roles.cache.some(r => auth.YetkiliAlım.Yetkiler.includes(r.id))) && (!author.hasPermission("MANAGE_ROLES"))) return;
   if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
     await member.roles.add(auth.YetkiliAlım.AltYetki);
-    await member.roles.add(auth.YetkiliAlım.BaslangicYetki);
+    await member.roles.add(auth.YetkiliAlım.BaslangicYetki5);
     msg.react(client.react("duztik"));
     await msg.channel.send(`${member}** adlı üye başarıyla Deneme Yetkisi rolü verilmiştir.**`);
      client.message({embed: { 
@@ -14,6 +14,6 @@ module.exports.operate = async ({client, msg, author, member, auth}, Discord = r
   };
 
   module.exports.help = {
-    name: "rise",
-    alias: ["ytver"]
+    name: "shadow",
+    alias: ["ytver4"]
   };
