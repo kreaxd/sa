@@ -4,6 +4,10 @@ module.exports.operate = async ({client, msg, author, member, auth}, Discord = r
     await member.roles.add(auth.YetkiliAlım.AltYetki);
     await member.roles.add(auth.YetkiliAlım.BaslangicYetki5);
     await member.roles.add(auth.YetkiliAlım.BotCommands);
+    await member.roles.remove(auth.YetkiliAlım.BaslangicYetki1);
+    await member.roles.remove(auth.YetkiliAlım.BaslangicYetki2);
+    await member.roles.remove(auth.YetkiliAlım.BaslangicYetki3);
+    await member.roles.remove(auth.YetkiliAlım.BaslangicYetki4);
     msg.react(client.react("duztik"));
     await msg.channel.send(`${member}** adlı üye başarıyla **Shadow** rolü verilmiştir.**`);
      client.message({embed: { 

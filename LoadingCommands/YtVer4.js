@@ -3,6 +3,9 @@ module.exports.operate = async ({client, msg, author, member, auth}, Discord = r
   if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
     await member.roles.add(auth.YetkiliAlım.AltYetki);
     await member.roles.add(auth.YetkiliAlım.BaslangicYetki4);
+    await member.roles.remove(auth.YetkiliAlım.BaslangicYetki1);
+    await member.roles.remove(auth.YetkiliAlım.BaslangicYetki2);
+    await member.roles.remove(auth.YetkiliAlım.BaslangicYetki3);
     msg.react(client.react("duztik"));
     await msg.channel.send(`${member}** adlı üye başarıyla **Dreid** rolü verilmiştir.**`);
      client.message({embed: { 
