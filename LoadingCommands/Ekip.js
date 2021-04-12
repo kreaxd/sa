@@ -50,7 +50,6 @@ const ekip9onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
         \`.ekip star\`: <@&${auth.Ekip.Ekip1}>
         \`.ekip rose\`: <@&${auth.Ekip.Ekip2}>
         \`.ekip hate\`: <@&${auth.Ekip.Ekip3}>
-        \`.ekip fuerte\`: <@&${auth.Ekip.Ekip4}>
         \`.ekip always\`: <@&${auth.Ekip.Ekip5}>
         \`.ekip vensai\`: <@&${auth.Ekip.Ekip6}>
         \`.ekip 0004\`: <@&${auth.Ekip.Ekip7}>
