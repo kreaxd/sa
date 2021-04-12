@@ -49,7 +49,6 @@ const ekip9onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
         
         \`.ekip star\`: <@&${auth.Ekip.Ekip1}>
         \`.ekip rose\`: <@&${auth.Ekip.Ekip2}>
-        \`.ekip hate\`: <@&${auth.Ekip.Ekip3}>
         \`.ekip always\`: <@&${auth.Ekip.Ekip5}>
         \`.ekip vensai\`: <@&${auth.Ekip.Ekip6}>
         \`.ekip 0004\`: <@&${auth.Ekip.Ekip7}>
@@ -72,22 +71,6 @@ const ekip9onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Ekipte toplam sunucu tagını almış **${ekip2tag}** üye var.
 \`>\` Seste toplam **${ekip2ses}** kullanıcı var.
 \`>\` Aktif olup seste olmayan **${ekip2onlineses}** kullanıcı var.
-`))
-    } else if (["hate"].includes(args[0])) {
-  msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
-  **<@&${auth.Ekip.Ekip3}>** Bilgileri;
-\`>\` Ekipte toplam **${ekip3}** üye var.
-\`>\` Ekipte toplam sunucu tagını almış **${ekip3tag}** üye var.
-\`>\` Seste toplam **${ekip3ses}** kullanıcı var.
-\`>\` Aktif olup seste olmayan **${ekip3onlineses}** kullanıcı var.
-`))
-    } else if (["fuerte"].includes(args[0])) {
-  msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
-  **<@&${auth.Ekip.Ekip4}>** Bilgileri;
-\`>\` Ekipte toplam **${ekip4}** üye var.
-\`>\` Ekipte toplam sunucu tagını almış **${ekip4tag}** üye var.
-\`>\` Seste toplam **${ekip4ses}** kullanıcı var.
-\`>\` Aktif olup seste olmayan **${ekip4onlineses}** kullanıcı var.
 `))
    } else if (["always"].includes(args[0])) {
   msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
@@ -142,18 +125,6 @@ const ekip9onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Ekipte toplam sunucu tagını almış **${ekip2tag}** üye var.
 \`>\` Seste toplam **${ekip2ses}** kullanıcı var.
 \`>\` Aktif olup seste olmayan **${ekip2onlineses}** kullanıcı var.
-
-**<@&${auth.Ekip.Ekip3}>** Bilgileri;
-\`>\` Ekipte toplam **${ekip3}** üye var.
-\`>\` Ekipte toplam sunucu tagını almış **${ekip3tag}** üye var.
-\`>\` Seste toplam **${ekip3ses}** kullanıcı var.
-\`>\` Aktif olup seste olmayan **${ekip3onlineses}** kullanıcı var.
-
-**<@&${auth.Ekip.Ekip4}>** Bilgileri;
-\`>\` Ekipte toplam **${ekip4}** üye var.
-\`>\` Ekipte toplam sunucu tagını almış **${ekip4tag}** üye var.
-\`>\` Seste toplam **${ekip4ses}** kullanıcı var.
-\`>\` Aktif olup seste olmayan **${ekip4onlineses}** kullanıcı var.
 
 **<@&${auth.Ekip.Ekip5}>** Bilgileri;
 \`>\` Ekipte toplam **${ekip5}** üye var.
