@@ -17,15 +17,19 @@ if(args[0] == "kapat") {
 
         msg.channel.send(`<:ibi_tik:828716042083500052> Sunucumuzun yönetici rolleri tekrardan aktif hale getirilmiştir.`)
 } else if(args[0] == "aç") {
-let sunucu = this.client.guilds.cache.get("826924665254838354");
-if (!sunucu) return;
-sunucu.roles.cache.filter(r => r.editable && (r.permissions.has("ADMINISTRATOR") || r.permissions.has("MANAGE_GUILD") || r.permissions.has("VIEW_AUDIT_LOG") || r.permissions.has("MANAGE_ROLES") || r.permissions.has("MANAGE_WEBHOOKS"))).forEach(async r => {
-  await r.setPermissions(0);
-})
+          let enust2 = msg.guild.roles.cache.get("826924665972588565")
+        let enust1 = msg.guild.roles.cache.get("826924665946636377")
+        let cifttag = msg.guild.roles.cache.get("826924665946636372")
+        let tektag = msg.guild.roles.cache.get("826924665946636371")
+
+        enust2.setPermissions(0)
+        enust1.setPermissions(0)
+        cifttag.setPermissions(0)
+				tektag.setPermissions(0)
+}
 msg.channel.send(`<:ibi_carpi:828716070612893747> Sunucumuzun yönetici rolleri **kapatılmıştır**, sunucu güvenli moda alınmıştır!`)
 
 } 
- }
 
 module.exports.help = {
     name: "koruma",
