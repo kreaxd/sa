@@ -48,7 +48,6 @@ const ekip9onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
         msg.channel.send({embed: {footer: `Tüm Ekip Bilgilerine Bakmak İçin .ekip tüm yazabilirsiniz.`,title: `Ekip Bilgilendirme;`,description: `Ekip Komutları:
         
         \`.ekip star\`: <@&${auth.Ekip.Ekip1}>
-        \`.ekip rose\`: <@&${auth.Ekip.Ekip2}>
         \`.ekip always\`: <@&${auth.Ekip.Ekip5}>
         \`.ekip vensai\`: <@&${auth.Ekip.Ekip6}>
         \`.ekip 0004\`: <@&${auth.Ekip.Ekip7}>
@@ -63,14 +62,6 @@ const ekip9onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Ekipte toplam sunucu tagını almış **${ekip1tag}** üye var.
 \`>\` Seste toplam **${ekip1ses}** kullanıcı var.
 \`>\` Aktif olup seste olmayan **${ekip1onlineses}** kullanıcı var.
-`))
-    } else if (["rose"].includes(args[0])) {
-  msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
-  **<@&${auth.Ekip.Ekip2}>** Bilgileri;
-\`>\` Ekipte toplam **${ekip2}** üye var.
-\`>\` Ekipte toplam sunucu tagını almış **${ekip2tag}** üye var.
-\`>\` Seste toplam **${ekip2ses}** kullanıcı var.
-\`>\` Aktif olup seste olmayan **${ekip2onlineses}** kullanıcı var.
 `))
    } else if (["always"].includes(args[0])) {
   msg.channel.send(new MessageEmbed().setColor(client.renk[Math.floor(Math.random() * client.renk.length)]).setDescription(`
@@ -119,12 +110,6 @@ const ekip9onlineses = msg.guild.members.cache.filter(u => (u.roles.cache.some(x
 \`>\` Ekipte toplam sunucu tagını almış **${ekip1tag}** üye var.
 \`>\` Seste toplam **${ekip1ses}** kullanıcı var.
 \`>\` Aktif olup seste olmayan **${ekip1onlineses}** kullanıcı var.
-
-**<@&${auth.Ekip.Ekip2}>** Bilgileri;
-\`>\` Ekipte toplam **${ekip2}** üye var.
-\`>\` Ekipte toplam sunucu tagını almış **${ekip2tag}** üye var.
-\`>\` Seste toplam **${ekip2ses}** kullanıcı var.
-\`>\` Aktif olup seste olmayan **${ekip2onlineses}** kullanıcı var.
 
 **<@&${auth.Ekip.Ekip5}>** Bilgileri;
 \`>\` Ekipte toplam **${ekip5}** üye var.
