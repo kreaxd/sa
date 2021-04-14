@@ -9,15 +9,20 @@ module.exports.operate = async ({client, msg, args, author, auth}, Discord = req
             res.Authorized.Members = res.Authorized.Members.reverse();
             res.Authorized.TagMembers = res.Authorized.TagMembers.reverse();
             client.message(embed2.setDescription(`
+${auth.Reacts.star}  **Kayıt Verileri**
+─────────────────
+\`>\` Kayıt ettiği kullanıcı sayısı: \`(Toplam: ${res.Authorized.Man + res.Authorized.Woman || 0})\` \`[${res.Authorized.Man} erkek, ${res.Authorized.Woman} kız.]\`
+\`>\` Tag aldırdığı kullanıcı sayıları: \`${res.Authorized.Tags}\`
+\`>\` Son kayıt ettiği kullanıcı: ${res.Authorized.Members.map(x => `<@${x}>`).slice(0, 1).join(",") || "Kullanıcı yok."}
+\`>\` Son tag aldırdığı kullanıcı: ${res.Authorized.TagMembers.map(x => `<@${x}>`).slice(0, 1).join(",") || "Kullanıcı yok."}
+
 ${auth.Reacts.star}  **Kayıt Bilgileri**
 ─────────────────
-\`>\` Kayıt ettiği kullanıcı sayısı: \`(Toplam: ${res.Authorized.Man + res.Authorized.Woman || 0})\` \`[${res.Authorized.Man}: erkek, ${res.Authorized.Woman} kız.]\`
-\`>\` Tag aldırdığı kullanıcılar: \`${res.Authorized.Tags}\`
 \`>\` Sunucuya son 20 kayıt ettiği kullanıcılar: ${res.Authorized.Members.map(x => `<@${x}>`).slice(0, 10).join(",") || "Kullanıcı yok."}
 \`>\` Sunucuya son 20 tag aldırdığı kullanıcılar: ${res.Authorized.TagMembers.map(x => `<@${x}>`).slice(0, 20).join(",") || "Kullanıcı yok."}`), msg.channel.id)
-        }
-    });
-    msg.react(client.react("duztik")).catch(() => { });
+}
+});
+msg.react(client.react("duztik")).catch(() => { });
 }
 
 module.exports.help = {
