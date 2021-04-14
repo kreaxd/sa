@@ -3,10 +3,13 @@ module.exports.operate = async ({client, msg, args, member, auth, author}, ms = 
     let channel = msg.guild.channels.cache.get(args[0]) || msg.member.voice.channel;
     if (!channel) return msg.channel.error(msg, "Bir kanal ID girmeli ya da bir sesli kanalda bulunmalısın!");
     channel.members.forEach((x, index) => {
-        x.voice.setMute(false);
+    setTimeout(() => {
+    x.voice.setMute(false); 
+    }) 
     })
     msg.channel.send(`\`${channel.name}\` kanalındaki tüm üyelerin susturulması kaldırıldı!`);
   }
+
 module.exports.help = {
  name: "toplu-unsustur",
  alias: ["untoplumute"]

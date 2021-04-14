@@ -4,10 +4,13 @@ module.exports.operate = async ({client, msg, args, member, auth, author}, ms = 
     if (!channel) return msg.channel.error(msg, "Bir kanal ID girmeli ya da bir sesli kanalda bulunmalısın!");
     channel.members.filter((x) => !x.permissions.has("ADMINISTRATOR"))
       .forEach((x, index) => {
-        x.voice.setMute(true);
-      });
-    msg.channel.send(`\`${channel.name}\` kanalındaki tüm üyeler susturuldu!`);
+      setTimeout(() => {
+      x.voice.setMute(true);
+      }, index * 2000);
+      })
+      msg.channel.send(`\`${channel.name}\` kanalındaki tüm üyeler susturuldu!`);
   }
+
 module.exports.help = {
  name: "toplu-sustur",
  alias: ["toplumute"]
