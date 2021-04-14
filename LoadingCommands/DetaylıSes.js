@@ -1,13 +1,13 @@
 module.exports.operate = async ({client, msg, args, author, auth}, {MessageEmbed} = require("discord.js")) => {
     const xd = args[0];
-     const TaglıSize = msg.guild.members.cache.filter(u => u.user.username.includes(auth.Tags.OrjTag)).size || 0;
+     const TaglıSize = msg.guild.members.cache.filter(u => u.user.username.includes(auth.Tags.RealTag)).size || 0;
      const VoiceSize = msg.guild.channels.cache.filter(c => c.type === "voice").map(c=> c.members.size).reduce((a,b) => a+b) || 0;
      const parent = (name) => {
-      const parentID = auth.Voice.Parents[name];
+      const parentID = auth.Voice[name];
       return msg.guild.channels.cache.filter(x => x.type == "voice" && x.parentID == parentID);
    };
   if (!xd || (xd && !["detay", "detaylı"].includes(xd))) {
-   client.message(client.embed(`${client.react("star")} Sunucumuzda seste toplam **${VoiceSize}** kullanıcı bulunmaktadır.\n\n${client.react("star")} Sunumuzda tag almış **${TaglıSize}** kullanıcı bulunmaktadır.`, msg, true), msg.channel.id)
+   client.message(client.embed(`${auth.Reacts.star} Sunucumuzda seste toplam **${VoiceSize}** kullanıcı bulunmaktadır.\n\n${auth.Reacts.star} Sunumuzda tag almış **${TaglıSize}** kullanıcı bulunmaktadır.`, msg, true), msg.channel.id)
   } else if (["detay", "detaylı"].includes(xd)) {
    const parents = { register: { channels: parent("register") }, public: { channels: parent("public") }, secret: { channels: parent("secret") }, alone: { channels: parent("alone") }, other: { channels: parent("other") } };
    const FakeVoice = msg.guild.channels.cache.filter(c => c.type === "voice").map(c => c.members && c.members.filter(x => x.user.createdAt <= client.getDate(1, "hafta")).size).reduce((a,b) => a+b) || 0;
@@ -29,13 +29,13 @@ module.exports.operate = async ({client, msg, args, author, auth}, {MessageEmbed
     .setAuthor(msg.author.username, msg.author.avatarURL({ dynamic: true }))
     .setFooter(`Sayısal istatistikler (Toplam | Fake | Bot) şeklinde sıralanmıştır.`)
    // .setColor(client.Renk[Math.floor((Math.random() * client.Renk.length))])
-    .setDescription(`${client.react("star")} Sunucumuzda seste (\`${VoiceSize}\` | \`${FakeVoice}\` | \`${BotVoice}\`) kullanıcı bulunmaktadır.\n────────────\n${Object.keys(nev).map((value, index) => `${client.react("star")} **${value.charAt(0).toUpperCase() + value.slice(1)}** Kategorisinde (\`${nev[value].total}\` | \`${nev[value].fake}\` | \`${nev[value].bot}\`) kullanıcı bulunmaktadır.`).join("\n")}`);
+    .setDescription(`${auth.Reacts.star} Sunucumuzda seste (\`${VoiceSize}\` | \`${FakeVoice}\` | \`${BotVoice}\`) kullanıcı bulunmaktadır.\n────────────\n${Object.keys(nev).map((value, index) => `${auth.Reacts.star} **${value.charAt(0).toUpperCase() + value.slice(1)}** Kategorisinde (\`${nev[value].total}\` | \`${nev[value].fake}\` | \`${nev[value].bot}\`) kullanıcı bulunmaktadır.`).join("\n")}`);
      client.message(embed, msg.channel.id);
     };
   };
 
   
   module.exports.help = {
-    name: "say",
+    name: "ses",
     alias: []
   };
