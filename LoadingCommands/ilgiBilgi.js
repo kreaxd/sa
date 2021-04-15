@@ -13,7 +13,7 @@ if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (
 ${auth.Reacts.star} **İlgi Bilgileri**
 ─────────────────
 \`>\` İlgi verdiği kullanıcı sayısı: **${res.ilgiBilgi.Man + res.ilgiBilgi.Woman || 0}**
-\`>\` İlgi puanı: ${ilgiPuan.CezaPuan}
+\`>\` İlgi puanı: ${ilgiPuan.ilgiPuan}
 \`>\` Son 10 ilgi verdiği kullanıcı:\n${res.ilgiBilgi.Members.map(x => `<@${x}>`).slice(0, 10).join(",") || "**Bu kullanıcı kimseye ilgi vermemiş.**"}`), msg.channel.id)
      }
     client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
