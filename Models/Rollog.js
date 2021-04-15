@@ -5,4 +5,4 @@ const rollog = mongoose.Schema({
     roller: Array
 });
 
-module.exports = mongoose.model("rollogs", rollog);
+module.exports = mongoose.model("rollog", rollog);
