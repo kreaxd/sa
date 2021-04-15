@@ -18,10 +18,10 @@ ${auth.Reacts.star2} **İlgi Bilgileri**
 
 ${auth.Reacts.star2} **İlgi Sistemi Hakkında**
 ─────────────────
-\`İlgi sistemine hoş geldin\` <@${member.id}>\`. Burada ilgi verdiğin kullanıcılarını bulup, ilgi puanına ulaşabilirsin. Diğer ilgi komutlarına 
-ulaşmak için aşağıdaki komutlara göz atabilirsin;\`
+İlgi sistemine **hoş geldin** <@${member.id}>. Burada ilgi verdiğin kullanıcılarını bulup, ilgi puanına ulaşabilirsin. Diğer ilgi komutlarına 
+ulaşmak için aşağıdaki komutlara göz atabilirsin;
 
-\`>\` .ilgi \`[@Kullanıcı]\`
+\`>\` .ilgiver \`[@Kullanıcı]\`
 \`>\` .ilgibilgi \`[@Kullanıcı]\`
 \`>\` .ttilgi
 `), msg.channel.id)

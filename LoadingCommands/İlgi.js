@@ -49,5 +49,5 @@ module.exports.operate = async ({client, msg, args, member, auth, author}, ms = 
 
   module.exports.help = {
     name: "ilgi",
-    alias: ["ilgiver"]
+    alias: ["ilgiver", "ilgi-ver"]
   };
