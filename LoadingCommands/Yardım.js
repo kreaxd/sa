@@ -1,9 +1,12 @@
 module.exports.operate = async ({client, msg, args, member ,author, auth}, {MessageEmbed} = require("discord.js")) => { 
-  run: async (client, message, args, embed, prefix) => {
-    message.channel.send(client.commands.filter((x) => x.conf.help).sort((a, b) => b.conf.help - a.conf.help).map((x) => `\`${prefix}${x.conf.help}\``).join("\n"));
-  }
-};
-  
+        if(!msg.member.hasPermission("ADMINISTRATOR")) return
+        const embed = new MessageEmbed()
+        .setAuthor(msg.author.tag, msg.author.displayAvatarURL({dynamic: true}))
+        .setColor("RANDOM")
+        .setDescription(`${this.client.commands.map(x => `- \`\`${x.help.name}\`\``).join("\n")}`)
+        msg.channel.send(embed)
+    }
+
 module.exports.help = {
   name: "yardım",
 alias: []
