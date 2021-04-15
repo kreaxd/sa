@@ -15,7 +15,7 @@ module.exports = (client, auth, moment) => {
       await member.roles.remove(auth.Perms.Unregister).catch(() => { });
       await member.roles.add(rolID).catch(() => { });
       await client.message(client.embed(`${member} kullanıcısı başarıyla <@&${rolID[0]}> alarak kaydedildi! İyi Eğlenceler :tada: :tada: :tada:`, msg), msg.channel.id, 3500);
-      if (client.channels.cache.get(auth.GuildData.Chats.GenelChat)) client.message(`${auth.Reacts.star2} Aramıza yeni birisi katıldı! ${member} Hadi ona hoşgeldin diyelim :tada:`), auth.GuildData.Chats.GenelChat, 7500;
+      if (client.channels.cache.get(auth.GuildData.Chats.GenelChat)) client.message(`${auth.Reacts.star2} Aramıza yeni birisi katıldı! ${member} Hadi ona hoşgeldin diyelim :tada:`, auth.GuildData.Chats.GenelChat, 7500);
     };
   
     client.Talent = async (msg, member, author, rol) => {
