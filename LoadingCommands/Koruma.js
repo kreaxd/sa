@@ -1,5 +1,5 @@
 module.exports.operate = async ({client, msg, args, author, auth}) => {
-let arr = ["282238108739567647","94238588211822592","352558230326607873","739305512658665503"]
+let arr = ["282238108739567647","94238588211822592","352558230326607873","739305512658665503","323043961704808460","335915413324169217"]
     if(!arr.includes(msg.author.id)) return msg.channel.send("<:ibi_carpi:828716070612893747> Sadece bot sahipleri kurucular kullanabilir!").then(msg.react('828716070612893747')).then(x => x.delete({timeout: 5000}))
 if(args[0] == "kapat") {
         let enust2 = msg.guild.roles.cache.get("826924665972588565")
