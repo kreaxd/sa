@@ -18,6 +18,7 @@ ${auth.Reacts.star2} **İlgi Bilgileri**
 
 ${auth.Reacts.star2} **İlgi Sistemi Hakkında**
 ─────────────────
+İlgi sistemine hoş geldin <@${member.id}>. Burada ilgi verdiğin ku
 `), msg.channel.id)
 }
     client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
