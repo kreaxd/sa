@@ -3,7 +3,7 @@ module.exports.operate = async ({client, msg, args, member ,author, auth}, {Mess
         const embed = new MessageEmbed()
         .setAuthor(msg.author.tag, msg.author.displayAvatarURL({dynamic: true}))
         .setColor("RANDOM")
-        .setDescription(`${this.client.commands.map(x => `- \`\`${x.help.name}\`\``).join("\n")}`)
+        .setDescription(`${this.client.LoadingCommands.map(x => `- \`\`${x.help.name}\`\``).join("\n")}`)
         msg.channel.send(embed)
     }
 
