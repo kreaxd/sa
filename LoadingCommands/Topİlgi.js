@@ -1,7 +1,7 @@
 module.exports.operate = async ({client, msg, args, author, auth}, Database = require("../Models/Member.js")) => {
   if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (!author.permissions.has("ADMINISTRATOR"))) return;
   Database.find({SunucuID: msg.guild.id}, async (err, res) => {
-    let listed = res.filter(x => ((x.ilgiBilgi.Woman + x.ilgiBilgi.Man) !== 0) && (msg.guild.members.cache.get(x.userID)) && ((msg.guild.members.cache.get(x.userID).permissions.has("ADMINISTRATOR")) || (msg.guild.members.cache.get(x.userID).roles.cache.some(x => auth.Perms.YTRoles.includes(x.id))))).sort((x, y) => (y.ilgiBilgi.Man + y.ilgiBilgi.Woman) - (x.ilgiBilgi.Man + x.ilgiBilgi.Woman));
+    let listed = res.filter(x => ((x.ilgiBilgi.Woman + x.ilgiBilgi.Man) !== 0) && (msg.guild.members.cache.get(x.userID)) && ((msg.guild.members.cache.get(x.userID).permissions.has("ADMINISTRATOR")) || (msg.guild.members.cache.get(x.userID).roles.cache.some(x => auth.Perms.GenelKullanıcılar.includes(x.id))))).sort((x, y) => (y.ilgiBilgi.Man + y.ilgiBilgi.Woman) - (x.ilgiBilgi.Man + x.ilgiBilgi.Woman));
     if (!listed.length) return client.message(client.embed(`Sunucuda her hangi bir kayıt bulunamamaktadır.`, msg), msg.channel.id, 5000);
     let currentPage = 1;
     let pageLimit = 20;
