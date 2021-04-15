@@ -25,7 +25,3 @@ msg.react(client.react("duztik")).catch(() => { });
     name: "unban",
     alias: []
   };
- 
-
-    
-
