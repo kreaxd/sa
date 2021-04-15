@@ -8,7 +8,7 @@ module.exports.operate = async ({client, msg, args, author, auth}, Database = re
     let pages = listed.chunk(pageLimit);
     msg.channel.send({embed:{
       footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
-      description: `Sunucumuzun en fazla kayıt yapanları aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.ilgiBilgi.Man) + Number(kisi.ilgiBilgi.Woman)}** kayıta sahip`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.renk[Math.floor(Math.random()*client.renk.length)]}}).then(async x => {
+      description: `Sunucumuzda en fazla ilgi veren kullanıcılar aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.ilgiBilgi.Man) + Number(kisi.ilgiBilgi.Woman)}** ilgi vermiş`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.renk[Math.floor(Math.random()*client.renk.length)]}}).then(async x => {
       if (listed.length > pageLimit) {
       await x.react("◀");
       await x.react("❌");
@@ -21,14 +21,14 @@ module.exports.operate = async ({client, msg, args, author, auth}, Database = re
           currentPage--;
           if (x) x.edit({embed:{
             footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
-            description: `Sunucumuzun en fazla kayıt yapanları aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.ilgiBilgi.Man) + Number(kisi.ilgiBilgi.Woman)}** kayıta sahip`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.renk[Math.floor(Math.random()*client.renk.length)]}});
+            description: `Sunucumuzda en fazla ilgi veren kullanıcılar aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.ilgiBilgi.Man) + Number(kisi.ilgiBilgi.Woman)}** ilgi vermiş`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.renk[Math.floor(Math.random()*client.renk.length)]}});
         } else if (reaction.emoji.name === "▶") {
           await reaction.users.remove(author.id).catch(err => { });
           if (currentPage == pages.length) return;
           currentPage++;
           if (x) x.edit({embed:{
             footer: { text: `Sayfa: ${currentPage}/${pages.length}`},
-            description: `Sunucumuzun en fazla kayıt yapanları aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.ilgiBilgi.Man) + Number(kisi.ilgiBilgi.Woman)}** kayıta sahip`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.renk[Math.floor(Math.random()*client.renk.length)]}});
+            description: `Sunucumuzda en fazla ilgi veren kullanıcılar aşağıda listelenmiştir!\n${pages[currentPage - 1].map((kisi, index) => `\`${index + 1}.\` ${msg.guild.members.cache.get(kisi.userID).toString()} **Toplam: ${Number(kisi.ilgiBilgi.Man) + Number(kisi.ilgiBilgi.Woman)}** ilgi vermiş`).join("\n")}`, thumbnail: {url: msg.author.avatarURL({dynamic:true})}, author: {name: msg.guild.name, icon_url: msg.guild.iconURL({dynamic:true})}, color:client.renk[Math.floor(Math.random()*client.renk.length)]}});
         } else if (reaction.emoji.name === "❌") {
            x.delete();
            collector.stop();

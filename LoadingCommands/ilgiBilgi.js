@@ -13,12 +13,17 @@ if ((!author.roles.cache.some(r => auth.Perms.RegisterAuth.includes(r.id))) && (
 ${auth.Reacts.star2} **İlgi Bilgileri**
 ─────────────────
 \`>\` İlgi verdiği kullanıcı sayısı: **${res.ilgiBilgi.Man + res.ilgiBilgi.Woman || 0}**
-\`>\` İlgi puanı: ${ilgiPuan.ilgiPuan}
+\`>\` İlgi puanı: **${ilgiPuan.ilgiPuan}**
 \`>\` Son 10 ilgi verdiği kullanıcı:\n${res.ilgiBilgi.Members.map(x => `<@${x}>`).slice(0, 10).join(",") || "**Bu kullanıcı kimseye ilgi vermemiş.**"}
 
 ${auth.Reacts.star2} **İlgi Sistemi Hakkında**
 ─────────────────
-İlgi sistemine hoş geldin <@${member.id}>. Burada ilgi verdiğin ku
+\`İlgi sistemine hoş geldin\` <@${member.id}>\`. Burada ilgi verdiğin kullanıcılarını bulup, ilgi puanına ulaşabilirsin. Diğer ilgi komutlarına 
+ulaşmak için aşağıdaki komutlara göz atabilirsin;\`
+
+\`>\` .ilgi \`[@Kullanıcı]\`
+\`>\` .ilgibilgi \`[@Kullanıcı]\`
+\`>\` .ttilgi
 `), msg.channel.id)
 }
     client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
