@@ -12,7 +12,7 @@ module.exports.operate = async ({client, msg, args, member,auth, author}) => {
 
 module.exports.help = {
   name: "kayıtsız",
-  alias: ["unregister"]
+  alias: ["unregister", "unreg"]
 }; 
 
 
