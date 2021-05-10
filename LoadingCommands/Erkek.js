@@ -3,6 +3,7 @@ module.exports.operate = async ({client, msg, args, auth, author, member}, Schem
   if (!member) return client.message(client.noMember(msg), msg.channel.id, 6500);
   if (((auth.GuildData.TaglıAlım) === true) && (!member.user.username.includes(auth.Tags.RealTag)) & (!member.roles.cache.get(auth.Booster)) & (!member.roles.cache.get(auth.Perms.Vip)) & (!member.roles.cache.get(auth.Talent.Codelian))) return client.message(client.embed(`Şu an taglı alımda bulunuyoruz, kayıt olabilmek için tagımıza (\`${auth.Tags.RealTag}\`) sahip olman ya da boost basman gerekli.` ,msg),msg.channel.id, 6500); // & (!member.roles.cache.get(auth.Perms.ibidi)) & (!member.roles.cache.get(auth.Perms.Vip))
   if (member.roles.cache.some(x => auth.Perms.KızErkek.includes(x.id))) return client.message(client.embed(`Bu kullanıcı zaten <@&${auth.Perms.Erkek[0]}> ya da <@&${auth.Perms.Kız[0]}> rolüne sahip eğer bir sorun var ise üst yönetime ulaşabilirsin.`, msg), msg.channel.id, 6500);
+  if (!member.roles.cache.has("835972292260659231")) return msg.channel.send("Kullanıcının referansı kabul ettirmemiz lazım!");
   const isim = args.slice(1).filter(arg => isNaN(arg)).map(arg => arg.charAt(0).toUpperCase() + arg.slice(arg.charAt(0).length).toLowerCase()).join(" ");
   const yas = args.slice(1).filter(arg => !isNaN(arg))[0];
   const tag = member.user.username.includes(auth.Tags.RealTag) ? auth.Tags.RealTag : (auth.Tags.FakeTag === "" ? auth.Tags.RealTag : auth.Tags.FakeTag);
@@ -34,7 +35,6 @@ module.exports.operate = async ({client, msg, args, auth, author, member}, Schem
   }
   });
   msg.react(client.react("duztik")).catch(() => { });
-    client.channels.cache.get(auth.Logs.KomutLog).send(`⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n${auth.Reacts.star} ${msg.author.tag}(\`${msg.author.id}\`) kullanıcısı <#${msg.channel.id}> kanalında bir komut kullandı.\n**Komutun içeriği:** \`${msg.content}\``)
 };
     
   module.exports.help = {
